@@ -21,3 +21,4 @@ com.oracle.truffle.tutorial.embedding
 com.oracle.truffle.tutorial.graal
 com.oracle.truffle.tutorial.newlanguage
 com.oracle.truffle.tutorial.sulong
+org.graalvm.options
