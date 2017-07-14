@@ -22,3 +22,5 @@ com.oracle.truffle.tutorial.graal
 com.oracle.truffle.tutorial.newlanguage
 com.oracle.truffle.tutorial.sulong
 org.graalvm.options
+org.graalvm.polyglot
+org.graalvm.polyglot.proxy
