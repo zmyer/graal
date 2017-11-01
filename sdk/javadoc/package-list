@@ -1,3 +1,4 @@
 org.graalvm.options
 org.graalvm.polyglot
 org.graalvm.polyglot.proxy
+org.graalvm.polyglot.tck
