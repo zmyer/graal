@@ -15,7 +15,6 @@ com.oracle.truffle.api.utilities
 com.oracle.truffle.api.vm
 com.oracle.truffle.object
 com.oracle.truffle.tck
-com.oracle.truffle.tools.profiler
 com.oracle.truffle.tutorial
 com.oracle.truffle.tutorial.background
 com.oracle.truffle.tutorial.embedding
