@@ -1,4 +1,5 @@
 org.graalvm.collections
 org.graalvm.options
 org.graalvm.polyglot
+org.graalvm.polyglot.io
 org.graalvm.polyglot.proxy
