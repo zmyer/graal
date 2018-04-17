@@ -33,11 +33,11 @@ mx test262 single=built-ins/Array/length.js
 ### Is GraalVM compatible with the original node implementation?
 
 Node.js based on Graal.js is largely compatible with the original Node.js (based on the V8 engine).
-This leads to a high number of npm based modules being compatible with Graal.js (our tests of more than 45k modules pass all tests of around 95% of the modules).
+This leads to a high number of npm-based modules being compatible with Graal.js (out of the 45k modules we test, 95% of them pass all tests).
 Several sources of differences have to be considered.
 
 **Setup**
-Graal.js mostly mimicks the original setup of Node, including the `node` executable, `npm`, and similar. However, not all command-line options are supported (or behave exactly identical), you need to (re-)compile native modules against our v8.h file, etc.
+Graal.js mostly mimicks the original setup of Node, including the `node` executable, `npm`, and similar. However, not all command-line options are supported (or behave exactly identically), you need to (re-)compile native modules against our v8.h file, etc.
 
 **Internals**
 Graal.js is implemented on top of a JVM, and thus has a different internal architecture. This implies that some internal mechanisms behave differently and cannot exactly replicate V8 behavior. This will hardly ever affect user code, but might affect modules implemented natively, depending on V8 internals.
@@ -50,9 +50,9 @@ _How do we determine Graal.js compatibility?_
 Graal.js is compatible to ECMAScript 2017, guaranteeing compatibility on the language level.
 In addition, Graal.js uses the following approaches to check and retain compatibility to Node.js code:
 
-* node-compat-table: Graal.js is compared against other engines using the _node-compat-table_ module, highlighting incompatibilities that might high Node.js code
-* manual testing of popular modules: A select list of npm modules is tested in a manual test setup. Those highly-relevant modules are tested most sophistically.
+* node-compat-table: Graal.js is compared against other engines using the _node-compat-table_ module, highlighting incompatibilities that might break Node.js code.
 * automated mass-testing of modules using _mocha_: In order to test a large set of modules, Graal.js is tested against 50k modules that use the mocha test framework. Using mocha allows automating the process of executing the test and comprehending the test result.
+* manual testing of popular modules: A select list of npm modules is tested in a manual test setup. These highly-relevant modules are tested in a more sophisticated manner.
 
 If you want your module to be tested by Graal.js in the future, ensure the module provides some mocha tests (and send us an email so we can ensure it's on the list of tested modules).
 

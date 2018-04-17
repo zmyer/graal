@@ -552,7 +552,7 @@ import npm modules, including native ones.</p>
 <pre><code>node [options] [filename] [args]
 </code></pre>
 
-<p>To install a Node.js module, use the <code>npm</code> executable in <code>/bin</code> folder of the
+<p>To install a Node.js module, use the <code>npm</code> executable in the <code>/bin</code> folder of the
 GraalVM package. The <code>npm</code> command is equivalent to the default Node.js
 command and supports all Node.js APIs.</p>
 
@@ -700,11 +700,11 @@ Individual tests can be executed with</p>
 <h3 id="is-graalvm-compatible-with-the-original-node-implementation">Is GraalVM compatible with the original node implementation?</h3>
 
 <p>Node.js based on Graal.js is largely compatible with the original Node.js (based on the V8 engine).
-This leads to a high number of npm based modules being compatible with Graal.js (our tests of more than 45k modules pass all tests of around 95% of the modules).
+This leads to a high number of npm-based modules being compatible with Graal.js (out of the 45k modules we test, 95% of them pass all tests).
 Several sources of differences have to be considered.</p>
 
 <p><strong>Setup</strong>
-Graal.js mostly mimicks the original setup of Node, including the <code>node</code> executable, <code>npm</code>, and similar. However, not all command-line options are supported (or behave exactly identical), you need to (re-)compile native modules against our v8.h file, etc.</p>
+Graal.js mostly mimicks the original setup of Node, including the <code>node</code> executable, <code>npm</code>, and similar. However, not all command-line options are supported (or behave exactly identically), you need to (re-)compile native modules against our v8.h file, etc.</p>
 
 <p><strong>Internals</strong>
 Graal.js is implemented on top of a JVM, and thus has a different internal architecture. This implies that some internal mechanisms behave differently and cannot exactly replicate V8 behavior. This will hardly ever affect user code, but might affect modules implemented natively, depending on V8 internals.</p>
@@ -718,9 +718,9 @@ Due to Graal.js being implemented on top of a JVM, performance characteristics v
 In addition, Graal.js uses the following approaches to check and retain compatibility to Node.js code:</p>
 
 <ul>
-  <li>node-compat-table: Graal.js is compared against other engines using the <em>node-compat-table</em> module, highlighting incompatibilities that might high Node.js code</li>
-  <li>manual testing of popular modules: A select list of npm modules is tested in a manual test setup. Those highly-relevant modules are tested most sophistically.</li>
+  <li>node-compat-table: Graal.js is compared against other engines using the <em>node-compat-table</em> module, highlighting incompatibilities that might break Node.js code.</li>
   <li>automated mass-testing of modules using <em>mocha</em>: In order to test a large set of modules, Graal.js is tested against 50k modules that use the mocha test framework. Using mocha allows automating the process of executing the test and comprehending the test result.</li>
+  <li>manual testing of popular modules: A select list of npm modules is tested in a manual test setup. These highly-relevant modules are tested in a more sophisticated manner.</li>
 </ul>
 
 <p>If you want your module to be tested by Graal.js in the future, ensure the module provides some mocha tests (and send us an email so we can ensure it’s on the list of tested modules).</p>

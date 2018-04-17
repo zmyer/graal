@@ -515,7 +515,7 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 
 <h2 id="simple-instrumentation-agent">Simple Instrumentation Agent</h2>
 
-<p>A simple example of a custom instrumentation agent to perform runtime code coverage can be found in the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/test/examples/CoverageExample.html"><code>CoverageExample</code></a> class. What follows is an overview of the agent, of its design, and of its capabilities.</p>
+<p>A simple example of a custom instrumentation agent to perform runtime code coverage can be found in the <code>CoverageExample</code> class. What follows is an overview of the agent, of its design, and of its capabilities.</p>
 
 <p>All Truffle instruments extend the <code>TruffleInstrument</code> abstract class, and are registered in the GraalVM runtime through the <code>@Registration</code> annotation:</p>
 
@@ -600,8 +600,8 @@ The context object gives instrumentation nodes access to a variety of informatio
 
 <ol>
   <li><code>hasTag</code> to query an instrumented node for a certain node <code>Tag</code> (e.g., to check if a statement node is also a conditional node).</li>
-  <li><code>getInstrumentedSourceSection</code> to access the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/SourceSection.html"><code>SourceSection</code></a> associated with the current node.</li>
-  <li><code>getInstrumentedNode</code> to access the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/Node.html"><code>Node</code></a> corresponding to the current instrumentation event.</li>
+  <li><code>getInstrumentedSourceSection</code> to access the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/SourceSection.html"><code>SourceSection</code></a> associated with the current node.</li>
+  <li><code>getInstrumentedNode</code> to access the <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/nodes/Node.html"><code>Node</code></a> corresponding to the current instrumentation event.</li>
 </ol>
 
 <h3 id="fine-grained-expressions-profiling">Fine-grained expressions profiling</h3>
