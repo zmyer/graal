@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM
+      Reference Manual for FastR
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/">
+  <link rel="canonical" href="http://localhost:4001/docs/reference-manual/languages/r/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -133,9 +133,9 @@
   </defs>
 </svg>
 
-    <div  class="wrapper" >
+    <div  class="wrapper wrapper--nofooter" >
 
-      <header  class="header header--home"  role="banner">
+      <header  class="header header--content"  role="banner">
 
   
 
@@ -150,7 +150,7 @@
 
     <ul class="menu__list">
       <li class="menu__item">
-        <a href="/"  class="menu__link menu__link--home"  >Home</a>
+        <a href="/"  class="menu__link"  >Home</a>
       </li>
 
         
@@ -200,360 +200,625 @@
 </header>
 
 
-      <main  class="content content--home"   aria-label="Content">
-        <div class="home-banner">
-  <div class="home-banner__content">
-    <h1 class="home-banner__logo">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="266" height="53" viewBox="0 0 266 53"><defs><path id="7owha" d="M281.76 313.44c-.94.83-1.98 1.65-3.12 2.43a23.76 23.76 0 0 1-8.22 3.58c-1.63.37-3.41.55-5.34.55-5.63 0-10.05-2.01-13.26-6.04-3.21-4.03-4.82-10.1-4.82-18.21 0-4.47.47-8.4 1.4-11.76a23.83 23.83 0 0 1 4.05-8.4 16.67 16.67 0 0 1 6.3-5.01 19.65 19.65 0 0 1 8.18-1.66c3.02 0 5.72.66 8.12 1.99a18.95 18.95 0 0 1 6.26 5.75l-3.7 4.27a20.56 20.56 0 0 0-4.56-2.36c-1.6-.59-3.35-.88-5.23-.88a9 9 0 0 0-3.92.88 8.63 8.63 0 0 0-3.26 2.84 15.23 15.23 0 0 0-2.23 5.01 28.78 28.78 0 0 0-.81 7.34c0 3.44.24 6.29.74 8.55.5 2.26 1.18 4.07 2.07 5.42a7.55 7.55 0 0 0 3.26 2.87c1.29.57 2.72.85 4.3.85.64 0 1.32-.1 2.04-.3.72-.2 1.32-.44 1.82-.73v-12.17h-5.2v-6.7h15.13zm25.8-22.63c-.79-.25-1.47-.43-2.04-.55a7.56 7.56 0 0 0-1.59-.19c-.99 0-1.98.5-2.96 1.48a37.4 37.4 0 0 0-3.41 4.05v23.66H288v-37h7.19l1.4 6.49a39.92 39.92 0 0 1 4.56-5.39 6.2 6.2 0 0 1 5.86-1.7c.52.1 1.1.23 1.74.38zm24.25 11.94H329c-1.73 0-3.15.15-4.26.44a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.37 2.1c0 1.47.41 2.58 1.23 3.35a4.74 4.74 0 0 0 3.37 1.14c1.23 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.51l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.16 1.47c-3.8 0-6.64-.93-8.52-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.83 0-3.68.18-5.56.55-1.87.37-3.6.8-5.18 1.3l-1.04-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm33.73-16.5h-2.81c-1.73 0-3.15.14-4.26.43a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.36 2.1c0 1.47.4 2.58 1.22 3.35a4.74 4.74 0 0 0 3.37 1.14c1.24 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.5l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.15 1.47c-3.8 0-6.65-.93-8.53-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.82 0-3.68.18-5.55.55-1.88.37-3.61.8-5.2 1.3l-1.03-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm29.8-.37c-1.13.35-2.28.62-3.44.82-1.16.2-2.38.29-3.67.29-2.61 0-4.55-.57-5.81-1.7-1.26-1.13-1.9-3.26-1.9-6.4V267h9.5v41.57c0 2.02.19 3.32.59 3.91.39.6 1.03.89 1.92.89h1.04c.4 0 .81-.03 1.26-.08zm40.86-49.38a435.8 435.8 0 0 1-6.41 25.13 562.23 562.23 0 0 1-7.67 24.62h-12.75a621.4 621.4 0 0 1-7.7-24.84 485.23 485.23 0 0 1-6.45-24.91h11.34c.54 2.94 1.18 6.04 1.92 9.28a563 563 0 0 0 5.04 20.24c.94 3.46 1.9 6.84 2.9 10.13.83-2.8 1.68-5.8 2.55-9.03.86-3.21 1.73-6.53 2.6-9.95.86-3.41 1.67-6.88 2.44-10.4a425.2 425.2 0 0 0 2.11-10.27zm46.26 49.75c-.1-6.53-.27-13.02-.52-19.46-.25-6.44-.64-13.02-1.19-19.75h-.15l-11.26 39.21h-7.48l-10.9-39.21h-.15c-.54 6.73-.93 13.31-1.18 19.75-.25 6.44-.42 12.93-.52 19.46h-9.49a689.61 689.61 0 0 1 3.27-49.75h14.74l8.97 32.14h.15l9.26-32.14h13.78a711.12 711.12 0 0 1 3.26 49.75zm16.41-4.8v4.48h-1.73v-4.48h-1.12v-1.47h3.97v1.47zm7.68 4.48l-.05-2.2-.06-2.07-1.37 4.27h-1.55l-1.4-4.23c-.03.7-.04 1.38-.04 2.06v2.17h-1.44c0-1 .02-2 .07-3 .05-.99.1-1.97.18-2.95h2.23l1.23 3.9 1.26-3.9h2.2a64.25 64.25 0 0 1 .29 5.95z"/></defs><g><g transform="translate(-247 -267)"><use fill="#fff" xlink:href="#7owha"/></g></g></svg>
-    </h1>
-    <p>Run Programs Faster Anywhere</p>
-    <div class="button-group">
-      <a href='/docs/why-graal/' class="btn btn-primary">WHY GRAALVM</a>
-      <a href='/docs/getting-started/' class="btn btn-secondary">GET STARTED</a>
-    </div>
+      <main  class="content"   aria-label="Content">
+        <div class="wrapper wrapper-content">
+  <article class="docs">
+
+  <div class="container-fluid container-fluid--custom-sm">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+          <div class="row d-flex flex-wrap">
+            <div class="col-sm-3 col-bg">
+              <div class="sidebar-wrap">
+                <div class="sidebar">
+                  
+<div class="toc-floating">
+
+
+<script>
+var sidebar = document.currentScript.parentElement;
+
+// 
+//   $(document).ready(function(){
+//     $('.sidebar-wrap').stickySidebar({
+//       topSpacing: 74,
+//       bottomSpacing: 40
+//     });
+//   });
+//
+// 
+
+
+$(document).ready(function(){
+  var header = $('.header').height();
+  var invisibleBlock;
+
+  $("#content-wrapper h1, #content-wrapper h2").each(function() {
+    invisibleBlock = $(this).before("<div class='anchor' id="+ $(this).attr("id") +"></div>");
+  });
+
+  $(window).scroll(function() {
+    var lastitem = null;
+    $("#content-wrapper h1, #content-wrapper h2").each(function() {
+      var heading = $(this);
+      var position = (heading.position().top - heading.height()) - $(window).scrollTop();
+      var listitem = $(sidebar).find("li").filter(function() {
+        return $(this).find("a").attr("href") == "#" + heading.attr("id");
+      });
+      listitem.removeClass("toc-bullets-focused");
+      if (position <= 0) {
+        lastitem = listitem;
+      }
+    });
+    if (lastitem != null) lastitem.addClass("toc-bullets-focused");
+  });
+});
+
+</script>
+
+<ul class="toc-bullets">
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/why-graal/">
+            Why GraalVM?
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/getting-started/">
+            Getting Started
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/examples/">
+            Examples
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/compatibility/">
+            Compatibility
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/">
+            Reference Manual
+          </a>
+        </li>
+
+
+        
+
+
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/graal-updater/">
+              Graal updater
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/js/">
+              JavaScript &amp; Node.js
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/jvm/">
+              JVM Languages Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/llvm/">
+              LLVM Languages Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/python/">
+              Python Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub toc-bullets-highlight">
+          
+            
+            <a href="/docs/reference-manual/languages/r/">
+              R Reference
+            </a>
+          </li>
+
+          
+            <div>
+    <script>
+      var scriptElement = document.currentScript;
+      var div = $(scriptElement.parentElement);
+      $(window).on("load", function() {
+        $("#content-wrapper h1, #content-wrapper h2").each(function() {
+          var li = $("<li></li>", { class: "toc-bullets-sub toc-bullets-sub-3" });
+          var a = $("<a></a>", { href: "#" + $(this).attr("id") });
+          a.text($(this).text());
+          li.append(a);
+          div.append(li);
+        });
+      });
+    </script>
   </div>
+  
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/ruby/">
+              Ruby Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/polyglot/">
+              Polyglot Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/tools/">
+              Tools Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/aot-compilation/">
+              Native images
+            </a>
+          </li>
+
+          
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/graalvm-as-a-platform/">
+            GraalVM as a Platform
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/faq/">
+            FAQ
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+</ul>
+
 </div>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-6">
-            <h2 class="title-section">
-              High-performance
-              polyglot VM
-            </h2>
-          </div>
-          <div class="col-sm-6">
-            <p>
-              GraalVM is an ecosystem for compiling and running applications written in
-              JavaScript, Python, Ruby, R, JVM-based languages
-              like Java, Scala, Kotlin, and LLVM-based languages such as C and C++.
-            </p>
-            <p>
-              GraalVM removes the isolation between programming languages and enables interoperability in a shared runtime.
-              It can run either standalone or in the context of OpenJDK, Node.js, Oracle Database, or MySQL.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-sm-9">
+              <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+                <h2 id="fastr">FastR</h2>
 
-    <div class="section-div"></div>
-  </div>
-</section>
+<p>FastR is an alternative R engine that is <a href="#fastr-compatibility">compatible with GNU R</a>, can run R code
+at <a href="#high-performance">unparalleled performance</a>, <a href="#graalvm-integration">integrates with the GraalVM</a>
+ecosystem and provides <a href="#fastr-additional-features">additional R level features</a>.</p>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="title-section">
-              <span>OUR ADVANTAGES</span>
-              What does GraalVM do?
-            </h2>
-          </div>
-        </div>
+<h2 id="installing-fastr">Installing FastR</h2>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Polyglot</h4>
-            <p class="text-md">
-              Zero overhead interoperability between programming languages allows you to write polyglot applications and select the best language for your task.
-            </p>
+<p>FastR can be installed to a GraalVM build with the gu command. See graalvm/bin/gu –help for more information.</p>
 
-            <a href='/docs/reference-manual/polyglot/' class="link-main">Find out more</a>
-          </div>
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-javascript">const express = require('express');
-const app = express();
-app.listen(3000);
-app.get('/', function(req, res) {
-  var text = 'Hello World!';
-  const BigInteger = Java.type(
-    'java.math.BigInteger');
-  text += BigInteger.valueOf(2)
-    .pow(100).toString(16);
-  text += Polyglot.eval(
-    'R', 'runif(100)')[0];
-  res.send(text);
-})
+<h2 id="running-fastr">Running FastR</h2>
+
+<p>Run R code with the <code>R</code> and <code>Rscript</code> commands:</p>
+<pre><code class="language-shell">$ R [polyglot options] [R options] [filename]
+</code></pre>
+<pre><code class="language-shell">$ Rscript [polyglot options] [R options] [filename]
 </code></pre>
 
-          </div>
-        </div>
+<p>FastR uses the same <a href="/docs/reference-manual/polyglot/#polyglot-options">polyglot options</a> as other GraalVM languages and
+the same R options as <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line">GNU R</a>, e.g., <code>bin/R --vanilla</code>.
+Use <code>--help</code> to print the list of supported options. The most important options include:</p>
+<ul>
+  <li><code>--jvm</code> to enable Java interoperability</li>
+  <li><code>--polyglot</code> to enable interoperability with other GraalVM languages</li>
+  <li><code>--jvm.Djava.net.useSystemProxies=true</code> to pass any options to the JVM, this will be translated to <code>-Djava.net.useSystemProxies=true</code>.</li>
+</ul>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-6 order-2 order-sm-0">
-            
-            <pre><code class="language-shell">$ javac HelloWorld.java
-$ time java HelloWorld
-user 0.070s
-$ native-image HelloWorld
-$ time ./helloworld
-user 0.005s
-</code></pre>
+<p>Note: unlike other GraalVM languages, FastR does not ship yet with a
+<a href="/docs/reference-manual/aot-compilation">native image</a> of its runtime,
+therefore <code>--native</code> option, which is the default, will still start FastR on top of JVM,
+but for the sake of compatibility Java interoperability will not be available in such case.
+In future versions, FastR may ship with a native image image and <code>--native</code> will run it.</p>
 
-          </div>
-          <div class="col-sm-5 offset-sm-1">
-            <h4 class="title-article">Native</h4>
-            <p class="text-md">
-              Native images compiled with GraalVM ahead-of-time improve the
-              startup time and reduce the memory footprint of JVM-based applications.
-            </p>
+<h2 id="fastr-compatibility">FastR Compatibility</h2>
 
-            <a href='/docs/reference-manual/native/' class="link-main">Find out more</a>
-          </div>
-        </div>
+<p>FastR is based on GNU R, it reuses the base packages and parts of the R implementation.
+It is currently based on R 3.4.0, and moves to new major versions of R as they become available
+and stable.
+The FastR project maintains an extensive set of unit tests for all aspects of the R language
+and the builtin functionality, and these tests are available as part of the FastR source code.
+FastR aims to be fully compatible with GNU R, including its native interface as used by R packages.
+It can install and run unmodified complex R packages like <code>ggplot2</code>, <code>Shiny</code>, or <code>Rcpp</code>.
+As some packages rely on unspecified behavior or implementation details of GNU R, support for packages
+is work in progress, and some packages might not install successfully or work as expected.</p>
 
-        <div class="row align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Embeddable</h4>
-            <p class="text-md">
-              GraalVM can be embedded in both managed and native applications.
-              There are existing integrations into OpenJDK, Node.js, Oracle Database, and MySQL.
-            </p>
+<p>Packages can be installed using the <code>install.packages</code> function or <code>R CMD INSTALL</code> shell command.
+By default, FastR uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1</sup></a> 
+that is updated with every new release of FastR (once a month).
+This behavior can be overrideen by explicitly setting the <code>repos</code> argument of <code>install.packages</code> function.
+This functionality does not interfere with the <code>checkpoint</code> package. If you are behind a proxy server, make
+sure to configure the proxy using, e.g., <code>--jvm.Djava.net.useSystemProxies=true</code>.</p>
 
-            <a href='/docs/graalvm-as-a-platform/embed/' class="link-main">Find out more</a>
-          </div>
+<p>Known limitations of FastR compared to GNU R:</p>
+<ul>
+  <li>Only small parts of the low-level <code>graphics</code> package are functional. However, <code>grid</code> package is supported and
+   FastR can install and run packages based on it like <code>ggplot2</code>.
+   Support for <code>graphics</code> package in FastR is planned for future releases.</li>
+  <li>Encoding of character vectors. Related builtins (e.g., <code>Encoding</code>) are available,
+   but do not execute any useful code. Character vectors are represented as Java Strings and
+   therefore encoded in UTF-16 format. FastR will add support for encoding in future releases.</li>
+  <li>Some parts of the native API (e.g., <code>DATAPTR</code>) expose implementation details that are hard to
+   emulate for alternative implementations of R. These are implemented as needed while
+   testing FastR with various CRAN packages.</li>
+</ul>
 
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-java">import org.graalvm.polyglot.*;
-public class HelloPolyglot {
-  public static void main(String[] args) {
-    System.out.println("Hello Java!");
-    Context context = Context.create();
-    context.eval("js",
-      "print('Hello JavaScript!');");
+<p>You can use the <a href="/docs/reference-manual/compatibility/">compatibility checker</a> to find whether the CRAN packages you’re interested in are tested on GraalVM and whether the tests pass successfully.</p>
+
+<h2 id="high-performance">High Performance</h2>
+<p>FastR uses the GraalVM runtime to optimize and compile R code that runs for extended periods of time.
+The speculative optimizations based on the runtime behavior of the R code and dynamic compilation
+employed by GraalVM runtime are capable of removing most of the abstraction penalty incurred by the
+dynamism and complexity of the R language.</p>
+
+<p>Let’s look at an algorithm in R code. The following example calculates the
+mutual information of a large matrix:</p>
+<pre><code>x &lt;- matrix(runif(1000000), 1000, 1000)
+mutual_R &lt;- function(joint_dist) {
+ joint_dist &lt;- joint_dist/sum(joint_dist)
+ mutual_information &lt;- 0
+ num_rows &lt;- nrow(joint_dist)
+ num_cols &lt;- ncol(joint_dist)
+ colsums &lt;- colSums(joint_dist)
+ rowsums &lt;- rowSums(joint_dist)
+ for(i in seq_along(1:num_rows)){
+  for(j in seq_along(1:num_cols)){
+   temp &lt;- log((joint_dist[i,j]/(colsums[j]*rowsums[i])))
+   if(!is.finite(temp)){
+    temp = 0
+   }
+   mutual_information &lt;-
+    mutual_information + joint_dist[i,j] * temp
   }
+ }
+ mutual_information
 }
+system.time(mutual_R(x))
+#   user  system elapsed
+#  1.321   0.010   1.279
 </code></pre>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<p>Algorithms such as this one usually require C/C++ code to run efficiently<a href="#note-2"><sup>2</sup></a>:</p>
+<pre><code>if (!require('RcppArmadillo')) {
+    install.packages('RcppArmadillo')
+    library(RcppArmadillo)
+}
+library(Rcpp)
+sourceCpp("r_mutual.cpp")
+x &lt;- matrix(runif(1000000), 1000, 1000)
+system.time(mutual_cpp(x))
+#   user  system elapsed
+#  0.046   0.003   0.051
+</code></pre>
+<p>(Uses <a href="/docs/examples/r_mutual.cpp">r_mutual.cpp</a>.)</p>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">Get started with GraalVM</h2>
+<p>However, after a few iterations, FastR runs the R code efficiently enough to
+make the performance advantage of C/C++ negligible:</p>
+<pre><code>system.time(mutual_R(x))
+#   user  system elapsed
+#  0.063   0.001   0.077
+</code></pre>
 
-        <div class="row d-flex">
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Java Developer</h5>
-              <p>
-                Are you working on a Java application? Do you want a faster runtime? Enhance your code with JavaScript!
-              </p>
-              <a href="/docs/reference-manual/languages/jvm/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<p>FastR is primarily aimed at long-running applications. Therefore, peak performance is usually only achieved
+after a warmup period. While startup time is currently
+slower than GNUR’s, due to the overhead from Java class loading and compilation, future releases will contain
+a native image of FastR with improved startup.</p>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Node.js Developer</h5>
-              <p>
-                Are you a JavaScript developer building Node.js apps? Run JavaScript in the database, use existing Java libraries, monitor and profile your code easily!
-              </p>
-              <a href="/docs/reference-manual/languages/js/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<h2 id="graalvm-integration">GraalVM Integration</h2>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Ruby, R, or Python Developer</h5>
-              <p>
-                Would you like to troubleshoot your Ruby, R or Python app with Chrome Debugger? It is possible with GraalVM!
-              </p>
-              <a href="/docs/reference-manual/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<p>FastR’s integration with the GraalVM ecosystem includes:</p>
+<ul>
+  <li>seamless interop with other GraalVM languages and with Java</li>
+  <li>debugging with <a href="/docs/reference-manual/tools/chrome-inspector">Chrome DevTools</a></li>
+  <li><a href="/docs/reference-manual/tools/profiling/">CPU and memory profiling</a></li>
+  <li><a href="/docs/reference-manual/tools/heap-viewer/">VisualVM integration</a></li>
+</ul>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Tool or Language Implementor</h5>
-              <p>
-                Are you developing Web application for multiple platforms or would you like to extend the GraalVM ecosystem with your own language?
-              </p>
-              <a href="/docs/graalvm-as-a-platform/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<p>To start debugging R code start FastR with <code>--inspect</code> option</p>
+<pre><code class="language-shell">$ Rscript --inspect myScript.R
+</code></pre>
+<p>Note that GNU R compatible debugging using, for example, <code>debug(myFunction)</code> is also supported.</p>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm carousel-wrapp">
+<h3 id="interoperability">Interoperability</h3>
 
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">
-          <span>LEARN MORE ABOUT GRAALVM</span>
-          Universal VM for a Polyglot World
-        </h2>
+<p>GraalVM supports several other programming languages, including JavaScript, Ruby, Python, and LLVM.
+While FastR is designed to run R code, it also provides an API for programming language interoperability
+that lets you execute code from any other language that GraalVM supports. Note that you must start FastR
+with <code>--polyglot</code> to have access to other GraalVM languages.</p>
 
-        <div class="video-carousel vlog">
+<p>FastR provides the following interoperability primitives:</p>
+<ul>
+  <li><code>eval.polyglot('languageId', 'code')</code> evaluates code in some other language, the <code>languageId</code> can be, e.g., <code>js</code>.</li>
+  <li><code>eval.polyglot(path = '/path/to/file.extension')</code> evaluates code loaded from a file. The language is recognized from the extension.</li>
+  <li><code>export('polyglot-value-name', rObject)</code> exports an R object so that it can be imported by other languages.</li>
+  <li><code>import('exported-polyglot-value-name')</code> imports a polyglot value exported by some other language.</li>
+</ul>
 
+<p>Please use the <code>?functionName</code> syntax to learn more. Following example demonstrates the interoperability features:</p>
+<pre><code># get an array from Ruby
+x &lt;- eval.polyglot('ruby', '[1,2,3]')
+print(x[[1]])
+# [1] 1
 
-        <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">Turning JVM into a Polyglot VM with Graal</h5>
-                <p>
-                  This presentation shows the techniques used to execute languages such as
-                  Ruby with high performance in GraalVM. It demonstrates an example
-                  of mixing JavaScript and Ruby within one program and how GraalVM
-                  can execute the result with zero overheads when crossing language boundaries...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Chris_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Chris Seaton</h6>
-                      <p class="author__position">Research Manager, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
+# get a JavaScript object
+x &lt;- eval.polyglot(path='r_example.js')
+print(x$a)
+# [1] "value"
+
+# use R vector in JavaScript
+export('robj', c(1,2,3))
+eval.polyglot('js', paste0(
+    'rvalue = Polyglot.import("robj"); ',
+    'console.log("JavaScript: " + rvalue.length);'))
+# JavaScript: 3
+# NULL -- the return value of eval.polyglot
+</code></pre>
+<p>(Uses <a href="/docs/examples/r_example.js">r_example.js</a>.)</p>
+
+<p>See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a> and the
+<a href="/docs/graalvm-as-a-platform/embed/">Embedding documentation</a>
+for more information about interoperability with other programming languages.</p>
+
+<h3 id="interoperability-with-java">Interoperability with Java</h3>
+<p>FastR provides built-in interoperability with Java. Java class objects can be obtained via <code>java.type(...)</code>.
+The standard <code>new</code> function interprets string arguments as a Java class if such class exists. <code>new</code> also accepts
+Java types returned from <code>java.type</code>. Fields and methods of Java objects can be accessed using the <code>$</code> operator.
+Additionally, you can use <code>awt(...)</code> to open an R drawing device
+directly on a Java Graphics surface, for more details see <a href="#java-based-graphics">Java Based Graphics</a>.</p>
+
+<p>The following example creates new Java <code>BufferedImage</code> object, plots random data to it using R’s <code>grid</code> package,
+and shows the image in a window using Java’s <code>AWT</code> framework. Note that you must start FastR with <code>--jvm</code> to have
+access to Java interoperability.</p>
+
+<pre><code>library(grid)
+openJavaWindow &lt;- function () {
+   # create image and register graphics
+   imageClass &lt;- java.type('java.awt.image.BufferedImage')
+   image &lt;- new(imageClass, 450, 450, imageClass$TYPE_INT_RGB);
+   graphics &lt;- image$getGraphics()
+   graphics$setBackground(java.type('java.awt.Color')$white);
+   grDevices:::awt(image$getWidth(), image$getHeight(), graphics)
+
+   # draw image
+   grid.newpage()
+   pushViewport(plotViewport(margins = c(5.1, 4.1, 4.1, 2.1)))
+   grid.xaxis(); grid.yaxis()
+   grid.points(x = runif(10, 0, 1), y = runif(10, 0, 1),
+        size = unit(0.01, "npc"))
+
+   # open frame with image
+   imageIcon &lt;- new("javax.swing.ImageIcon", image)
+   label &lt;- new("javax.swing.JLabel", imageIcon)
+   panel &lt;- new("javax.swing.JPanel")
+   panel$add(label)
+   frame &lt;- new("javax.swing.JFrame")
+   frame$setMinimumSize(new("java.awt.Dimension",
+                image$getWidth(), image$getHeight()))
+   frame$add(panel)
+   frame$setVisible(T)
+   while (frame$isVisible()) Sys.sleep(1)
+}
+openJavaWindow()
+</code></pre>
+
+<p>FastR provides its own rJava compatible replacement package available at
+<a href="https://github.com/oracle/fastr/tree/master/com.oracle.truffle.r.pkgs/rJava">GitHub</a>,
+which can be installed using:</p>
+
+<pre><code class="language-shell">$ R --jvm CMD INSTALL /path/to/fastr/com.oracle.truffle.r.pkgs/rJava
+</code></pre>
+
+<h2 id="fastr-additional-features">FastR Additional Features</h2>
+
+<h5 id="java-based-graphics">Java Based Graphics</h5>
+<p>FastR includes its own Java based implementation of the <code>grid</code> package and the following graphics
+devices: <code>png</code>, <code>jpeg</code>, <code>bmp</code>, <code>svg</code> and <code>awt</code> (<code>X11</code> is aliased to <code>awt</code>). The <code>graphics</code> package and
+most of its functions are not supported at the moment.</p>
+
+<p>The <code>awt</code> device is based on the Java <code>Graphics2D</code> object and users can pass it their own <code>Graphics2D</code> object
+instance when opening the device using the <code>awt</code> function, as shown in the Java interop example.
+When the <code>Graphics2D</code> object is not provided to <code>awt</code>, it opens a new window similarly to <code>X11</code>.</p>
+
+<p>The <code>svg</code> device in FastR generates more lightweight SVG code than the <code>svg</code> implementation in GNU R.
+Moreover, FastR provides functions tailored to manipulate the SVG device: <code>svg.off</code> and <code>svg.string</code>.
+The SVG device is demonstrated in the following code sample. Please use the <code>?functionName</code> syntax to learn more.</p>
+
+<pre><code>library(lattice)
+svg()
+mtcars$cars &lt;- rownames(mtcars)
+print(barchart(cars~mpg, data=mtcars))
+svgCode &lt;- svg.off()
+cat(svgCode)
+</code></pre>
+
+<h5 id="in-process-parallel-execution">In-Process Parallel Execution</h5>
+
+<p>FastR adds a new cluster type <code>SHARED</code> for the <code>parallel</code> package. This cluster starts new jobs as new threads
+inside the same process. Example:</p>
+
+<pre><code>library(parallel)
+cl0 &lt;- makeCluster(7, 'SHARED')
+clusterApply(cl0, seq_along(cl0), function(i) i)
+</code></pre>
+
+<p><br />
+<br />
+<br /></p>
+
+<p><sup id="note-1">1</sup> More technically, FastR uses fixed MRAN URL from <code>$R_HOME/etc/DEFAULT_CRAN_MIRROR</code>, which is a snapshot of the
+CRAN repository as it was at given date visible from the URL string.</p>
+
+<p><sup id="note-2">2</sup> When this example is run for the first time, it installs the <code>RcppArmadillo</code> package,
+which may take few minutes. Note that this example can be run in both FastR and GNU R.</p>
+
               </div>
-  
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="oWX2tpIO4Yc" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">One VM to Rule Them All</h5>
-                <p>
-                  GraalVM enables seamless language interoperability while also
-                  providing world-class performance for each individual language.
-                  A demo will show how JavaScript, Java, Ruby, R, and C can work
-                  together in a single web application running in one VM!
-                  Use the right language for a task at hand...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Thomas_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Thomas Wuerthinger</h6>
-                      <p class="author__position">Senior Research Director, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="mMmOntDWSgw" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <div>
-          <div class="row">
-            <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-              <h5 class="vlog__title">Polyglot Native: Java, Scala, Kotlin, and JVM Languages</h5>
-              <p>
-                This video presents Polyglot Native: an ahead-of-time compiler
-                for Java bytecode combined with a low-footprint VM.
-                With Polyglot Native, programs written in Kotlin, Scala,
-                and other JVM-based languages have minimal startup
-                time as they are compiled to native executables.
-                Footprint of compiled programs is minimized by using
-                a chunked heap and reducing necessary program metadata...
-              </p>
-              <div class="vlog__author">
-                <div class="author">
-                  <div class="authot__avatar">
-                    <img src="/resources/img/Wimmer_avatar.png" alt="">
-                  </div>
-                  <div class="author__info">
-                    <h6 class="author__name">Christian Wimmer</h6>
-                    <p class="author__position">Consulting Researcher and Project Lead, Oracle Labs</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="vlog__video">
-                <img src="/resources/img/video-preview@2x.jpg" alt="">
-                    <a href="#" data-video="5BMHIeMXTqA" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">GraalVM in the Oracle Database</h5>
-                <p>
-                  Oracle Database 12c Multilingual Engine (MLE) enables developers
-                  to work efficiently with DB-resident data in modern programming
-                  languages and development environments of their choice.
-                  The Oracle Database Multilingual Engine enables execution of
-                  JavaScript code via GraalVM. This video gives a demonstration
-                  of how Node.js modules can be used in the context of database
-                  queries and stored procedures...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Matthias_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Matthias Brantner</h6>
-                      <p class="author__position">Consulting Researcher, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="k0UidtZFWvk" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
+    
+              <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+                <div class="hamburger"><div class="inner"></div></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-</section>
+</article>
 
-<div id="video-view" class="modal-window">
-  <div class="modal-window__content">
-    <button type="button" title="Close" id="js-close" class="modal-window__close"><img src="/resources/img/btn-close.svg" alt=""></button>
-    <div class="modal-window__video">
-      <div id="player"></div>
-    </div>
-  </div>
 </div>
 
       </main>

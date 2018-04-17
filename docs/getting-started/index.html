@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM
+      Getting started with GraalVM
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/">
+  <link rel="canonical" href="http://localhost:4001/docs/getting-started/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -133,9 +133,9 @@
   </defs>
 </svg>
 
-    <div  class="wrapper" >
+    <div  class="wrapper wrapper--nofooter" >
 
-      <header  class="header header--home"  role="banner">
+      <header  class="header header--content"  role="banner">
 
   
 
@@ -150,7 +150,7 @@
 
     <ul class="menu__list">
       <li class="menu__item">
-        <a href="/"  class="menu__link menu__link--home"  >Home</a>
+        <a href="/"  class="menu__link"  >Home</a>
       </li>
 
         
@@ -200,360 +200,661 @@
 </header>
 
 
-      <main  class="content content--home"   aria-label="Content">
-        <div class="home-banner">
-  <div class="home-banner__content">
-    <h1 class="home-banner__logo">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="266" height="53" viewBox="0 0 266 53"><defs><path id="7owha" d="M281.76 313.44c-.94.83-1.98 1.65-3.12 2.43a23.76 23.76 0 0 1-8.22 3.58c-1.63.37-3.41.55-5.34.55-5.63 0-10.05-2.01-13.26-6.04-3.21-4.03-4.82-10.1-4.82-18.21 0-4.47.47-8.4 1.4-11.76a23.83 23.83 0 0 1 4.05-8.4 16.67 16.67 0 0 1 6.3-5.01 19.65 19.65 0 0 1 8.18-1.66c3.02 0 5.72.66 8.12 1.99a18.95 18.95 0 0 1 6.26 5.75l-3.7 4.27a20.56 20.56 0 0 0-4.56-2.36c-1.6-.59-3.35-.88-5.23-.88a9 9 0 0 0-3.92.88 8.63 8.63 0 0 0-3.26 2.84 15.23 15.23 0 0 0-2.23 5.01 28.78 28.78 0 0 0-.81 7.34c0 3.44.24 6.29.74 8.55.5 2.26 1.18 4.07 2.07 5.42a7.55 7.55 0 0 0 3.26 2.87c1.29.57 2.72.85 4.3.85.64 0 1.32-.1 2.04-.3.72-.2 1.32-.44 1.82-.73v-12.17h-5.2v-6.7h15.13zm25.8-22.63c-.79-.25-1.47-.43-2.04-.55a7.56 7.56 0 0 0-1.59-.19c-.99 0-1.98.5-2.96 1.48a37.4 37.4 0 0 0-3.41 4.05v23.66H288v-37h7.19l1.4 6.49a39.92 39.92 0 0 1 4.56-5.39 6.2 6.2 0 0 1 5.86-1.7c.52.1 1.1.23 1.74.38zm24.25 11.94H329c-1.73 0-3.15.15-4.26.44a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.37 2.1c0 1.47.41 2.58 1.23 3.35a4.74 4.74 0 0 0 3.37 1.14c1.23 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.51l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.16 1.47c-3.8 0-6.64-.93-8.52-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.83 0-3.68.18-5.56.55-1.87.37-3.6.8-5.18 1.3l-1.04-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm33.73-16.5h-2.81c-1.73 0-3.15.14-4.26.43a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.36 2.1c0 1.47.4 2.58 1.22 3.35a4.74 4.74 0 0 0 3.37 1.14c1.24 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.5l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.15 1.47c-3.8 0-6.65-.93-8.53-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.82 0-3.68.18-5.55.55-1.88.37-3.61.8-5.2 1.3l-1.03-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm29.8-.37c-1.13.35-2.28.62-3.44.82-1.16.2-2.38.29-3.67.29-2.61 0-4.55-.57-5.81-1.7-1.26-1.13-1.9-3.26-1.9-6.4V267h9.5v41.57c0 2.02.19 3.32.59 3.91.39.6 1.03.89 1.92.89h1.04c.4 0 .81-.03 1.26-.08zm40.86-49.38a435.8 435.8 0 0 1-6.41 25.13 562.23 562.23 0 0 1-7.67 24.62h-12.75a621.4 621.4 0 0 1-7.7-24.84 485.23 485.23 0 0 1-6.45-24.91h11.34c.54 2.94 1.18 6.04 1.92 9.28a563 563 0 0 0 5.04 20.24c.94 3.46 1.9 6.84 2.9 10.13.83-2.8 1.68-5.8 2.55-9.03.86-3.21 1.73-6.53 2.6-9.95.86-3.41 1.67-6.88 2.44-10.4a425.2 425.2 0 0 0 2.11-10.27zm46.26 49.75c-.1-6.53-.27-13.02-.52-19.46-.25-6.44-.64-13.02-1.19-19.75h-.15l-11.26 39.21h-7.48l-10.9-39.21h-.15c-.54 6.73-.93 13.31-1.18 19.75-.25 6.44-.42 12.93-.52 19.46h-9.49a689.61 689.61 0 0 1 3.27-49.75h14.74l8.97 32.14h.15l9.26-32.14h13.78a711.12 711.12 0 0 1 3.26 49.75zm16.41-4.8v4.48h-1.73v-4.48h-1.12v-1.47h3.97v1.47zm7.68 4.48l-.05-2.2-.06-2.07-1.37 4.27h-1.55l-1.4-4.23c-.03.7-.04 1.38-.04 2.06v2.17h-1.44c0-1 .02-2 .07-3 .05-.99.1-1.97.18-2.95h2.23l1.23 3.9 1.26-3.9h2.2a64.25 64.25 0 0 1 .29 5.95z"/></defs><g><g transform="translate(-247 -267)"><use fill="#fff" xlink:href="#7owha"/></g></g></svg>
-    </h1>
-    <p>Run Programs Faster Anywhere</p>
-    <div class="button-group">
-      <a href='/docs/why-graal/' class="btn btn-primary">WHY GRAALVM</a>
-      <a href='/docs/getting-started/' class="btn btn-secondary">GET STARTED</a>
-    </div>
-  </div>
+      <main  class="content"   aria-label="Content">
+        <div class="wrapper wrapper-content">
+  <article class="docs">
+
+  <div class="container-fluid container-fluid--custom-sm">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+          <div class="row d-flex flex-wrap">
+            <div class="col-sm-3 col-bg">
+              <div class="sidebar-wrap">
+                <div class="sidebar">
+                  
+<div class="toc-floating">
+
+
+<script>
+var sidebar = document.currentScript.parentElement;
+
+// 
+//   $(document).ready(function(){
+//     $('.sidebar-wrap').stickySidebar({
+//       topSpacing: 74,
+//       bottomSpacing: 40
+//     });
+//   });
+//
+// 
+
+
+$(document).ready(function(){
+  var header = $('.header').height();
+  var invisibleBlock;
+
+  $("#content-wrapper h1, #content-wrapper h2").each(function() {
+    invisibleBlock = $(this).before("<div class='anchor' id="+ $(this).attr("id") +"></div>");
+  });
+
+  $(window).scroll(function() {
+    var lastitem = null;
+    $("#content-wrapper h1, #content-wrapper h2").each(function() {
+      var heading = $(this);
+      var position = (heading.position().top - heading.height()) - $(window).scrollTop();
+      var listitem = $(sidebar).find("li").filter(function() {
+        return $(this).find("a").attr("href") == "#" + heading.attr("id");
+      });
+      listitem.removeClass("toc-bullets-focused");
+      if (position <= 0) {
+        lastitem = listitem;
+      }
+    });
+    if (lastitem != null) lastitem.addClass("toc-bullets-focused");
+  });
+});
+
+</script>
+
+<ul class="toc-bullets">
+
+  
+
+  
+
+  
+    
+
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/why-graal/">
+            Why GraalVM?
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+        <li class="toc-bullets-main toc-bullets-highlight">
+        
+          
+          <a href="/docs/getting-started/">
+            Getting Started
+          </a>
+        </li>
+
+
+        
+          <div>
+  <script>
+    var scriptElement = document.currentScript;
+    var div = $(scriptElement.parentElement);
+    $(window).on("load", function() {
+      $("#content-wrapper h1, #content-wrapper h2").each(function() {
+        var li = $("<li></li>", { class: "toc-bullets-sub" });
+        var a = $("<a></a>", { href: "#" + $(this).attr("id") });
+        a.text($(this).text());
+        li.append(a);
+        div.append(li);
+      });
+    });
+  </script>
 </div>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-6">
-            <h2 class="title-section">
-              High-performance
-              polyglot VM
-            </h2>
-          </div>
-          <div class="col-sm-6">
-            <p>
-              GraalVM is an ecosystem for compiling and running applications written in
-              JavaScript, Python, Ruby, R, JVM-based languages
-              like Java, Scala, Kotlin, and LLVM-based languages such as C and C++.
-            </p>
-            <p>
-              GraalVM removes the isolation between programming languages and enables interoperability in a shared runtime.
-              It can run either standalone or in the context of OpenJDK, Node.js, Oracle Database, or MySQL.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+        
 
-    <div class="section-div"></div>
-  </div>
-</section>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="title-section">
-              <span>OUR ADVANTAGES</span>
-              What does GraalVM do?
-            </h2>
-          </div>
-        </div>
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/examples/">
+            Examples
+          </a>
+        </li>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Polyglot</h4>
-            <p class="text-md">
-              Zero overhead interoperability between programming languages allows you to write polyglot applications and select the best language for your task.
-            </p>
 
-            <a href='/docs/reference-manual/polyglot/' class="link-main">Find out more</a>
-          </div>
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-javascript">const express = require('express');
-const app = express();
-app.listen(3000);
-app.get('/', function(req, res) {
-  var text = 'Hello World!';
-  const BigInteger = Java.type(
-    'java.math.BigInteger');
-  text += BigInteger.valueOf(2)
-    .pow(100).toString(16);
-  text += Polyglot.eval(
-    'R', 'runif(100)')[0];
-  res.send(text);
-})
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/compatibility/">
+            Compatibility
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/">
+            Reference Manual
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/graalvm-as-a-platform/">
+            GraalVM as a Platform
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/faq/">
+            FAQ
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
+</div>
+
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-sm-9">
+              <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+                <p>Get started with GraalVM and configure it to run programs in Java or other JVM-based languages, applications written JavaScript
+and Node.js, Ruby, R, or Python. This page leads you through downloading and installing GraalVM, adding support for additional languages and how to run simple programs on GraalVM.</p>
+
+<h2 id="download-graalvm">Download GraalVM</h2>
+
+<p>GraalVM is a standalone Java Development Kit  that you  can use for executing
+Java or JVM-based applications, as well as applications written in JavaScript,
+Python, Ruby, and R, with its Polyglot language engines. The current release is
+based on the OpenJDK 8 and includes JavaScript (including Node.js)
+as a pre-installed extension language. GraalVM implementations of R, Ruby, Python
+scripting languages can be installed as additional components per need.
+There are Community and Enterprise GraalVM editions available for download
+with slight differences. Proceed to <a href="/downloads/">Downloads</a> page and make your
+choice depending on the operating system type and the  use case.</p>
+
+<p>In this getting started guide we will focus on working with GraalVM archive
+obtained from the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a>,
+namely GraalVM Enterprise Edition. This includes the JVM, the Graal compiler, LLVM interpreter,
+and the JavaScript runtime with Node.js support – all in one package with compatible versions.</p>
+
+<h2 id="install-graalvm">Install GraalVM</h2>
+
+<p>GraalVM Enterprise Edition supports Linux and Mac OS X on x86 64-bit systems.
+Getting GraalVM installed and ready-to-go should only take a few minutes.</p>
+
+<ol>
+  <li><a href="/downloads/">Download GraalVM</a> pick Enterprise edition, proceed to the Oracle Technology Network, accept the license and download the archive.</li>
+  <li>Extract the archive to your file system.</li>
+  <li>Add the GraalVM <code>/bin</code> folder to your <code>PATH</code> environment variable in order
+to deploy java executables using a command-line shell for Linux:
+    <pre><code>export PATH=/path/to/graalvm/bin:$PATH
+</code></pre>
+    <p>and for Mac OS X:</p>
+    <pre><code>export PATH=/path/to/graalvm/Contents/Home/bin:$PATH
+</code></pre>
+  </li>
+  <li>You can verify whether you are using GraalVM with the echo command: <code>echo $PATH</code>.</li>
+</ol>
+
+<p>Optionally set the <code>JAVA_HOME</code> environment variable to resolve to the GraalVM installation directory.
+You can also specify GraalVM as the JRE or JDK installation in your Java IDE.</p>
+
+<p>GraalVM <code>/bin</code> directory contains a handful set of additional launchers, not characteristic for common JVMs:</p>
+<ul>
+  <li><strong>java</strong> runs the JVM with Graal as the default compiler.</li>
+  <li><strong>js</strong> runs a JavaScript console with GraalVM.</li>
+  <li><strong>node</strong> drop-in replacement for Node.js as an executing JavaScript engine, executed on the top of GraalVM.</li>
+  <li><strong>lli</strong> a high-performance LLVM bitcode interpreter integrated with the Graal compiler.</li>
+  <li><strong>native-image</strong> builds an ahead-of-time compiled executable or a shared library from Java programs, and the JavaScript, LLVM, and Ruby languages.</li>
+  <li><strong>gu</strong> the Graal updater utility you can use to install language packs for Python, R, and Ruby.</li>
+</ul>
+
+<p>Please note, that <strong>ruby</strong>, <strong>graalpython</strong>, <strong>R</strong> executables become available
+only if you install the R, Ruby, Python language engines after the installation. For example, running the following command will install Ruby support.</p>
+
+<pre><code class="language-shell">gu -c install org.graalvm.ruby
 </code></pre>
 
-          </div>
-        </div>
+<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a></p>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-6 order-2 order-sm-0">
-            
-            <pre><code class="language-shell">$ javac HelloWorld.java
-$ time java HelloWorld
-user 0.070s
-$ native-image HelloWorld
-$ time ./helloworld
-user 0.005s
+<p>After that verify whether you have set <code>PATH</code> environment variable properly,
+check languages versions with GraalVM launchers:</p>
+
+<pre><code>$ java -version
+java version "1.8.0_161"
+Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
+GraalVM 1.0.0-rc1 (build 25.71-b01-internal-jvmci-0.42, mixed mode)
+
+$ node -v
+v8.9.4
+
+$ lli --version
+Graal llvm 6.0.0 (GraalVM 1.0.0)
 </code></pre>
 
-          </div>
-          <div class="col-sm-5 offset-sm-1">
-            <h4 class="title-article">Native</h4>
-            <p class="text-md">
-              Native images compiled with GraalVM ahead-of-time improve the
-              startup time and reduce the memory footprint of JVM-based applications.
-            </p>
+<p>If you have Ruby language component installed, and the similar applies to R and Python, you can run them too.</p>
 
-            <a href='/docs/reference-manual/native/' class="link-main">Find out more</a>
-          </div>
-        </div>
+<pre><code class="language-shell">$ ruby -v
+truffleruby 1.0.0-rc1, like ruby 2.3.7 &lt;native build with Graal&gt; [x86_64-darwin]
+</code></pre>
 
-        <div class="row align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Embeddable</h4>
-            <p class="text-md">
-              GraalVM can be embedded in both managed and native applications.
-              There are existing integrations into OpenJDK, Node.js, Oracle Database, and MySQL.
-            </p>
+<h2 id="running-programs">Running Programs</h2>
 
-            <a href='/docs/graalvm-as-a-platform/embed/' class="link-main">Find out more</a>
-          </div>
+<p>With GraalVM in the PATH  you are ready to run programs in all the languages GraalVM supports: JJVM-based languages like Java, Scala, Groovy, and Kotlin, JavaScript, Python, Ruby, and R. Long story short, since the executables are on the PATH, you just run your application normally.</p>
 
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-java">import org.graalvm.polyglot.*;
-public class HelloPolyglot {
+<h2 id="running-java">Running Java</h2>
+
+<p>Take a look at this typical <code>HelloWorld</code> class.</p>
+<pre><code class="language-java">public class HelloWorld {
   public static void main(String[] args) {
-    System.out.println("Hello Java!");
-    Context context = Context.create();
-    context.eval("js",
-      "print('Hello JavaScript!');");
+    System.out.println("Hello, World!");
   }
 }
 </code></pre>
 
-          </div>
-        </div>
-      </div>
-    </div>
+<p>Run the following command to compile this class to bytecode and then run it on GraalVM:</p>
+<pre><code class="language-shell">$ javac HelloWorld.java
+$ java HelloWorld
+Hello World!
+</code></pre>
+
+<p>You can find a larger examples of a Java application you can try running with GraalVM on the <a href="/docs/examples/">examples page</a>.</p>
+
+<h2 id="running-javascript">Running JavaScript</h2>
+
+<p>Graal.js can execute plain JavaScript code, both in the REPL mode and executing the files.</p>
+
+<pre><code class="language-shell">$ js
+&gt; 1 + 2
+3
+</code></pre>
+
+<p>GraalVM also support running Node.js applications. More than 45.000 npm modules are tested and are fully compatible with Graal.js, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
+To install a Node.js module, use the <code>npm</code> executable in <code>/bin</code> folder of the
+GraalVM package. The <code>npm</code> command is equivalent to the default Node.js
+command and supports all Node.js APIs.</p>
+
+<p>For example, install the <code>colors</code> and <code>ansispan</code> modules using <code>npm install</code> as
+follows:</p>
+
+<pre><code>npm install colors ansispan
+</code></pre>
+
+<p>After the modules are installed, you can use them from your application.</p>
+
+<p>2. Add the following code snippet to a file named <code>app.js</code> and save it in the same directory where you installed Node.js modules:</p>
+
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
   </div>
-</section>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">Get started with GraalVM</h2>
+  <!--
+  javascript
+  js/app.js
+  -->
 
-        <div class="row d-flex">
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Java Developer</h5>
-              <p>
-                Are you working on a Java application? Do you want a faster runtime? Enhance your code with JavaScript!
-              </p>
-              <a href="/docs/reference-manual/languages/jvm/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Node.js Developer</h5>
-              <p>
-                Are you a JavaScript developer building Node.js apps? Run JavaScript in the database, use existing Java libraries, monitor and profile your code easily!
-              </p>
-              <a href="/docs/reference-manual/languages/js/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Ruby, R, or Python Developer</h5>
-              <p>
-                Would you like to troubleshoot your Ruby, R or Python app with Chrome Debugger? It is possible with GraalVM!
-              </p>
-              <a href="/docs/reference-manual/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Tool or Language Implementor</h5>
-              <p>
-                Are you developing Web application for multiple platforms or would you like to extend the GraalVM ecosystem with your own language?
-              </p>
-              <a href="/docs/graalvm-as-a-platform/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm carousel-wrapp">
-
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">
-          <span>LEARN MORE ABOUT GRAALVM</span>
-          Universal VM for a Polyglot World
-        </h2>
-
-        <div class="video-carousel vlog">
-
-
-        <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">Turning JVM into a Polyglot VM with Graal</h5>
-                <p>
-                  This presentation shows the techniques used to execute languages such as
-                  Ruby with high performance in GraalVM. It demonstrates an example
-                  of mixing JavaScript and Ruby within one program and how GraalVM
-                  can execute the result with zero overheads when crossing language boundaries...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Chris_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Chris Seaton</h6>
-                      <p class="author__position">Research Manager, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
   
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="oWX2tpIO4Yc" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
+
+  
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript">  <span class="c1">// RUN-CMD: rm -rf node_modules</span>
+<span class="c1">// RUN-CMD: npm install ansispan colors</span>
+<span class="c1">// RUN-CMD: node {file}</span>
+<span class="c1">// RUN-CMD: rm -r node_modules</span>
+
+<span class="c1">// BEGIN-SNIPPET</span>
+
+<span class="kr">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"http"</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">span</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ansispan"</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s2">"colors"</span><span class="p">);</span>
+
+<span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="p">{</span><span class="s2">"Content-Type"</span><span class="p">:</span> <span class="s2">"text/html"</span><span class="p">});</span>
+    <span class="nx">response</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">span</span><span class="p">(</span><span class="s2">"Hello Graal.js!"</span><span class="p">.</span><span class="nx">green</span><span class="p">));</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">(</span><span class="mi">8000</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Graal.js server running at http://127.0.0.1:8000/"</span><span class="p">.</span><span class="nx">red</span><span class="p">);</span> <span class="p">});</span>
+<span class="c1">// END-SNIPPET</span>
+
+<span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"DONE!"</span><span class="p">);</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span> <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+<p>3. Execute it on Graal.js using the <code>node</code> command as follows:</p>
+
+<pre><code>node app.js
+</code></pre>
+
+<p>More information on compatibility with the Node.js and configuring Graal.js read the <a href="/docs/reference-manual/languages/js/">reference manual on Graal.js</a>.</p>
+
+<h2 id="running-the-llvm-interpreter">Running the LLVM interpreter</h2>
+
+<p>The LLVM interpreter in GraalVM executes the LLVM bitcode, so programming languages that can be compiled to the LLVM can be executed.</p>
+
+<p>Here is some example C code named <code>hello.c</code>:</p>
+
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello from GraalVM!\n");
+    return 0;
+}
+</code></pre>
+
+<p>You can compile <code>hello.c</code> to an LLVM bitcode file named <code>hello.bc</code> using the following command:</p>
+<pre><code class="language-shell">$ clang -c -O1 -emit-llvm hello.c
+</code></pre>
+
+<p>You can then run <code>hello.bc</code> on GraalVM like this:</p>
+<pre><code class="language-shell">$ lli hello.bc
+Hello from GraalVM!
+</code></pre>
+
+<p>More examples and information on what languages and runtimes are supported can be found in the <a href="/docs/reference-manual/languages/llvm/">reference manual for LLVM</a>.</p>
+
+<h2 id="running-ruby">Running Ruby</h2>
+
+<p>Ruby executables for GraalVM becomes available only if you install the Ruby engine after the installation of GraalVM.
+In order to do so, execute the following Graal updater command:</p>
+<pre><code class="language-shell">gu -c install org.graalvm.ruby
+</code></pre>
+
+<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
+
+<p>After installing the Ruby support you can run Ruby applications with the standard <code>ruby</code> command:</p>
+
+<pre><code>$ ruby [options] program.rb
+</code></pre>
+
+<p>Other Ruby commands are available as well, including <code>gem</code>, <code>irb</code>, <code>rake</code>, <code>rdoc</code>,
+and <code>ri</code>.</p>
+
+<p>GraalVM’s Ruby implementation uses the
+<a href="/docs/reference-manual/languages/ruby/#options">same options as the standard implementation of Ruby</a>
+with some additions.</p>
+
+<pre><code>$ gem install chunky_png
+$ ruby -r chunky_png -e "puts ChunkyPNG::Color.to_hex(ChunkyPNG::Color('mintcream @ 0.5'))"
+#f5fffa80
+</code></pre>
+
+<h4 id="using-bundler">Using Bundler</h4>
+
+<p>The only supported version of Bundler at the moment is <code>1.16.x</code>.</p>
+
+<pre><code>$ gem install bundler -v 1.16.1
+$ bundle exec ...
+</code></pre>
+
+<p>More examples and information on what languages and runtimes are supported can be found in the <a href="/docs/reference-manual/languages/ruby/">reference manual for Ruby</a>.</p>
+
+<h2 id="running-r">Running R</h2>
+<p>GraalVM distribution does not include the R support out of the box, execute the
+following Graal updater command to install the R language:</p>
+<pre><code class="language-shell">gu -c install org.graalvm.r
+</code></pre>
+
+<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
+
+<p>When the R engine is installed, you can execute R files and scripts with GraalVM:</p>
+
+<pre><code class="language-shell">$ R
+R version 3.4.0 (FastR)
+...
+
+&gt; 1 + 1
+[1] 2
+</code></pre>
+
+<p>More examples and information on Graal R implementation can be found in the <a href="/docs/reference-manual/languages/r/">reference manual for R</a>.</p>
+
+<h2 id="running-python">Running Python</h2>
+<p>To install Python support for GraalVM, please execute the following Graal updater command:</p>
+
+<pre><code class="language-shell">gu -c install org.graalvm.python
+</code></pre>
+<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
+
+<p>After the Python engine is installed, GraalVM can execute Python programs:</p>
+
+<pre><code class="language-shell">$ graalpython
+...
+&gt;&gt;&gt; 1 + 2
+3
+&gt;&gt;&gt; exit()
+</code></pre>
+
+<p>More examples and information on Graal Python implementation can be found in the <a href="/docs/reference-manual/languages/python/">reference manual for Python</a>.</p>
+
+<h2 id="combine-languages">Combine Languages</h2>
+
+<p>You can use interop to call to other languages. The <code>--polyglot</code> flag enables you
+to interoperate with other programming languages through the Graal SDK.</p>
+
+<p>For example, running <code>js --jvm --polyglot example.js</code> executes <code>example.js</code> in a polyglot
+context. If the program calls any code in other supported languages, Graal.js executes that code in
+the same runtime as the <code>example.js</code> application. For more information on polyglot applications see the <a href="/docs/reference-manual/polyglot/">polyglot documentation</a>.</p>
+
+<h2 id="native-images">Native Images</h2>
+<p>GraalVM can compile Java bytecode into native images to give your applications
+faster startup times and smaller footprints.</p>
+
+<p>Let us look once again at the <code>HelloWorld</code> class. We are going to use it to
+demonstrate how to compile Java bytecode into a native image:</p>
+<pre><code class="language-java">// HelloWorld.java
+public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, World!");
+  }
+}
+</code></pre>
+
+<p>Run the following to compile the class to bytecode and then build a native image:</p>
+<pre><code>$ javac HelloWorld.java
+$ native-image HelloWorld
+</code></pre>
+
+<p>The preceding command builds an executable file named <code>helloworld</code> in the
+current working directory. Invoking it executes the native-compiled code
+of the <code>HelloWorld</code> class as follows:</p>
+<pre><code>$ ./helloworld
+Hello, World!
+</code></pre>
+<h4 id="polyglot-capabilities-of-native-images">Polyglot Capabilities of Native Images</h4>
+<p>The <code>native-image</code> tool also makes it easy to use polyglot capabilities.
+Take this example of a JSON pretty-printer using the Graal.js implementation of
+JavaScript:</p>
+<pre><code>// PrettyPrintJSON.java
+import java.io.*;
+import java.util.stream.*;
+import org.graalvm.polyglot.*;
+
+public class PrettyPrintJSON {
+  public static void main(String[] args) throws java.io.IOException {
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    String input = reader.lines().collect(Collectors.joining(System.lineSeparator()));
+    try (Context context = Context.create("js")) {
+      Value parse = context.eval("js", "JSON.parse");
+      Value stringify = context.eval("js", "JSON.stringify");
+      Value result = stringify.execute(parse.execute(input));
+      System.out.println(result.asString());
+    }
+  }
+}
+</code></pre>
+
+<p>Again, let us build a class file, followed by the native image. This time, we
+have to provide the <code>--language:js</code> argument to make sure Graal.js is available as a
+language for the image.</p>
+<pre><code>$ javac PrettyPrintJSON.java
+$ native-image --language:js PrettyPrintJSON
+</code></pre>
+
+<p>Now we have a native executable that does JSON pretty printing:</p>
+
+<pre><code class="language-shell">$ ./prettyprintjson &lt;&lt;EOF
+{"GraalVM":{"description":"Language Abstraction Platform","supports":["combining languages","embedding languages","creating native images"],"languages": ["Java","JavaScript","Node.js", "Python", "Ruby","R","LLVM"]}}
+EOF
+</code></pre>
+
+<p>Here is the JSON output from the native executable:</p>
+<pre><code class="language-json">{
+  "GraalVM": {
+    "description": "Language Abstraction Platform",
+    "supports": [
+      "combining languages",
+      "embedding languages",
+      "creating native images"
+    ],
+    "languages": [
+      "Java",
+      "JavaScript",
+      "Node.js",
+      "Python",
+      "Ruby",
+      "R",
+      "LLVM"
+    ]
+  }
+}
+</code></pre>
+
+<p>We can see that the native image is much faster than running the same code
+on the JVM:</p>
+<pre><code>$ time bin/java PrettyPrintJSON &lt; test.json &gt; /dev/null
+real	0m1.288s
+user	0m2.842s
+sys	0m0.313s
+
+$ time ./prettyprintjson &lt; test.json &gt; /dev/null
+real	0m0.042s
+user	0m0.014s
+sys	0m0.018s
+</code></pre>
+<p>There are certain limitations of ahead-of-time compilation with GraalVM,
+listed <a href="/docs/reference-manual/native-images/">here</a>.</p>
+
+<h2 id="what-to-read-next">What to read next?</h2>
+<p>If you want to learn what GraalVM offers to different types of teams, read the <a href="/docs/why-graal/">Why Graal page</a>.
+Or, you can examine different supported languages in action and in integrity by referring to the <a href="/docs/examples/">example applications</a>. If you want to learn about the common tools GraalVM enables for the supported languages, proceed to the <a href="/docs/reference-manual/tools/">tools section</a> of the reference manual.
+And if you are mostly interested in a specific language, for example, JavaScript or Ruby, their extensive documentation is available in the <a href="/docs/reference-manual/">reference manual</a>.</p>
+
               </div>
-            </div>
-          </div>
-
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">One VM to Rule Them All</h5>
-                <p>
-                  GraalVM enables seamless language interoperability while also
-                  providing world-class performance for each individual language.
-                  A demo will show how JavaScript, Java, Ruby, R, and C can work
-                  together in a single web application running in one VM!
-                  Use the right language for a task at hand...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Thomas_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Thomas Wuerthinger</h6>
-                      <p class="author__position">Senior Research Director, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="mMmOntDWSgw" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <div>
-          <div class="row">
-            <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-              <h5 class="vlog__title">Polyglot Native: Java, Scala, Kotlin, and JVM Languages</h5>
-              <p>
-                This video presents Polyglot Native: an ahead-of-time compiler
-                for Java bytecode combined with a low-footprint VM.
-                With Polyglot Native, programs written in Kotlin, Scala,
-                and other JVM-based languages have minimal startup
-                time as they are compiled to native executables.
-                Footprint of compiled programs is minimized by using
-                a chunked heap and reducing necessary program metadata...
-              </p>
-              <div class="vlog__author">
-                <div class="author">
-                  <div class="authot__avatar">
-                    <img src="/resources/img/Wimmer_avatar.png" alt="">
-                  </div>
-                  <div class="author__info">
-                    <h6 class="author__name">Christian Wimmer</h6>
-                    <p class="author__position">Consulting Researcher and Project Lead, Oracle Labs</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="vlog__video">
-                <img src="/resources/img/video-preview@2x.jpg" alt="">
-                    <a href="#" data-video="5BMHIeMXTqA" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">GraalVM in the Oracle Database</h5>
-                <p>
-                  Oracle Database 12c Multilingual Engine (MLE) enables developers
-                  to work efficiently with DB-resident data in modern programming
-                  languages and development environments of their choice.
-                  The Oracle Database Multilingual Engine enables execution of
-                  JavaScript code via GraalVM. This video gives a demonstration
-                  of how Node.js modules can be used in the context of database
-                  queries and stored procedures...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Matthias_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Matthias Brantner</h6>
-                      <p class="author__position">Consulting Researcher, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="k0UidtZFWvk" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
+    
+              <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+                <div class="hamburger"><div class="inner"></div></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-</section>
+</article>
 
-<div id="video-view" class="modal-window">
-  <div class="modal-window__content">
-    <button type="button" title="Close" id="js-close" class="modal-window__close"><img src="/resources/img/btn-close.svg" alt=""></button>
-    <div class="modal-window__video">
-      <div id="player"></div>
-    </div>
-  </div>
 </div>
 
       </main>

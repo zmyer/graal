@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM
+      JVM Languages Reference
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/">
+  <link rel="canonical" href="http://localhost:4001/docs/reference-manual/languages/jvm/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -133,9 +133,9 @@
   </defs>
 </svg>
 
-    <div  class="wrapper" >
+    <div  class="wrapper wrapper--nofooter" >
 
-      <header  class="header header--home"  role="banner">
+      <header  class="header header--content"  role="banner">
 
   
 
@@ -150,7 +150,7 @@
 
     <ul class="menu__list">
       <li class="menu__item">
-        <a href="/"  class="menu__link menu__link--home"  >Home</a>
+        <a href="/"  class="menu__link"  >Home</a>
       </li>
 
         
@@ -200,360 +200,626 @@
 </header>
 
 
-      <main  class="content content--home"   aria-label="Content">
-        <div class="home-banner">
-  <div class="home-banner__content">
-    <h1 class="home-banner__logo">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="266" height="53" viewBox="0 0 266 53"><defs><path id="7owha" d="M281.76 313.44c-.94.83-1.98 1.65-3.12 2.43a23.76 23.76 0 0 1-8.22 3.58c-1.63.37-3.41.55-5.34.55-5.63 0-10.05-2.01-13.26-6.04-3.21-4.03-4.82-10.1-4.82-18.21 0-4.47.47-8.4 1.4-11.76a23.83 23.83 0 0 1 4.05-8.4 16.67 16.67 0 0 1 6.3-5.01 19.65 19.65 0 0 1 8.18-1.66c3.02 0 5.72.66 8.12 1.99a18.95 18.95 0 0 1 6.26 5.75l-3.7 4.27a20.56 20.56 0 0 0-4.56-2.36c-1.6-.59-3.35-.88-5.23-.88a9 9 0 0 0-3.92.88 8.63 8.63 0 0 0-3.26 2.84 15.23 15.23 0 0 0-2.23 5.01 28.78 28.78 0 0 0-.81 7.34c0 3.44.24 6.29.74 8.55.5 2.26 1.18 4.07 2.07 5.42a7.55 7.55 0 0 0 3.26 2.87c1.29.57 2.72.85 4.3.85.64 0 1.32-.1 2.04-.3.72-.2 1.32-.44 1.82-.73v-12.17h-5.2v-6.7h15.13zm25.8-22.63c-.79-.25-1.47-.43-2.04-.55a7.56 7.56 0 0 0-1.59-.19c-.99 0-1.98.5-2.96 1.48a37.4 37.4 0 0 0-3.41 4.05v23.66H288v-37h7.19l1.4 6.49a39.92 39.92 0 0 1 4.56-5.39 6.2 6.2 0 0 1 5.86-1.7c.52.1 1.1.23 1.74.38zm24.25 11.94H329c-1.73 0-3.15.15-4.26.44a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.37 2.1c0 1.47.41 2.58 1.23 3.35a4.74 4.74 0 0 0 3.37 1.14c1.23 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.51l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.16 1.47c-3.8 0-6.64-.93-8.52-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.83 0-3.68.18-5.56.55-1.87.37-3.6.8-5.18 1.3l-1.04-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm33.73-16.5h-2.81c-1.73 0-3.15.14-4.26.43a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.36 2.1c0 1.47.4 2.58 1.22 3.35a4.74 4.74 0 0 0 3.37 1.14c1.24 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.5l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.15 1.47c-3.8 0-6.65-.93-8.53-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.82 0-3.68.18-5.55.55-1.88.37-3.61.8-5.2 1.3l-1.03-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm29.8-.37c-1.13.35-2.28.62-3.44.82-1.16.2-2.38.29-3.67.29-2.61 0-4.55-.57-5.81-1.7-1.26-1.13-1.9-3.26-1.9-6.4V267h9.5v41.57c0 2.02.19 3.32.59 3.91.39.6 1.03.89 1.92.89h1.04c.4 0 .81-.03 1.26-.08zm40.86-49.38a435.8 435.8 0 0 1-6.41 25.13 562.23 562.23 0 0 1-7.67 24.62h-12.75a621.4 621.4 0 0 1-7.7-24.84 485.23 485.23 0 0 1-6.45-24.91h11.34c.54 2.94 1.18 6.04 1.92 9.28a563 563 0 0 0 5.04 20.24c.94 3.46 1.9 6.84 2.9 10.13.83-2.8 1.68-5.8 2.55-9.03.86-3.21 1.73-6.53 2.6-9.95.86-3.41 1.67-6.88 2.44-10.4a425.2 425.2 0 0 0 2.11-10.27zm46.26 49.75c-.1-6.53-.27-13.02-.52-19.46-.25-6.44-.64-13.02-1.19-19.75h-.15l-11.26 39.21h-7.48l-10.9-39.21h-.15c-.54 6.73-.93 13.31-1.18 19.75-.25 6.44-.42 12.93-.52 19.46h-9.49a689.61 689.61 0 0 1 3.27-49.75h14.74l8.97 32.14h.15l9.26-32.14h13.78a711.12 711.12 0 0 1 3.26 49.75zm16.41-4.8v4.48h-1.73v-4.48h-1.12v-1.47h3.97v1.47zm7.68 4.48l-.05-2.2-.06-2.07-1.37 4.27h-1.55l-1.4-4.23c-.03.7-.04 1.38-.04 2.06v2.17h-1.44c0-1 .02-2 .07-3 .05-.99.1-1.97.18-2.95h2.23l1.23 3.9 1.26-3.9h2.2a64.25 64.25 0 0 1 .29 5.95z"/></defs><g><g transform="translate(-247 -267)"><use fill="#fff" xlink:href="#7owha"/></g></g></svg>
-    </h1>
-    <p>Run Programs Faster Anywhere</p>
-    <div class="button-group">
-      <a href='/docs/why-graal/' class="btn btn-primary">WHY GRAALVM</a>
-      <a href='/docs/getting-started/' class="btn btn-secondary">GET STARTED</a>
-    </div>
+      <main  class="content"   aria-label="Content">
+        <div class="wrapper wrapper-content">
+  <article class="docs">
+
+  <div class="container-fluid container-fluid--custom-sm">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+          <div class="row d-flex flex-wrap">
+            <div class="col-sm-3 col-bg">
+              <div class="sidebar-wrap">
+                <div class="sidebar">
+                  
+<div class="toc-floating">
+
+
+<script>
+var sidebar = document.currentScript.parentElement;
+
+// 
+//   $(document).ready(function(){
+//     $('.sidebar-wrap').stickySidebar({
+//       topSpacing: 74,
+//       bottomSpacing: 40
+//     });
+//   });
+//
+// 
+
+
+$(document).ready(function(){
+  var header = $('.header').height();
+  var invisibleBlock;
+
+  $("#content-wrapper h1, #content-wrapper h2").each(function() {
+    invisibleBlock = $(this).before("<div class='anchor' id="+ $(this).attr("id") +"></div>");
+  });
+
+  $(window).scroll(function() {
+    var lastitem = null;
+    $("#content-wrapper h1, #content-wrapper h2").each(function() {
+      var heading = $(this);
+      var position = (heading.position().top - heading.height()) - $(window).scrollTop();
+      var listitem = $(sidebar).find("li").filter(function() {
+        return $(this).find("a").attr("href") == "#" + heading.attr("id");
+      });
+      listitem.removeClass("toc-bullets-focused");
+      if (position <= 0) {
+        lastitem = listitem;
+      }
+    });
+    if (lastitem != null) lastitem.addClass("toc-bullets-focused");
+  });
+});
+
+</script>
+
+<ul class="toc-bullets">
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/why-graal/">
+            Why GraalVM?
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/getting-started/">
+            Getting Started
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/examples/">
+            Examples
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/compatibility/">
+            Compatibility
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/">
+            Reference Manual
+          </a>
+        </li>
+
+
+        
+
+
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/graal-updater/">
+              Graal updater
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/js/">
+              JavaScript &amp; Node.js
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub toc-bullets-highlight">
+          
+            
+            <a href="/docs/reference-manual/languages/jvm/">
+              JVM Languages Reference
+            </a>
+          </li>
+
+          
+            <div>
+    <script>
+      var scriptElement = document.currentScript;
+      var div = $(scriptElement.parentElement);
+      $(window).on("load", function() {
+        $("#content-wrapper h1, #content-wrapper h2").each(function() {
+          var li = $("<li></li>", { class: "toc-bullets-sub toc-bullets-sub-3" });
+          var a = $("<a></a>", { href: "#" + $(this).attr("id") });
+          a.text($(this).text());
+          li.append(a);
+          div.append(li);
+        });
+      });
+    </script>
   </div>
+  
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/llvm/">
+              LLVM Languages Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/python/">
+              Python Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/r/">
+              R Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/languages/ruby/">
+              Ruby Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/polyglot/">
+              Polyglot Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/tools/">
+              Tools Reference
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/reference-manual/aot-compilation/">
+              Native images
+            </a>
+          </li>
+
+          
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/graalvm-as-a-platform/">
+            GraalVM as a Platform
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/faq/">
+            FAQ
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+</ul>
+
 </div>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-6">
-            <h2 class="title-section">
-              High-performance
-              polyglot VM
-            </h2>
-          </div>
-          <div class="col-sm-6">
-            <p>
-              GraalVM is an ecosystem for compiling and running applications written in
-              JavaScript, Python, Ruby, R, JVM-based languages
-              like Java, Scala, Kotlin, and LLVM-based languages such as C and C++.
-            </p>
-            <p>
-              GraalVM removes the isolation between programming languages and enables interoperability in a shared runtime.
-              It can run either standalone or in the context of OpenJDK, Node.js, Oracle Database, or MySQL.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-sm-9">
+              <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+                <h2 id="running-jvm-based-apps">Running JVM-based Apps</h2>
+<p>GraalVM gives you enhanced performance for JVM-based applications written
+in languages such as Java, Scala, Groovy or Kotlin. It uses Graal, a dynamic
+compiler that dramatically improves efficiency and speed of applications
+through unique approaches to code analysis and optimization.</p>
 
-    <div class="section-div"></div>
-  </div>
-</section>
+<p>The Graal compiler has been made available as an <a href="http://openjdk.java.net/jeps/317">experimental option</a>
+in JDK 10. This version of Graal is a snapshot of the community version of Graal
+bundled in GraalVM. We recommend using Graal with GraalVM for ultimate performance
+and the latest features.</p>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="title-section">
-              <span>OUR ADVANTAGES</span>
-              What does GraalVM do?
-            </h2>
-          </div>
-        </div>
+<h3 id="interoperability">Interoperability</h3>
+<p>In addition to running JVM-based languages, you can also call any other
+Graal language that GraalVM supports directly from Java.
+See the <a href="/docs/reference-manual/polyglot/">Polyglot Reference</a> and the
+<a href="/docs/graalvm-as-a-platform/embed/">Embedding documentation</a>
+for more information about interoperability with other programming languages.</p>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Polyglot</h4>
-            <p class="text-md">
-              Zero overhead interoperability between programming languages allows you to write polyglot applications and select the best language for your task.
-            </p>
+<h3 id="compiler-performance">Compiler Performance</h3>
+<p>The Graal compiler achieves excellent performance for modern workloads
+such as Scala or usage of the Java Streams API. For examples, see the
+<a href="/docs/examples/java-performance-examples">Java performance examples</a>.</p>
 
-            <a href='/docs/reference-manual/polyglot/' class="link-main">Find out more</a>
-          </div>
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-javascript">const express = require('express');
-const app = express();
-app.listen(3000);
-app.get('/', function(req, res) {
-  var text = 'Hello World!';
-  const BigInteger = Java.type(
-    'java.math.BigInteger');
-  text += BigInteger.valueOf(2)
-    .pow(100).toString(16);
-  text += Polyglot.eval(
-    'R', 'runif(100)')[0];
-  res.send(text);
-})
+<h2 id="graal-configuration-on-jvm">Graal Configuration on JVM</h2>
+
+<p>The options for configuring Graal on the JVM are in 2 categories.</p>
+
+<h3 id="jvmci-hotspot-options">JVMCI HotSpot options</h3>
+
+<p>Graal interfaces with the JVM via the Java Virtual Machine Compiler Interface
+(JVMCI). That is, Graal is an instantiation of a JVMCI compiler.
+There are a number of <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html"><code>-XX</code> options</a>
+for configuring JVMCI specific functionality. Interesting ones include:</p>
+
+<ul>
+  <li><code>-XX:-UseJVMCICompiler</code>: Disables use of the Graal as the top tier JIT. This is
+useful when wanting to compare performance of Graal against the native JIT compilers.</li>
+  <li><code>-XX:+JVMCIPrintProperties</code>: Prints help for all defined <code>jvmci.*</code> and <code>graal.*</code> system properties.</li>
+  <li><code>-XX:-UseJVMCIClassLoader</code>: Disables the class loader used to isolate JVMCI and Graal
+from application code. This is useful if you want to
+<a href="https://github.com/oracle/graal/blob/eda70d0f1cfdfb0baa9abca534e2c36184bc1546/compiler/src/org.graalvm.compiler.core.test/src/org/graalvm/compiler/core/test/tutorial/InvokeGraal.java#L56-L58">programmatically invoke Graal</a>.</li>
+  <li><code>-XX:+BootstrapJVMCI</code>: Causes Graal to be compiled before running the Java main method.
+By default, Graal is compiled by the C1 compiler to mitigate warmup costs. To force Graal
+to compile itself, add either <code>Dgraal.CompileGraalWithC1Only=false</code> or <code>-XX:-TieredCompilation</code>
+to the command line.</li>
+  <li><code>-XX:+EagerJVMCI</code>: By default, Graal is only initialized upon the first top tier compilation
+request. Use this flag to force eager initialization which can be useful for <a href="https://bugs.openjdk.java.net/browse/JDK-8195632">testing</a>.</li>
+  <li><code>-XX:JVMCIThreads=1</code>: By the default, JVM ergonomics decide how many threads are to
+be used for Graal compilation. When debugging Graal in a Java debugger, it often helps to
+restrict Graal compilation to a single thread with this option.</li>
+</ul>
+
+<h3 id="graal-system-properties">Graal System Properties</h3>
+
+<p>In addition to the JVMCI <code>-XX</code> options, <code>graal.*</code> system properties
+can be used to configure Graal. A selection of interesting ones is shown below.
+To see the complete list, use the <code>-XX:+JVMCIPrintProperties</code> option.</p>
+
+<ul>
+  <li><code>ShowConfiguration</code>: Prints various information about the compiler configuration is use.
+This option is best used as follows: <code>java -XX:EagerJVMCI -Dgraal.ShowConfiguration=info -version</code>.
+Since Graal is only initialized upon the first top tier JIT compilation
+request, without <code>-XX:+EagerJVMCI</code> Graal may not be initialized at all
+in which case <code>-Dgraal.ShowConfiguration</code> will be ignored. Adding <code>-version</code>
+avoids the noise of the <code>java</code> launcher usage message while providing useful
+information about the VM configuration at the same time.</li>
+  <li><code>-Dgraal.CompilationFailureAction=Silent</code>: Suppresses any output on the console when
+a compilation fails due to an exception indicating an internal compiler error.
+The default behavior (corresponding to the value <code>Diagnose</code>) is to retry the compilation
+with extra diagnostics. Upon VM shut down, the diagnostics will be collated into
+a single file that can be submitted with bug reports. To get notifications of
+compiler errors without the extra diagnostics, set this option value to <code>Print</code>.
+To exit the VM on a compiler error, set this option value to <code>ExitVM</code>.</li>
+  <li><code>-Dgraal.CompilationBailoutAction=Print</code>: This option is similar to
+<code>graal.CompilationFailureAction</code> except that it applies to compilations that
+are aborted due input that the compiler decides not to compile. For example,
+bytecode that contains unbalanced monitors. The default value for this option
+is <code>Silent</code>.</li>
+  <li><code>-Dgraal.CompileGraalWithC1Only=false</code>: Specifies that Graal should compile itself.
+By default, Graal is compiled by C1.</li>
+  <li><code>-Dgraal.GraalCompileOnly=&lt;pattern&gt;</code>: Restricts compilation by Graal only methods
+matching <code>&lt;pattern&gt;</code>. The pattern format is the same as that for the <code>graal.MethodFilter</code>
+option whose complete help description can be seen with <code>-XX:+JVMCIPrintProperties</code>.</li>
+  <li><code>-Dgraal.TraceInlining=true</code>: Shows the inlining decision tree for each method compiled.</li>
+</ul>
+
+<h3 id="graal-system-properties-with-other-graalvm-launchers">Graal System Properties with other GraalVM Launchers</h3>
+
+<p>These Graal properties above are usable with some other GraalVM launchers such as
+<code>node</code>, <code>js</code> and <code>lli</code>. The prefix for specifying the properties is slightly different.
+For example:</p>
+
+<pre><code>$ java -Dgraal.ShowConfiguration=info
 </code></pre>
 
-          </div>
-        </div>
+<p>Becomes:</p>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-6 order-2 order-sm-0">
-            
-            <pre><code class="language-shell">$ javac HelloWorld.java
-$ time java HelloWorld
-user 0.070s
-$ native-image HelloWorld
-$ time ./helloworld
-user 0.005s
+<pre><code>$ js --jvm.Dgraal.ShowConfiguration=info
 </code></pre>
 
-          </div>
-          <div class="col-sm-5 offset-sm-1">
-            <h4 class="title-article">Native</h4>
-            <p class="text-md">
-              Native images compiled with GraalVM ahead-of-time improve the
-              startup time and reduce the memory footprint of JVM-based applications.
-            </p>
+<p>Note the <code>-D</code> prefix is replaced by <code>--jvm.D</code>.</p>
 
-            <a href='/docs/reference-manual/native/' class="link-main">Find out more</a>
-          </div>
-        </div>
+<h2 id="jvm-operations-manual">JVM Operations Manual</h2>
 
-        <div class="row align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Embeddable</h4>
-            <p class="text-md">
-              GraalVM can be embedded in both managed and native applications.
-              There are existing integrations into OpenJDK, Node.js, Oracle Database, and MySQL.
-            </p>
+<h3 id="difference-between-running-graal-in-the-native-image-vs-on-the-jvm">Difference between running Graal in the native image vs on the JVM</h3>
 
-            <a href='/docs/graalvm-as-a-platform/embed/' class="link-main">Find out more</a>
-          </div>
+<p>When running Graal on the JVM, it goes through the same warmup phase that the
+rest of the Java application does. That is, it is first interpreted before
+its hot methods are compiled. This can translate into slightly longer times
+until the application reaches peak performance when compared to the native compilers
+in the JVM such as C1 and C2.</p>
 
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-java">import org.graalvm.polyglot.*;
-public class HelloPolyglot {
-  public static void main(String[] args) {
-    System.out.println("Hello Java!");
-    Context context = Context.create();
-    context.eval("js",
-      "print('Hello JavaScript!');");
-  }
-}
+<p>Currently, this is the only way Graal can be used with the JVM. We are
+developing a mode whereby Graal itself is compiled ahead of time into a native shared
+library using SubstrateVM. This will provide startup times on par with the
+native compilers. It will also remove any impact Graal’s use of the Java heap
+may have on the application as Graal will have its own heap and memory manager.</p>
+
+<h2 id="measuring-performance">Measuring Performance</h2>
+
+<p>The first thing to be sure of when measuring the performance of Graal is to ensure
+the JVM is using Graal. In a GraalVM binary, the JVM is configured to use Graal
+as the top tier compiler by default. You can confirm this by adding <code>-Dgraal.ShowConfiguration=info</code>
+to the command line. It will produce a line of output similar to the one below
+when Graal is initialized:</p>
+<pre><code>Using Graal compiler configuration 'community' provided by org.graalvm.compiler.hotspot.CommunityCompilerConfigurationFactory loaded from jar:file:/Users/dsimon/graal/graal/compiler/mxbuild/dists/graal.jar!/org/graalvm/compiler/hotspot/CommunityCompilerConfigurationFactory.class
+</code></pre>
+<p>Note that Graal is only initialized on the first top tier JIT compilation request
+so if your application is short lived, you may not see this output.</p>
+
+<p>Optimizing JVM-based applications is a science in itself. Compilation may not
+even be a factor in the case of poor performance as the problem may
+lie in any other part of the VM (I/O, garbage collection, threading etc) or in
+poorly written application or 3rd party library code. For this reason, it’s
+worth using profilers such as <a href="http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html">Java Mission Control</a> to
+diagnose application behavior.</p>
+
+<p>You can also compare performance against the native top tier compiler in the JVM by
+adding <code>-XX:-UseJVMCICompiler</code> to the command line.</p>
+
+<p>If you observe a significant performance regression when using Graal, please
+open an issue on GitHub. Attaching a Java Flight Recorder log and instructions
+to reproduce the issue makes investigation easier and thus
+chances of a fix higher. Even better is if you can submit a <a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a>
+benchmark that represents the hottest parts of your application (as identified
+by a profiler). This allows us to very quickly pinpoint missing optimization
+opportunities or to offer suggestions on how to restructure the code to
+avoid or reduce performance bottlenecks.</p>
+
+<h2 id="troubleshooting-graal">Troubleshooting Graal</h2>
+
+<p>Like all software, Graal is not guaranteed to be bug free so it is useful to
+know how to diagnose and submit useful bug reports if you encounter issues.</p>
+
+<h3 id="compilation-exceptions">Compilation Exceptions</h3>
+
+<p>One advantage of Graal being written in Java is that runtime exceptions during
+compilation are not fatal VM errors. Instead, each compilation has an exception
+handler that takes an action based on the <code>graal.CompilationFailureAction</code>
+property.</p>
+
+<p>The default value is <code>Diagnose</code> and causes failing compilations to be retried
+with extra diagnostics enabled. Just before the VM exits, all diagnostic output
+captured during retried compilations is written to a .zip file and prints
+output to the console such as:</p>
+<pre><code>Graal diagnostic output saved in /Users/demo/dumps/1499768882600/graal_diagnostics_64565.zip
 </code></pre>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<p>You can then attach the .zip file to an issue on <a href="https://github.com/oracle/graal">GitHub</a>.</p>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">Get started with GraalVM</h2>
+<p>You can also set the following values for the <code>graal.CompilationFailureAction</code>
+property:</p>
+<ul>
+  <li><code>Silent</code>: prints nothing to the console.</li>
+  <li><code>Print</code>: prints a message to the console but does not do re-compilation.</li>
+  <li><code>ExitVM</code>: does the same thing as <code>Diagnose</code> but the VM process exits after
+re-compilation.</li>
+</ul>
 
-        <div class="row d-flex">
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Java Developer</h5>
-              <p>
-                Are you working on a Java application? Do you want a faster runtime? Enhance your code with JavaScript!
-              </p>
-              <a href="/docs/reference-manual/languages/jvm/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<h3 id="code-generation-errors">Code Generation Errors</h3>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Node.js Developer</h5>
-              <p>
-                Are you a JavaScript developer building Node.js apps? Run JavaScript in the database, use existing Java libraries, monitor and profile your code easily!
-              </p>
-              <a href="/docs/reference-manual/languages/js/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<p>The other type of error compilers can have is producing incorrect machine code.
+This error can cause a VM crash, which should produce a file that starts with
+<code>hs_err_pid</code> in the current working directory of the VM process. In most cases,
+there is a section in the file that shows the stack at the time of the crash,
+including the type of code for each frame in the stack, as in the following
+example:</p>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Ruby, R, or Python Developer</h5>
-              <p>
-                Would you like to troubleshoot your Ruby, R or Python app with Chrome Debugger? It is possible with GraalVM!
-              </p>
-              <a href="/docs/reference-manual/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<pre><code>Stack: [0x00007000020b1000,0x00007000021b1000],  sp=0x00007000021af7a0,  free space=1017k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J 761 JVMCI org.graalvm.compiler.core.gen.NodeLIRBuilder.matchComplexExpressions(Ljava/util/List;)V (299 bytes) @ 0x0000000108a2fc01 [0x0000000108a2fac0+0x141] (null)
+j  org.graalvm.compiler.core.gen.NodeLIRBuilder.doBlock(Lorg/graalvm/compiler/nodes/cfg/Block;Lorg/graalvm/compiler/nodes/StructuredGraph;Lorg/graalvm/compiler/core/common/cfg/BlockMap;)V+211
+j  org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(Lorg/graalvm/compiler/nodes/spi/NodeLIRBuilderTool;Lorg/graalvm/compiler/lir/gen/LIRGenerationResult;Lorg/graalvm/compiler/nodes/cfg/Block;Lorg/graalvm/compiler/nodes/StructuredGraph;Lorg/graalvm/compiler/core/common/cfg/BlockMap;)V+65
+</code></pre>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Tool or Language Implementor</h5>
-              <p>
-                Are you developing Web application for multiple platforms or would you like to extend the GraalVM ecosystem with your own language?
-              </p>
-              <a href="/docs/graalvm-as-a-platform/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<p>This example shows that the top frame was compiled (J) by the JVMCI compiler,
+which is the Graal compiler. The crash occurred at offset 0x141 in the machine
+code produced for <code>org.graalvm.compiler.core.gen.NodeLIRBuilder.matchComplexExpressions(Ljava/util/List;)V</code>.</p>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm carousel-wrapp">
+<p>The next two frames in the stack were executing in the interpreter (j). The
+location of the crash is also often indicated near the top of the file with
+something like this:</p>
+<pre><code># Problematic frame:
+# J 761 JVMCI org.graalvm.compiler.core.gen.NodeLIRBuilder.matchComplexExpressions(Ljava/util/List;)V (299 bytes) @ 0x0000000108a2fc01 [0x0000000108a2fac0+0x141] (null)
+</code></pre>
 
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">
-          <span>LEARN MORE ABOUT GRAALVM</span>
-          Universal VM for a Polyglot World
-        </h2>
+<p>In this example, there is likely an error in the code produced by Graal for <code>NodeLIRBuilder.matchComplexExpressions</code>.</p>
 
-        <div class="video-carousel vlog">
+<p>When filing an issue on <a href="https://github.com/oracle/graal">GitHub</a>
+for such a crash, you should first attempt to reproduce the crash with extra
+diagnostics enabled for the compilation of the problematic method.
+In this example, you would add the following to your command line:</p>
+<pre><code>-Dgraal.MethodFilter=NodeLIRBuilder.matchComplexExpressions, -Dgraal.Dump=:2
+</code></pre>
+
+<p>These options are described in more detail <a href="https://github.com/oracle/graal/blob/master/compiler/docs/Debugging.md">here</a>.
+In brief, these options tell Graal to capture snapshots of the compiler state at
+verbosity level 2 while compiling any method named <code>matchComplexExpressions</code> in
+a class with a simple name of <code>NodeLIRBuilder</code>. The complete format of the
+<code>MethodFilter</code> option is described in the output of <code>java -XX:+JVMCIPrintProperties</code>.</p>
+
+<p>Quite often, the crash location does not exist directly in the problematic method
+mentioned in the crash log but comes from an inlined method.</p>
+
+<p>In such a case, simply filtering for the problematic method might not capture an
+erroneous compilation causing a crash.</p>
+
+<p>To improve the likelihood of capturing an erroneous compilation, you need to
+broaden the <code>MethodFilter</code> value. To guide this, add <code>-Dgraal.PrintCompilation=true</code>
+when trying to reproduce the crash so you can see what was compiled just before
+the crash.</p>
+
+<p>The following shows sample output from the console:</p>
+<pre><code>HotSpotCompilation-1218        Lorg/graalvm/compiler/core/amd64/AMD64NodeLIRBuilder;                  peephole                                      (Lorg/graalvm/compiler/nodes/ValueNode;)Z           |   87ms   428B   447B  1834kB
+HotSpotCompilation-1212        Lorg/graalvm/compiler/lir/LIRInstructionClass;                         forEachState                                  (Lorg/graalvm/compiler/lir/LIRInstruction;Lorg/graalvm/compiler/lir/InstructionValueProcedure;)V  |  359ms    92B   309B  6609kB
+HotSpotCompilation-1221        Lorg/graalvm/compiler/hotspot/amd64/AMD64HotSpotLIRGenerator;          getResult                                     ()Lorg/graalvm/compiler/hotspot/HotSpotLIRGenerationResult;  |   54ms    18B   142B  1025kB
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x000000010a6cafb1, pid=89745, tid=0x0000000000004b03
+#
+# JRE version: OpenJDK Runtime Environment (8.0_121-b13) (build 1.8.0_121-graalvm-olabs-b13)
+# Java VM: OpenJDK 64-Bit GraalVM (25.71-b01-internal-jvmci-0.30 mixed mode bsd-amd64 compressed oops)
+# Problematic frame:
+# J 1221 JVMCI org.graalvm.compiler.hotspot.amd64.AMD64HotSpotLIRGenerator.getResult()Lorg/graalvm/compiler/hotspot/HotSpotLIRGenerationResult; (18 bytes) @ 0x000000010a6cafb1 [0x000000010a6caf60+0x51] (null)
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+</code></pre>
+<p>Here we see that the crash happened in a different method than the first crash.
+As such, we expand the filter argument to be <code>-Dgraal.MethodFilter=NodeLIRBuilder.matchComplexExpressions,AMD64HotSpotLIRGenerator.getResult</code>
+and run again.</p>
+
+<p>When the VM crashes in this way, it does not execute the shutdown code that
+archives the Graal diagnostic output or delete the directory it was written to.
+This must be done manually after the crash.</p>
+
+<p>By default, the directory is <code>$PWD/dumps/&lt;timestamp&gt;</code>; for example, <code>./dumps/1499938817387</code>.
+However, you can set the directory with <code>-Dgraal.DumpPath=&lt;path&gt;</code>.</p>
+
+<p>A message, such as the following, is printed to the console when this
+directory is first used by the Graal compiler:</p>
+<pre><code>Dumping debug output in /Users/demo/dumps/1499768882600
+</code></pre>
+
+<p>This directory should contain content related to the crashing method, such as:</p>
+<pre><code>$ ls -l /Users/demo/dumps/1499768882600
+-rw-r--r--  1 demo  staff    144384 Jul 13 11:46 HotSpotCompilation-1162[AMD64HotSpotLIRGenerator.getResult()].bgv
+-rw-r--r--  1 demo  staff     96925 Jul 13 11:46 HotSpotCompilation-1162[AMD64HotSpotLIRGenerator.getResult()].cfg
+-rw-r--r--  1 demo  staff  12600725 Jul 13 11:46 HotSpotCompilation-791[NodeLIRBuilder.matchComplexExpressions(List)].bgv
+-rw-r--r--  1 demo  staff   1727409 Jul 13 11:46 HotSpotCompilation-791[NodeLIRBuilder.matchComplexExpressions(List)].cfg
+</code></pre>
+<p>You should attach a zip of this directory to an issue on <a href="https://github.com/oracle/graal">GitHub</a>.</p>
 
 
-        <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">Turning JVM into a Polyglot VM with Graal</h5>
-                <p>
-                  This presentation shows the techniques used to execute languages such as
-                  Ruby with high performance in GraalVM. It demonstrates an example
-                  of mixing JavaScript and Ruby within one program and how GraalVM
-                  can execute the result with zero overheads when crossing language boundaries...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Chris_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Chris Seaton</h6>
-                      <p class="author__position">Research Manager, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
               </div>
-  
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="oWX2tpIO4Yc" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">One VM to Rule Them All</h5>
-                <p>
-                  GraalVM enables seamless language interoperability while also
-                  providing world-class performance for each individual language.
-                  A demo will show how JavaScript, Java, Ruby, R, and C can work
-                  together in a single web application running in one VM!
-                  Use the right language for a task at hand...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Thomas_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Thomas Wuerthinger</h6>
-                      <p class="author__position">Senior Research Director, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="mMmOntDWSgw" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <div>
-          <div class="row">
-            <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-              <h5 class="vlog__title">Polyglot Native: Java, Scala, Kotlin, and JVM Languages</h5>
-              <p>
-                This video presents Polyglot Native: an ahead-of-time compiler
-                for Java bytecode combined with a low-footprint VM.
-                With Polyglot Native, programs written in Kotlin, Scala,
-                and other JVM-based languages have minimal startup
-                time as they are compiled to native executables.
-                Footprint of compiled programs is minimized by using
-                a chunked heap and reducing necessary program metadata...
-              </p>
-              <div class="vlog__author">
-                <div class="author">
-                  <div class="authot__avatar">
-                    <img src="/resources/img/Wimmer_avatar.png" alt="">
-                  </div>
-                  <div class="author__info">
-                    <h6 class="author__name">Christian Wimmer</h6>
-                    <p class="author__position">Consulting Researcher and Project Lead, Oracle Labs</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="vlog__video">
-                <img src="/resources/img/video-preview@2x.jpg" alt="">
-                    <a href="#" data-video="5BMHIeMXTqA" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">GraalVM in the Oracle Database</h5>
-                <p>
-                  Oracle Database 12c Multilingual Engine (MLE) enables developers
-                  to work efficiently with DB-resident data in modern programming
-                  languages and development environments of their choice.
-                  The Oracle Database Multilingual Engine enables execution of
-                  JavaScript code via GraalVM. This video gives a demonstration
-                  of how Node.js modules can be used in the context of database
-                  queries and stored procedures...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Matthias_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Matthias Brantner</h6>
-                      <p class="author__position">Consulting Researcher, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="k0UidtZFWvk" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
+    
+              <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+                <div class="hamburger"><div class="inner"></div></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-</section>
+</article>
 
-<div id="video-view" class="modal-window">
-  <div class="modal-window__content">
-    <button type="button" title="Close" id="js-close" class="modal-window__close"><img src="/resources/img/btn-close.svg" alt=""></button>
-    <div class="modal-window__video">
-      <div id="player"></div>
-    </div>
-  </div>
 </div>
 
       </main>

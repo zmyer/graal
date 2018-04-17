@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM
+      GraalVM Publications
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/">
+  <link rel="canonical" href="http://localhost:4001/community/publications/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -133,9 +133,9 @@
   </defs>
 </svg>
 
-    <div  class="wrapper" >
+    <div  class="wrapper wrapper--nofooter" >
 
-      <header  class="header header--home"  role="banner">
+      <header  class="header header--content"  role="banner">
 
   
 
@@ -150,7 +150,7 @@
 
     <ul class="menu__list">
       <li class="menu__item">
-        <a href="/"  class="menu__link menu__link--home"  >Home</a>
+        <a href="/"  class="menu__link"  >Home</a>
       </li>
 
         
@@ -200,360 +200,544 @@
 </header>
 
 
-      <main  class="content content--home"   aria-label="Content">
-        <div class="home-banner">
-  <div class="home-banner__content">
-    <h1 class="home-banner__logo">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="266" height="53" viewBox="0 0 266 53"><defs><path id="7owha" d="M281.76 313.44c-.94.83-1.98 1.65-3.12 2.43a23.76 23.76 0 0 1-8.22 3.58c-1.63.37-3.41.55-5.34.55-5.63 0-10.05-2.01-13.26-6.04-3.21-4.03-4.82-10.1-4.82-18.21 0-4.47.47-8.4 1.4-11.76a23.83 23.83 0 0 1 4.05-8.4 16.67 16.67 0 0 1 6.3-5.01 19.65 19.65 0 0 1 8.18-1.66c3.02 0 5.72.66 8.12 1.99a18.95 18.95 0 0 1 6.26 5.75l-3.7 4.27a20.56 20.56 0 0 0-4.56-2.36c-1.6-.59-3.35-.88-5.23-.88a9 9 0 0 0-3.92.88 8.63 8.63 0 0 0-3.26 2.84 15.23 15.23 0 0 0-2.23 5.01 28.78 28.78 0 0 0-.81 7.34c0 3.44.24 6.29.74 8.55.5 2.26 1.18 4.07 2.07 5.42a7.55 7.55 0 0 0 3.26 2.87c1.29.57 2.72.85 4.3.85.64 0 1.32-.1 2.04-.3.72-.2 1.32-.44 1.82-.73v-12.17h-5.2v-6.7h15.13zm25.8-22.63c-.79-.25-1.47-.43-2.04-.55a7.56 7.56 0 0 0-1.59-.19c-.99 0-1.98.5-2.96 1.48a37.4 37.4 0 0 0-3.41 4.05v23.66H288v-37h7.19l1.4 6.49a39.92 39.92 0 0 1 4.56-5.39 6.2 6.2 0 0 1 5.86-1.7c.52.1 1.1.23 1.74.38zm24.25 11.94H329c-1.73 0-3.15.15-4.26.44a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.37 2.1c0 1.47.41 2.58 1.23 3.35a4.74 4.74 0 0 0 3.37 1.14c1.23 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.51l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.16 1.47c-3.8 0-6.64-.93-8.52-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.83 0-3.68.18-5.56.55-1.87.37-3.6.8-5.18 1.3l-1.04-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm33.73-16.5h-2.81c-1.73 0-3.15.14-4.26.43a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.36 2.1c0 1.47.4 2.58 1.22 3.35a4.74 4.74 0 0 0 3.37 1.14c1.24 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.5l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.15 1.47c-3.8 0-6.65-.93-8.53-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.82 0-3.68.18-5.55.55-1.88.37-3.61.8-5.2 1.3l-1.03-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm29.8-.37c-1.13.35-2.28.62-3.44.82-1.16.2-2.38.29-3.67.29-2.61 0-4.55-.57-5.81-1.7-1.26-1.13-1.9-3.26-1.9-6.4V267h9.5v41.57c0 2.02.19 3.32.59 3.91.39.6 1.03.89 1.92.89h1.04c.4 0 .81-.03 1.26-.08zm40.86-49.38a435.8 435.8 0 0 1-6.41 25.13 562.23 562.23 0 0 1-7.67 24.62h-12.75a621.4 621.4 0 0 1-7.7-24.84 485.23 485.23 0 0 1-6.45-24.91h11.34c.54 2.94 1.18 6.04 1.92 9.28a563 563 0 0 0 5.04 20.24c.94 3.46 1.9 6.84 2.9 10.13.83-2.8 1.68-5.8 2.55-9.03.86-3.21 1.73-6.53 2.6-9.95.86-3.41 1.67-6.88 2.44-10.4a425.2 425.2 0 0 0 2.11-10.27zm46.26 49.75c-.1-6.53-.27-13.02-.52-19.46-.25-6.44-.64-13.02-1.19-19.75h-.15l-11.26 39.21h-7.48l-10.9-39.21h-.15c-.54 6.73-.93 13.31-1.18 19.75-.25 6.44-.42 12.93-.52 19.46h-9.49a689.61 689.61 0 0 1 3.27-49.75h14.74l8.97 32.14h.15l9.26-32.14h13.78a711.12 711.12 0 0 1 3.26 49.75zm16.41-4.8v4.48h-1.73v-4.48h-1.12v-1.47h3.97v1.47zm7.68 4.48l-.05-2.2-.06-2.07-1.37 4.27h-1.55l-1.4-4.23c-.03.7-.04 1.38-.04 2.06v2.17h-1.44c0-1 .02-2 .07-3 .05-.99.1-1.97.18-2.95h2.23l1.23 3.9 1.26-3.9h2.2a64.25 64.25 0 0 1 .29 5.95z"/></defs><g><g transform="translate(-247 -267)"><use fill="#fff" xlink:href="#7owha"/></g></g></svg>
-    </h1>
-    <p>Run Programs Faster Anywhere</p>
-    <div class="button-group">
-      <a href='/docs/why-graal/' class="btn btn-primary">WHY GRAALVM</a>
-      <a href='/docs/getting-started/' class="btn btn-secondary">GET STARTED</a>
-    </div>
-  </div>
-</div>
-
-<section class="content-section">
+      <main  class="content"   aria-label="Content">
+        <div class="wrapper wrapper-content">
+  <!--
+<section class="section-heading">
   <div class="container-fluid container-fluid--custom-sm">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
         <div class="row">
-          <div class="col-sm-6">
-            <h2 class="title-section">
-              High-performance
-              polyglot VM
-            </h2>
-          </div>
-          <div class="col-sm-6">
-            <p>
-              GraalVM is an ecosystem for compiling and running applications written in
-              JavaScript, Python, Ruby, R, JVM-based languages
-              like Java, Scala, Kotlin, and LLVM-based languages such as C and C++.
-            </p>
-            <p>
-              GraalVM removes the isolation between programming languages and enables interoperability in a shared runtime.
-              It can run either standalone or in the context of OpenJDK, Node.js, Oracle Database, or MySQL.
-            </p>
+          <div class="col-md-6">
+            <div class="page-heading">
+              <h2 class="page-heading__title">Community</h2>
+              <p class="page-heading__description">
+                Become a GraalVM contributor
+              </p>
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-
-    <div class="section-div"></div>
   </div>
 </section>
-
-<section class="content-section">
+-->
+<section>
   <div class="container-fluid container-fluid--custom-sm">
     <div class="row">
       <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="title-section">
-              <span>OUR ADVANTAGES</span>
-              What does GraalVM do?
-            </h2>
+        <div class="row d-flex flex-wrap">
+          <div class="col-sm-3 col-bg">
+            <div class="sidebar-wrap">
+              <div class="sidebar">
+                <div class="toc-floating">
+                  <ul class="toc-bullets">
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li>
+                      
+
+                      
+                      <a href="/community/">
+                        Community
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
+
+                      
+                      <a href="/community/videos/">
+                        Videos
+                      </a>
+                    </li>
+                    
+                    
+                    <li class="toc-bullets-highlight">
+                      
+
+                      
+                      <a href="/community/publications/">
+                        Publications
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
+
+                      
+                      <a href="/community/contributors/">
+                        Contributors
+                      </a>
+                    </li>
+                    
+                    
+                    <li>
+                      
+
+                      
+                      <a href="/community/conduct/">
+                        Code of Conduct
+                      </a>
+                    </li>
+                    
+                    
+                    
+                    
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Polyglot</h4>
-            <p class="text-md">
-              Zero overhead interoperability between programming languages allows you to write polyglot applications and select the best language for your task.
-            </p>
+          <div class="col-sm-9">
+            <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+              <h1 id="publications">Publications</h1>
+<p>Here you can find all publications related to GraalVM. If you are doing research related to GraalVM and want us to include your publication, please <a href="https://github.com/oracle/graal/blob/master/docs/Publications.md">send us a pull request</a> to add your paper.</p>
 
-            <a href='/docs/reference-manual/polyglot/' class="link-main">Find out more</a>
-          </div>
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-javascript">const express = require('express');
-const app = express();
-app.listen(3000);
-app.get('/', function(req, res) {
-  var text = 'Hello World!';
-  const BigInteger = Java.type(
-    'java.math.BigInteger');
-  text += BigInteger.valueOf(2)
-    .pow(100).toString(16);
-  text += Polyglot.eval(
-    'R', 'runif(100)')[0];
-  res.send(text);
-})
-</code></pre>
+<h2 id="selected-papers">Selected Papers</h2>
+<p>We recommend the following papers as a starting point for learning about Graal:</p>
 
-          </div>
-        </div>
+<p>Language implementations on GraalVM are based on the Truffle framework.
+User applications are transformed to an abstract syntax tree, which is then <em>partially evaluated</em>. If you want to learn more about how to build Truffle languages, how partial evaluation works, and how the Truffle framework allows you to guide the Graal compiler, we recommend reading:</p>
+<blockquote>
+  <p>Thomas Würthinger, Christian Wimmer, Christian Humer, Andreas Wöß, Lukas Stadler, Chris Seaton, Gilles Duboscq, Doug Simon, Matthias Grimmer
+<a href="http://dl.acm.org/citation.cfm?id=3062381"><strong>Practical partial evaluation for high-performance dynamic language runtimes</strong></a>
+<em>In Proceedings of the 37th ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI 2017)</em></p>
+</blockquote>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-6 order-2 order-sm-0">
-            
-            <pre><code class="language-shell">$ javac HelloWorld.java
-$ time java HelloWorld
-user 0.070s
-$ native-image HelloWorld
-$ time ./helloworld
-user 0.005s
-</code></pre>
+<p>Truffle language implementations abstract the differences between programming languages, which enables efficient cross-language interoperability. We recommend reading:</p>
+<blockquote>
+  <p>Matthias Grimmer, Chris Seaton, Roland Schatz, Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2816707.2816714"><strong>High-Performance Cross-Language Interoperability in a Multi-Language Runtime</strong></a>
+In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</p>
+</blockquote>
 
-          </div>
-          <div class="col-sm-5 offset-sm-1">
-            <h4 class="title-article">Native</h4>
-            <p class="text-md">
-              Native images compiled with GraalVM ahead-of-time improve the
-              startup time and reduce the memory footprint of JVM-based applications.
-            </p>
+<p>The Graal compiler ensures that the languages on top of the GraalVM run at full speed.
+The core of the compiler is its intermediate representation. We recommend reading:</p>
+<blockquote>
+  <p>Gilles Duboscq, Thomas Würthinger, Lukas Stadler, Christian Wimmer, Doug Simon, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2542142.2542143"><strong>An intermediate representation for speculative optimizations in a dynamic compiler</strong></a>
+In Proceedings of the 7th ACM workshop on Virtual machines and intermediate languages (VMIL ‘13)</p>
+</blockquote>
 
-            <a href='/docs/reference-manual/native/' class="link-main">Find out more</a>
-          </div>
-        </div>
+<p>Speculative assumptions based on profiling information and deoptimizations allow Graal heavily optimize dynamically typed languages like JavaScript and ensure native speed. We recommend reading:</p>
+<blockquote>
+  <p>Gilles Duboscq, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2647508.2647521"><strong>Speculation without regret: reducing deoptimization meta-data in the Graal compiler</strong></a>
+In Proceedings of the 2014 International Conference on Principles and Practices of Programming on the Java platform: Virtual machines, Languages, and Tools (PPPJ ‘14)</p>
+</blockquote>
 
-        <div class="row align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Embeddable</h4>
-            <p class="text-md">
-              GraalVM can be embedded in both managed and native applications.
-              There are existing integrations into OpenJDK, Node.js, Oracle Database, and MySQL.
-            </p>
+<p>A powerful escape analysis with scalar replacement ensures that all interpreter data structures are removed when optimizing a Truffle AST. We recommend reading:</p>
+<blockquote>
+  <p>Lukas Stadler, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2544137.2544157"><strong>Partial Escape Analysis and Scalar Replacement for Java</strong></a>
+In Proceedings of Annual IEEE/ACM International Symposium on Code Generation and Optimization (CGO ‘14)</p>
+</blockquote>
 
-            <a href='/docs/graalvm-as-a-platform/embed/' class="link-main">Find out more</a>
-          </div>
+<h2 id="full-list-of-papers">Full List of Papers</h2>
 
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-java">import org.graalvm.polyglot.*;
-public class HelloPolyglot {
-  public static void main(String[] args) {
-    System.out.println("Hello Java!");
-    Context context = Context.create();
-    context.eval("js",
-      "print('Hello JavaScript!');");
-  }
-}
-</code></pre>
+<h3 id="2017">2017</h3>
 
+<ul>
+  <li>
+    <p>Thomas Würthinger, Christian Wimmer, Christian Humer, Andreas Wöß, Lukas Stadler, Chris Seaton, Gilles Duboscq, Doug Simon, Matthias Grimmer
+<a href="http://dl.acm.org/citation.cfm?id=3062381"><strong>Practical partial evaluation for high-performance dynamic language runtimes</strong></a>
+<em>In Proceedings of the 37th ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI 2017)</em></p>
+  </li>
+  <li>
+    <p>Aleksandar Prokopec, David Leopoldseder, Gilles Duboscq, Thomas Würthinger
+<a href="https://dl.acm.org/citation.cfm?doid=3136000.3136002"><strong>Making collection operations optimal with aggressive JIT compilation</strong></a>
+<em>Proceedings of the 8th ACM SIGPLAN International Symposium on Scala (Scala 2017)</em></p>
+  </li>
+  <li>
+    <p>Michael Van De Vanter
+<a href="http://vandevanter.net/mlvdv/publications/mlvdv-morevms-2017.pdf"><strong>Building Flexible, Low-Overhead Tooling Support into a High-Performance Polyglot VM (Extended Abstract)</strong></a>
+<em>MoreVMs Workshop on Modern Language Runtimes, Ecosystems, and VMs</em>.</p>
+  </li>
+</ul>
+
+<h3 id="2016">2016</h3>
+
+<ul>
+  <li>
+    <p>Benoit Daloze, Stefan Marr, Daniele Bonetta, Hanspeter Mössenböck
+<a href="http://ssw.jku.at/General/Staff/Daloze/thread-safe-objects.pdf"><strong>Efficient and Thread-Safe Objects for Dynamically-Typed Languages</strong></a>
+Accepted for the <em>Annual ACM SIGPLAN Conference on Object-Oriented Programming, Systems, Languages, and Applications 2016 (OOPSLA)</em>.</p>
+  </li>
+  <li>
+    <p>Manuel Rigger, Matthias Grimmer, Christian Wimmer, Thomas Würthinger, Hanspeter Mössenböck
+<strong>Bringing Low-Level Languages to the JVM: Efficient Execution of LLVM IR on Truffle</strong>
+Accepted for the <em>Workshop on Virtual Machines and Intermediate Languages (VMIL)</em>.</p>
+  </li>
+  <li>
+    <p>Manuel Rigger, Matthias Grimmer, Hanspeter Mössenböck
+<a href="http://2016.ecoop.org/event/icooolps-2016-sulong-execution-of-llvm-based-languages-on-the-jvm"><strong>Sulong – Execution of LLVM-Based Languages on the JVM</strong></a>
+In <em>Proceedings of International Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems (ICOOOLPS)</em>.</p>
+  </li>
+  <li>
+    <p>Manuel Rigger
+<a href="http://ssw.jku.at/General/Staff/ManuelRigger/ECOOP16-DS.pdf"><strong>Sulong: Memory Safe and Efficient Execution of LLVM-Based   Languages</strong></a>
+In <em>Proceedings of the ECOOP 2016 Doctoral Symposium</em>.</p>
+  </li>
+  <li>
+    <p>Josef Eisl, Matthias Grimmer, Doug Simon, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2972206.2972211"><strong>Trace-based Register Allocation in a JIT Compiler</strong></a>
+In Proceedings of the 13th International Conference on Principles and Practices of Programming on the Java Platform: Virtual Machines, Languages, and Tools (PPPJ ‘16)</p>
+  </li>
+  <li>
+    <p>Stefan Marr, Benoit Daloze, Hanspeter Mössenböck
+<a href="https://doi.org/10.1145/2989225.2989232"><strong>Cross-language compiler benchmarking: are we fast yet?</strong></a>
+In Proceedings of the 12th Symposium on Dynamic Languages (DLS 2016)</p>
+  </li>
+  <li>
+    <p>Manuel Rigger, Matthias Grimmer, Christian Wimmer, Thomas Würthinger, Hanspeter Mössenböck
+<a href="https://doi.org/10.1145/2998415.2998416"><strong>Bringing low-level languages to the JVM: efficient execution of LLVM IR on Truffle</strong></a>
+In Proceedings of the 8th International Workshop on Virtual Machines and Intermediate Languages (VMIL 2016)</p>
+  </li>
+  <li>
+    <p>Manuel Rigger
+<a href="http://ssw.jku.at/General/Staff/ManuelRigger/ECOOP16-DS.pdf"><strong>Sulong: Memory Safe and Efficient Execution of LLVM-Based Languages</strong></a>
+ECOOP 2016 Doctoral Symposium</p>
+  </li>
+  <li>
+    <p>Manuel Rigger, Matthias Grimmer, Hanspeter Mössenböck
+<a href="http://2016.ecoop.org/event/icooolps-2016-sulong-execution-of-llvm-based-languages-on-the-jvm"><strong>Sulong - Execution of LLVM-Based Languages on the JVM</strong></a>
+Int. Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems (ICOOOLPS’16)</p>
+  </li>
+  <li>
+    <p>Luca Salucci, Daniele Bonetta, Walter Binder
+<a href="http://ieeexplore.ieee.org/document/7756203/"><strong>Efficient Embedding of Dynamic Languages in Big-Data Analytics</strong></a>
+International Conference on Distributed Computing Systems Workshops (ICDCSW 2016)</p>
+  </li>
+  <li>
+    <p>Lukas Stadler, Adam Welc, Christian Humer, Mick Jordan
+<a href="https://doi.org/10.1145/2989225.2989236"><strong>Optimizing R language execution via aggressive speculation</strong></a>
+In Proceedings of the 12th Symposium on Dynamic Languages (DLS 2016)</p>
+  </li>
+  <li>
+    <p>Daniele Bonetta, Luca Salucci, Stefan Marr, Walter Binder
+<a href="https://doi.org/10.1145/2983990.2984039"><strong>GEMs: shared-memory parallel programming for Node.js</strong></a>
+In Proceedings of the 2016 ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA 2016)</p>
+  </li>
+  <li>
+    <p>Benoit Daloze, Stefan Marr, Daniele Bonetta, Hanspeter Mössenböck
+<a href="https://doi.org/10.1145/3022671.2984001"><strong>Efficient and thread-safe objects for dynamically-typed languages</strong></a>
+In Proceedings of the 2016 ACM SIGPLAN International Conference on Object-Oriented Programming, Systems, Languages, and Applications (OOPSLA 2016)</p>
+  </li>
+  <li>
+    <p>Luca Salucci, Daniele Bonetta, Walter Binder
+<a href="http://link.springer.com/chapter/10.1007/978-3-319-43659-3_21"><strong>Lightweight Multi-language Bindings for Apache Spark</strong></a>
+European Conference on Parallel Processing (Euro-Par 2016)</p>
+  </li>
+  <li>
+    <p>Luca Salucci, Daniele Bonetta, Stefan Marr, Walter Binder
+<a href="https://doi.org/10.1145/3016078.2851184"><strong>Generic messages: capability-based shared memory parallelism for event-loop systems</strong></a>
+Proceedings of the 21st ACM SIGPLAN Symposium on Principles and Practice of Parallel Programming (PPoPP 2016)</p>
+  </li>
+  <li>
+    <p>Stefan Marr, Chris Seaton, Stéphane Ducasse
+<a href="http://dx.doi.org/10.1145/2813885.2737963"><strong>Zero-overhead metaprogramming: reflection and metaobject protocols fast and without compromises</strong></a>
+In Proceedings of the 36th ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI 2016)</p>
+  </li>
+</ul>
+
+<h3 id="2015">2015</h3>
+
+<ul>
+  <li>
+    <p>Benoit Daloze, Chris Seaton, Daniele Bonetta, Hanspeter Mössenböck
+<a href="http://ssw.jku.at/Research/Papers/Daloze15.pdf"><strong>Techniques and Applications for Guest-Language Safepoints</strong></a>
+In <em>Proceedings of the International Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems (ICOOOLPS)</em>.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Chris Seaton, Roland Schatz, Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2816707.2816714"><strong>High-Performance Cross-Language Interoperability in a Multi-Language Runtime</strong></a>
+In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Chris Seaton, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://chrisseaton.com/rubytruffle/modularity15/rubyextensions.pdf"><strong>Dynamically Composing Languages in a Modular Way: Supporting C Extensions for Dynamic Languages.</strong></a>
+In <em>Proceedings of the 14th International Conference on Modularity</em>.</p>
+  </li>
+  <li>
+    <p>Gülfem Savrun-Yeniçeri, Michael Van De Vanter, Per Larsen, Stefan Brunthaler, and Michael Franz
+<a href="http://dl.acm.org/citation.cfm?id=2807435"><strong>An Efficient and Generic Event-based Profiler Framework for Dynamic Languages</strong></a>
+In <em>Proceedings of the International Conference on Principles and Practices of Programming on The Java Platform: virtual machines, languages, and tools (PPPJ)</em>.</p>
+  </li>
+  <li>
+    <p>Michael Van De Vanter
+<a href="http://vandevanter.net/mlvdv/publications/2015-icooolps.pdf"><strong>Building Debuggers and Other Tools: We Can “Have it All” (Position Paper)</strong></a>
+In <em>Proceedings of the 10th Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems Workshop (ICOOOLPS)</em>.</p>
+  </li>
+  <li>
+    <p>Josef Eisl
+<a href="https://doi.org/10.1145/2814189.2814199"><strong>Trace register allocation</strong></a>
+In Companion Proceedings of the 2015 ACM SIGPLAN International Conference on Systems, Programming, Languages and Applications: Software for Humanity (SPLASH Companion 2015)</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Chris Seaton, Roland Schatz, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2936313.2816714"><strong>High-performance cross-language interoperability in a multi-language runtime</strong></a>
+In Proceedings of the 11th Symposium on Dynamic Languages (DLS 2015)</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Roland Schatz, Chris Seaton, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2786558.2786565"><strong>Memory-safe Execution of C on a Java VM</strong></a>
+In Proceedings of the 10th ACM Workshop on Programming Languages and Analysis for Security (PLAS’15)</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Chris Seaton, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2724525.2728790"><strong>Dynamically composing languages in a modular way: supporting C extensions for dynamic languages</strong></a>
+In Proceedings of the 14th International Conference on Modularity (MODULARITY 2015)</p>
+  </li>
+  <li>
+    <p>Doug Simon, Christian Wimmer, Bernhard Urban, Gilles Duboscq, Lukas Stadler, Thomas Würthinger
+<a href="http://dx.doi.org/10.1145/2764907"><strong>Snippets: Taking the High Road to a Low Level</strong></a>
+ACM Transactions on Architecture and Code Optimization (TACO)</p>
+  </li>
+  <li>
+    <p>David Leopoldseder, Lukas Stadler, Christian Wimmer, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2816707.2816715"><strong>Java-to-JavaScript translation via structured control flow reconstruction of compiler IR</strong></a>
+In Proceedings of the 11th Symposium on Dynamic Languages (DLS 2015)</p>
+  </li>
+  <li>
+    <p>Codruţ Stancu, Christian Wimmer, Stefan Brunthaler, Per Larsen, Michael Franz
+<a href="http://dx.doi.org/10.1145/2887746.2754185"><strong>Safe and efficient hybrid memory management for Java</strong></a>
+Proceedings of the 2015 International Symposium on Memory Management (ISMM ‘15)</p>
+  </li>
+  <li>
+    <p>Gülfem Savrun-Yeniçeri, Michael L. Van de Vanter, Per Larsen, Stefan Brunthaler, Michael Franz
+<a href="http://dx.doi.org/10.1145/2807426.2807435"><strong>An Efficient and Generic Event-based Profiler Framework for Dynamic Languages</strong></a>
+In Proceedings of the Principles and Practices of Programming on The Java Platform (PPPJ ‘15)</p>
+  </li>
+  <li>
+    <p>Michael L. Van De Vanter
+<a href="http://dx.doi.org/10.1145/2843915.2843917"><strong>Building debuggers and other tools: we can “have it all”</strong></a>
+In Proceedings of the 10th Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems (ICOOOLPS ‘15)</p>
+  </li>
+  <li>
+    <p>Benoit Daloze, Chris Seaton, Daniele Bonetta, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2843915.2843921"><strong>Techniques and applications for guest-language safepoints</strong></a>
+In Proceedings of the 10th Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems (ICOOOLPS ‘15)</p>
+  </li>
+</ul>
+
+<h3 id="2014">2014</h3>
+
+<ul>
+  <li>
+    <p>Matthias Grimmer
+<a href="http://dl.acm.org/citation.cfm?doid=2660252.2660256"><strong>High-performance language interoperability in multi-language runtimes</strong></a>
+In <em>Proceedings of the companion publication of the 2014 ACM SIGPLAN conference on Systems, Programming, and Applications: Software for Humanity (SPLASH Companion)</em>.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Manuel Rigger, Roland Schatz, Lukas Stadler, Hanspeter Mössenböck
+<a href="http://dl.acm.org/citation.cfm?id=2647528"><strong>Truffle C: Dynamic Execution of C on the Java Virtual Machine</strong></a>
+In <em>Proceedings of the International Conference on Principles and Practice of Programming in Java (PPPJ)</em>.</p>
+  </li>
+  <li>
+    <p>Christian Humer, Christian Wimmer, Christian Wirth, Andreas Wöß, Thomas Würthinger
+<a href="http://lafo.ssw.uni-linz.ac.at/papers/2014_GPCE_TruffleDSL.pdf"><strong>A Domain-Specific Language for Building Self-Optimizing AST Interpreters</strong></a>
+In <em>Proceedings of the International Conference on Generative Programming: Concepts and Experiences (GPCE)</em>.</p>
+  </li>
+  <li>
+    <p>Andreas Wöß, Christian Wirth, Daniele Bonetta, Chris Seaton, Christian Humer, Hanspeter Mössenböck
+<a href="http://dl.acm.org/citation.cfm?id=2647517"><strong>An Object Storage Model for the Truffle Language Implementation Framework</strong></a>
+In <em>Proceedings of International Conference on Principles and Practice of Programming in Java (PPPJ)</em>.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Thomas Würthinger, Andreas Wöß, Hanspeter Mössenböck
+<a href="http://dl.acm.org/citation.cfm?id=2633302"><strong>An Efficient Approach to Access Native Binary Data from JavaScript</strong></a>
+In <em>Proceedings of the 9th Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems (ICOOOLPS)</em>.</p>
+  </li>
+  <li>
+    <p>Chris Seaton, Michael Van De Vanter, and Michael Haupt
+<a href="http://www.lifl.fr/dyla14/papers/dyla14-3-Debugging_at_Full_Speed.pdf"><strong>Debugging at full speed</strong></a>
+In <em>Proceedings of the 8th Workshop on Dynamic Languages and Applications (DYLA)</em>.</p>
+  </li>
+  <li>
+    <p>Wei Zhang, Per Larsen, Stefan Brunthaler, Michael Franz
+<a href="https://doi.org/10.1145/2660193.2660223"><strong>Accelerating iterators in optimizing AST interpreters</strong></a>
+ In Proceedings of the 2014 ACM International Conference on Object Oriented Programming Systems Languages &amp; Applications (OOPSLA ‘14)</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer
+<a href="http://dx.doi.org/10.1145/2660252.2660256"><strong>High-performance language interoperability in multi-language runtimes</strong></a>
+ In Proceedings of the companion publication of the 2014 ACM SIGPLAN conference on Systems, Programming, and Applications: Software for Humanity (SPLASH ‘14)</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Manuel Rigger, Roland Schatz, Lukas Stadler, Hanspeter Mössenböck
+ <a href="http://dx.doi.org/10.1145/2647508.2647528"><strong>TruffleC: dynamic execution of C on a Java virtual machine</strong></a>
+ In Proceedings of the 2014 International Conference on Principles and Practices of Programming on the Java platform: Virtual machines, Languages, and Tools (PPPJ ‘14)</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Thomas Würthinger, Andreas Wöß, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2633301.2633302"><strong>An efficient approach for accessing C data structures from JavaScript</strong></a>
+In Proceedings of the 9th International Workshop on Implementation, Compilation, Optimization of Object-Oriented Languages, Programs and Systems PLE (ICOOOLPS ‘14)</p>
+  </li>
+  <li>
+    <p>Christian Humer, Christian Wimmer, Christian Wirth, Andreas Wöß, Thomas Würthinger
+<a href="http://dx.doi.org/10.1145/2658761.2658776"><strong>A domain-specific language for building self-optimizing AST interpreters</strong></a>
+In Proceedings of the 2014 International Conference on Generative Programming: Concepts and Experiences (GPCE 2014)</p>
+  </li>
+  <li>
+    <p>Gilles Duboscq, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2647508.2647521"><strong>Speculation without regret: reducing deoptimization meta-data in the Graal compiler</strong></a>
+In Proceedings of the 2014 International Conference on Principles and Practices of Programming on the Java platform: Virtual machines, Languages, and Tools (PPPJ ‘14)</p>
+  </li>
+  <li>
+    <p>Thomas Würthinger
+<a href="http://dx.doi.org/10.1145/2584469.2584663"><strong>Graal and truffle: modularity and separation of concerns as cornerstones for building a multipurpose runtime</strong></a>
+In Proceedings of the companion publication of the 13th international conference on Modularity (MODULARITY ‘14)</p>
+  </li>
+  <li>
+    <p>Lukas Stadler, Thomas Würthinger, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2544137.2544157"><strong>Partial Escape Analysis and Scalar Replacement for Java</strong></a>
+In Proceedings of Annual IEEE/ACM International Symposium on Code Generation and Optimization (CGO ‘14)</p>
+  </li>
+  <li>
+    <p>Christian Häubl, Christian Wimmer, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2579673"><strong>Trace transitioning and exception handling in a trace-based JIT compiler for java</strong></a>
+ACM Transactions on Architecture and Code Optimization (TACO)</p>
+  </li>
+  <li>
+    <p>Chris Seaton, Michael L. Van De Vanter, Michael Haupt
+<a href="http://dx.doi.org/10.1145/2617548.2617550"><strong>Debugging at Full Speed</strong></a>
+In Proceedings of the Workshop on Dynamic Languages and Applications (Dyla’14)</p>
+  </li>
+  <li>
+    <p>Andreas Wöß, Christian Wirth, Daniele Bonetta, Chris Seaton, Christian Humer, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2647508.2647517"><strong>An object storage model for the truffle language implementation framework</strong></a>
+In Proceedings of the 2014 International Conference on Principles and Practices of Programming on the Java platform: Virtual machines, Languages, and Tools (PPPJ ‘14)</p>
+  </li>
+  <li>
+    <p>Codruţ Stancu, Christian Wimmer, Stefan Brunthaler, Per Larsen, Michael Franz
+<a href="http://dx.doi.org/10.1145/2647508.2647524"><strong>Comparing points-to static analysis with runtime recorded profiling data</strong></a>
+In Proceedings of the 2014 International Conference on Principles and Practices of Programming on the Java platform: Virtual machines, Languages, and Tools (PPPJ ‘14)</p>
+  </li>
+</ul>
+
+<h3 id="2013">2013</h3>
+
+<ul>
+  <li>
+    <p>Thomas Würthinger, Christian Wimmer, Andreas Wöß, Lukas Stadler, Gilles Duboscq, Christian Humer, Gregor Richards, Doug Simon, Mario Wolczko
+<a href="http://lafo.ssw.uni-linz.ac.at/papers/2013_Onward_OneVMToRuleThemAll.pdf"><strong>One VM to Rule Them All</strong></a>
+In <em>Proceedings of Onward!</em>.
+Describes the vision of the Truffle approach, and the full system stack including the interpreter and dynamic compiler.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Manuel Rigger, Lukas Stadler, Roland Schatz, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2500828.2500832"><strong>An efficient native function interface for Java</strong></a>
+In <em>Proceedings of the International Conference on Principles and Practices of Programming on the Java Platform: Virtual Machines, Languages, and Tools. (PPPJ)</em>.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer
+<a href="http://ssw.jku.at/Research/Papers/Grimmer13Master/"><strong>Runtime Environment for the Truffle/C VM</strong></a>
+Master’s thesis, Johannes Kepler University Linz, November 2013.</p>
+  </li>
+  <li>
+    <p>Matthias Grimmer, Manuel Rigger, Lukas Stadler, Roland Schatz, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2500828.2500832"><strong>An efficient native function interface for Java</strong></a>
+In Proceedings of the 2013 International Conference on Principles and Practices of Programming on the Java Platform: Virtual Machines, Languages, and Tools (PPPJ ‘13)</p>
+  </li>
+  <li>
+    <p>Thomas Würthinger, Christian Wimmer, Andreas Wöß, Lukas Stadler, Gilles Duboscq, Christian Humer, Gregor Richards, Doug Simon, Mario Wolczko
+<a href="http://dx.doi.org/10.1145/2509578.2509581"><strong>One VM to rule them all</strong></a>
+In Proceedings of the 2013 ACM international symposium on New ideas, new paradigms, and reflections on programming &amp; software (Onward! 2013)</p>
+  </li>
+  <li>
+    <p>Gilles Duboscq, Thomas Würthinger, Lukas Stadler, Christian Wimmer, Doug Simon, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2542142.2542143"><strong>An intermediate representation for speculative optimizations in a dynamic compiler</strong></a>
+In Proceedings of the 7th ACM workshop on Virtual machines and intermediate languages (VMIL ‘13)</p>
+  </li>
+  <li>
+    <p>Lukas Stadler, Gilles Duboscq, Hanspeter Mössenböck, Thomas Würthinger, Doug Simon
+<a href="http://dx.doi.org/10.1145/2489837.2489846"><strong>An experimental study of the influence of dynamic compiler optimizations on Scala performance</strong></a>
+In Proceedings of the 4th Workshop on Scala (SCALA ‘13)</p>
+  </li>
+  <li>
+    <p>Gilles Duboscq, Lukas Stadler, Thomas Würthinger, Doug Simon, Christian Wimmer, Hanspeter Mössenböck
+<a href="http://ssw.jku.at/General/Staff/GD/APPLC-2013-paper_12.pdf"><strong>Graal IR: An Extensible Declarative Intermediate Representation</strong></a>
+In Proceedings of the Asia-Pacific Programming Languages and Compilers Workshop, 2013.</p>
+  </li>
+  <li>
+    <p>Christian Häubl, Christian Wimmer, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1016/j.cl.2013.04.002"><strong>Context-sensitive trace inlining for Java</strong></a>
+Special issue on the Programming Languages track at the 27th ACM Symposium on Applied Computing
+Computer Languages, Systems &amp; Structures</p>
+  </li>
+  <li>
+    <p>Christian Wimmer, Stefan Brunthaler
+<a href="http://dx.doi.org/10.1145/2508075.2514572"><strong>ZipPy on truffle: a fast and simple implementation of python</strong></a>
+In Proceedings of the 2013 companion publication for conference on Systems, programming, &amp; applications: software for humanity (SPLASH ‘13)</p>
+  </li>
+  <li>
+    <p>Christian Häubl, Christian Wimmer, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2500828.2500829"><strong>Deriving code coverage information from profiling data recorded for a trace-based just-in-time compiler</strong></a>
+In Proceedings of the 2013 International Conference on Principles and Practices of Programming on the Java Platform: Virtual Machines, Languages, and Tools (PPPJ ‘13)</p>
+  </li>
+</ul>
+
+<h3 id="2012">2012</h3>
+
+<ul>
+  <li>
+    <p>Thomas Würthinger, Andreas Wöß, Lukas Stadler, Gilles Duboscq, Doug Simon, Christian Wimmer
+<a href="http://lafo.ssw.uni-linz.ac.at/papers/2012_DLS_SelfOptimizingASTInterpreters.pdf"><strong>Self-Optimizing AST Interpreters</strong></a>
+In <em>Proceedings of the Dynamic Languages Symposium (DLS)</em>.
+Describes the design of self-optimizing and self-specializing interpreter, and the application to JavaScript.</p>
+  </li>
+  <li>
+    <p>Thomas Würthinger, Andreas Wöß, Lukas Stadler, Gilles Duboscq, Doug Simon, Christian Wimmer
+<a href="http://dl.acm.org/citation.cfm?doid=2384577.2384587"><strong>Self-optimizing AST interpreters</strong></a>
+Proceedings of the 8th symposium on Dynamic languages (DLS ‘12)</p>
+  </li>
+  <li>
+    <p>Christian Wimmer, Thomas Würthinger
+<a href="http://dx.doi.org/10.1145/2384716.2384723"><strong>Truffle: a self-optimizing runtime system</strong></a>
+In Proceedings of the 3rd annual conference on Systems, programming, and applications: software for humanity (SPLASH ‘12)</p>
+  </li>
+  <li>
+    <p>Christian Häubl, Christian Wimmer, Hanspeter Mössenböck
+<a href="http://dx.doi.org/10.1145/2245276.2232084"><strong>Evaluation of trace inlining heuristics for Java</strong></a>
+In Proceedings of the 27th Annual ACM Symposium on Applied Computing (SAC ‘12)</p>
+  </li>
+</ul>
+
+<p>If you are interested in deeper collaboration with us, please send us an <a href="mailto:thomas.wuerthinger@oracle.com">email</a>.</p>
+
+            </div>
+
+            <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+              <div class="hamburger"><div class="inner"></div></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">Get started with GraalVM</h2>
-
-        <div class="row d-flex">
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Java Developer</h5>
-              <p>
-                Are you working on a Java application? Do you want a faster runtime? Enhance your code with JavaScript!
-              </p>
-              <a href="/docs/reference-manual/languages/jvm/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Node.js Developer</h5>
-              <p>
-                Are you a JavaScript developer building Node.js apps? Run JavaScript in the database, use existing Java libraries, monitor and profile your code easily!
-              </p>
-              <a href="/docs/reference-manual/languages/js/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Ruby, R, or Python Developer</h5>
-              <p>
-                Would you like to troubleshoot your Ruby, R or Python app with Chrome Debugger? It is possible with GraalVM!
-              </p>
-              <a href="/docs/reference-manual/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Tool or Language Implementor</h5>
-              <p>
-                Are you developing Web application for multiple platforms or would you like to extend the GraalVM ecosystem with your own language?
-              </p>
-              <a href="/docs/graalvm-as-a-platform/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm carousel-wrapp">
-
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">
-          <span>LEARN MORE ABOUT GRAALVM</span>
-          Universal VM for a Polyglot World
-        </h2>
-
-        <div class="video-carousel vlog">
-
-
-        <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">Turning JVM into a Polyglot VM with Graal</h5>
-                <p>
-                  This presentation shows the techniques used to execute languages such as
-                  Ruby with high performance in GraalVM. It demonstrates an example
-                  of mixing JavaScript and Ruby within one program and how GraalVM
-                  can execute the result with zero overheads when crossing language boundaries...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Chris_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Chris Seaton</h6>
-                      <p class="author__position">Research Manager, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="oWX2tpIO4Yc" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">One VM to Rule Them All</h5>
-                <p>
-                  GraalVM enables seamless language interoperability while also
-                  providing world-class performance for each individual language.
-                  A demo will show how JavaScript, Java, Ruby, R, and C can work
-                  together in a single web application running in one VM!
-                  Use the right language for a task at hand...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Thomas_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Thomas Wuerthinger</h6>
-                      <p class="author__position">Senior Research Director, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="mMmOntDWSgw" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <div>
-          <div class="row">
-            <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-              <h5 class="vlog__title">Polyglot Native: Java, Scala, Kotlin, and JVM Languages</h5>
-              <p>
-                This video presents Polyglot Native: an ahead-of-time compiler
-                for Java bytecode combined with a low-footprint VM.
-                With Polyglot Native, programs written in Kotlin, Scala,
-                and other JVM-based languages have minimal startup
-                time as they are compiled to native executables.
-                Footprint of compiled programs is minimized by using
-                a chunked heap and reducing necessary program metadata...
-              </p>
-              <div class="vlog__author">
-                <div class="author">
-                  <div class="authot__avatar">
-                    <img src="/resources/img/Wimmer_avatar.png" alt="">
-                  </div>
-                  <div class="author__info">
-                    <h6 class="author__name">Christian Wimmer</h6>
-                    <p class="author__position">Consulting Researcher and Project Lead, Oracle Labs</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="vlog__video">
-                <img src="/resources/img/video-preview@2x.jpg" alt="">
-                    <a href="#" data-video="5BMHIeMXTqA" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">GraalVM in the Oracle Database</h5>
-                <p>
-                  Oracle Database 12c Multilingual Engine (MLE) enables developers
-                  to work efficiently with DB-resident data in modern programming
-                  languages and development environments of their choice.
-                  The Oracle Database Multilingual Engine enables execution of
-                  JavaScript code via GraalVM. This video gives a demonstration
-                  of how Node.js modules can be used in the context of database
-                  queries and stored procedures...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Matthias_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Matthias Brantner</h6>
-                      <p class="author__position">Consulting Researcher, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="k0UidtZFWvk" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div id="video-view" class="modal-window">
-  <div class="modal-window__content">
-    <button type="button" title="Close" id="js-close" class="modal-window__close"><img src="/resources/img/btn-close.svg" alt=""></button>
-    <div class="modal-window__video">
-      <div id="player"></div>
-    </div>
-  </div>
 </div>
 
       </main>

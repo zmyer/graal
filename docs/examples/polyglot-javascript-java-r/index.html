@@ -9,7 +9,7 @@
 
   <title>
     
-      GraalVM
+      Polyglot Node.js Example
     
   </title>
   <meta
@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/">
+  <link rel="canonical" href="http://localhost:4001/docs/examples/polyglot-javascript-java-r/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -133,9 +133,9 @@
   </defs>
 </svg>
 
-    <div  class="wrapper" >
+    <div  class="wrapper wrapper--nofooter" >
 
-      <header  class="header header--home"  role="banner">
+      <header  class="header header--content"  role="banner">
 
   
 
@@ -150,7 +150,7 @@
 
     <ul class="menu__list">
       <li class="menu__item">
-        <a href="/"  class="menu__link menu__link--home"  >Home</a>
+        <a href="/"  class="menu__link"  >Home</a>
       </li>
 
         
@@ -200,360 +200,372 @@
 </header>
 
 
-      <main  class="content content--home"   aria-label="Content">
-        <div class="home-banner">
-  <div class="home-banner__content">
-    <h1 class="home-banner__logo">
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="266" height="53" viewBox="0 0 266 53"><defs><path id="7owha" d="M281.76 313.44c-.94.83-1.98 1.65-3.12 2.43a23.76 23.76 0 0 1-8.22 3.58c-1.63.37-3.41.55-5.34.55-5.63 0-10.05-2.01-13.26-6.04-3.21-4.03-4.82-10.1-4.82-18.21 0-4.47.47-8.4 1.4-11.76a23.83 23.83 0 0 1 4.05-8.4 16.67 16.67 0 0 1 6.3-5.01 19.65 19.65 0 0 1 8.18-1.66c3.02 0 5.72.66 8.12 1.99a18.95 18.95 0 0 1 6.26 5.75l-3.7 4.27a20.56 20.56 0 0 0-4.56-2.36c-1.6-.59-3.35-.88-5.23-.88a9 9 0 0 0-3.92.88 8.63 8.63 0 0 0-3.26 2.84 15.23 15.23 0 0 0-2.23 5.01 28.78 28.78 0 0 0-.81 7.34c0 3.44.24 6.29.74 8.55.5 2.26 1.18 4.07 2.07 5.42a7.55 7.55 0 0 0 3.26 2.87c1.29.57 2.72.85 4.3.85.64 0 1.32-.1 2.04-.3.72-.2 1.32-.44 1.82-.73v-12.17h-5.2v-6.7h15.13zm25.8-22.63c-.79-.25-1.47-.43-2.04-.55a7.56 7.56 0 0 0-1.59-.19c-.99 0-1.98.5-2.96 1.48a37.4 37.4 0 0 0-3.41 4.05v23.66H288v-37h7.19l1.4 6.49a39.92 39.92 0 0 1 4.56-5.39 6.2 6.2 0 0 1 5.86-1.7c.52.1 1.1.23 1.74.38zm24.25 11.94H329c-1.73 0-3.15.15-4.26.44a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.37 2.1c0 1.47.41 2.58 1.23 3.35a4.74 4.74 0 0 0 3.37 1.14c1.23 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.51l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.16 1.47c-3.8 0-6.64-.93-8.52-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.83 0-3.68.18-5.56.55-1.87.37-3.6.8-5.18 1.3l-1.04-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm33.73-16.5h-2.81c-1.73 0-3.15.14-4.26.43a7.5 7.5 0 0 0-2.6 1.15 3.75 3.75 0 0 0-1.3 1.7 5.97 5.97 0 0 0-.36 2.1c0 1.47.4 2.58 1.22 3.35a4.74 4.74 0 0 0 3.37 1.14c1.24 0 2.42-.21 3.56-.63 1.13-.42 2.2-.97 3.18-1.66zm2.45 16.5l-1.04-4.2a20.7 20.7 0 0 1-4.96 3.47 13.35 13.35 0 0 1-6.15 1.47c-3.8 0-6.65-.93-8.53-2.8-1.87-1.87-2.81-4.5-2.81-7.89a12 12 0 0 1 1-4.86 10.36 10.36 0 0 1 3.22-4.02 17.12 17.12 0 0 1 5.7-2.77 30.36 30.36 0 0 1 8.53-1.03h2.6v-2.5c0-1.97-.7-3.35-2.08-4.13a9.89 9.89 0 0 0-4.97-1.18c-1.82 0-3.68.18-5.55.55-1.88.37-3.61.8-5.2 1.3l-1.03-5.76a70.9 70.9 0 0 1 6.82-2.32 29.92 29.92 0 0 1 8.3-1.07c4.7 0 8.06 1.02 10.11 3.06 2.05 2.04 3.08 5.03 3.08 8.96v25.72zm29.8-.37c-1.13.35-2.28.62-3.44.82-1.16.2-2.38.29-3.67.29-2.61 0-4.55-.57-5.81-1.7-1.26-1.13-1.9-3.26-1.9-6.4V267h9.5v41.57c0 2.02.19 3.32.59 3.91.39.6 1.03.89 1.92.89h1.04c.4 0 .81-.03 1.26-.08zm40.86-49.38a435.8 435.8 0 0 1-6.41 25.13 562.23 562.23 0 0 1-7.67 24.62h-12.75a621.4 621.4 0 0 1-7.7-24.84 485.23 485.23 0 0 1-6.45-24.91h11.34c.54 2.94 1.18 6.04 1.92 9.28a563 563 0 0 0 5.04 20.24c.94 3.46 1.9 6.84 2.9 10.13.83-2.8 1.68-5.8 2.55-9.03.86-3.21 1.73-6.53 2.6-9.95.86-3.41 1.67-6.88 2.44-10.4a425.2 425.2 0 0 0 2.11-10.27zm46.26 49.75c-.1-6.53-.27-13.02-.52-19.46-.25-6.44-.64-13.02-1.19-19.75h-.15l-11.26 39.21h-7.48l-10.9-39.21h-.15c-.54 6.73-.93 13.31-1.18 19.75-.25 6.44-.42 12.93-.52 19.46h-9.49a689.61 689.61 0 0 1 3.27-49.75h14.74l8.97 32.14h.15l9.26-32.14h13.78a711.12 711.12 0 0 1 3.26 49.75zm16.41-4.8v4.48h-1.73v-4.48h-1.12v-1.47h3.97v1.47zm7.68 4.48l-.05-2.2-.06-2.07-1.37 4.27h-1.55l-1.4-4.23c-.03.7-.04 1.38-.04 2.06v2.17h-1.44c0-1 .02-2 .07-3 .05-.99.1-1.97.18-2.95h2.23l1.23 3.9 1.26-3.9h2.2a64.25 64.25 0 0 1 .29 5.95z"/></defs><g><g transform="translate(-247 -267)"><use fill="#fff" xlink:href="#7owha"/></g></g></svg>
-    </h1>
-    <p>Run Programs Faster Anywhere</p>
-    <div class="button-group">
-      <a href='/docs/why-graal/' class="btn btn-primary">WHY GRAALVM</a>
-      <a href='/docs/getting-started/' class="btn btn-secondary">GET STARTED</a>
-    </div>
+      <main  class="content"   aria-label="Content">
+        <div class="wrapper wrapper-content">
+  <article class="docs">
+
+  <div class="container-fluid container-fluid--custom-sm">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+          <div class="row d-flex flex-wrap">
+            <div class="col-sm-3 col-bg">
+              <div class="sidebar-wrap">
+                <div class="sidebar">
+                  
+<div class="toc-floating">
+
+
+<script>
+var sidebar = document.currentScript.parentElement;
+
+// 
+//   $(document).ready(function(){
+//     $('.sidebar-wrap').stickySidebar({
+//       topSpacing: 74,
+//       bottomSpacing: 40
+//     });
+//   });
+//
+// 
+
+
+$(document).ready(function(){
+  var header = $('.header').height();
+  var invisibleBlock;
+
+  $("#content-wrapper h1, #content-wrapper h2").each(function() {
+    invisibleBlock = $(this).before("<div class='anchor' id="+ $(this).attr("id") +"></div>");
+  });
+
+  $(window).scroll(function() {
+    var lastitem = null;
+    $("#content-wrapper h1, #content-wrapper h2").each(function() {
+      var heading = $(this);
+      var position = (heading.position().top - heading.height()) - $(window).scrollTop();
+      var listitem = $(sidebar).find("li").filter(function() {
+        return $(this).find("a").attr("href") == "#" + heading.attr("id");
+      });
+      listitem.removeClass("toc-bullets-focused");
+      if (position <= 0) {
+        lastitem = listitem;
+      }
+    });
+    if (lastitem != null) lastitem.addClass("toc-bullets-focused");
+  });
+});
+
+</script>
+
+<ul class="toc-bullets">
+
+  
+
+  
+
+  
+
+  
+    
+
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/why-graal/">
+            Why GraalVM?
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/getting-started/">
+            Getting Started
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/examples/">
+            Examples
+          </a>
+        </li>
+
+
+        
+
+
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/examples/java-performance-examples/">
+              Java Performance Examples
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/examples/java-simple-stream-benchmark/">
+              Java Stream API Example
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub toc-bullets-highlight">
+          
+            
+            <a href="/docs/examples/polyglot-javascript-java-r/">
+              Polyglot Node.js Example
+            </a>
+          </li>
+
+          
+            <div>
+    <script>
+      var scriptElement = document.currentScript;
+      var div = $(scriptElement.parentElement);
+      $(window).on("load", function() {
+        $("#content-wrapper h1, #content-wrapper h2").each(function() {
+          var li = $("<li></li>", { class: "toc-bullets-sub toc-bullets-sub-3" });
+          var a = $("<a></a>", { href: "#" + $(this).attr("id") });
+          a.text($(this).text());
+          li.append(a);
+          div.append(li);
+        });
+      });
+    </script>
   </div>
+  
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/examples/native-list-dir/">
+              Native Image Example
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/examples/java-kotlin-aot/">
+              Polyglot Native Example
+            </a>
+          </li>
+
+          
+        
+          
+          <li class="toc-bullets-sub dsdsd">
+          
+            
+            <a href="/docs/examples/mle-oracle/">
+              Oracle Database Example
+            </a>
+          </li>
+
+          
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/compatibility/">
+            Compatibility
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/reference-manual/">
+            Reference Manual
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/graalvm-as-a-platform/">
+            GraalVM as a Platform
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+      
+        
+          <li class="toc-bullets-main">
+        
+          
+          <a href="/docs/faq/">
+            FAQ
+          </a>
+        </li>
+
+
+        
+
+
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+</ul>
+
 </div>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-6">
-            <h2 class="title-section">
-              High-performance
-              polyglot VM
-            </h2>
-          </div>
-          <div class="col-sm-6">
-            <p>
-              GraalVM is an ecosystem for compiling and running applications written in
-              JavaScript, Python, Ruby, R, JVM-based languages
-              like Java, Scala, Kotlin, and LLVM-based languages such as C and C++.
-            </p>
-            <p>
-              GraalVM removes the isolation between programming languages and enables interoperability in a shared runtime.
-              It can run either standalone or in the context of OpenJDK, Node.js, Oracle Database, or MySQL.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-sm-9">
+              <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
+                <h3 id="graalvm-demos-polyglot-javascript-java-r-application">GraalVM demos: Polyglot JavaScript, Java, R application</h3>
 
-    <div class="section-div"></div>
-  </div>
-</section>
+<p>This page describes a simple example of a polyglot application you can run with GraalVM.</p>
 
-<section class="content-section">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <div class="row">
-          <div class="col-sm-12">
-            <h2 class="title-section">
-              <span>OUR ADVANTAGES</span>
-              What does GraalVM do?
-            </h2>
-          </div>
-        </div>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+  <li><a href="/downloads">GraalVM</a></li>
+</ul>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Polyglot</h4>
-            <p class="text-md">
-              Zero overhead interoperability between programming languages allows you to write polyglot applications and select the best language for your task.
-            </p>
+<h3 id="preparation">Preparation</h3>
 
-            <a href='/docs/reference-manual/polyglot/' class="link-main">Find out more</a>
-          </div>
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-javascript">const express = require('express');
-const app = express();
-app.listen(3000);
-app.get('/', function(req, res) {
-  var text = 'Hello World!';
-  const BigInteger = Java.type(
-    'java.math.BigInteger');
-  text += BigInteger.valueOf(2)
-    .pow(100).toString(16);
-  text += Polyglot.eval(
-    'R', 'runif(100)')[0];
-  res.send(text);
-})
+<p>Download or clone the repository and navigate into the <code>polyglot-javascript-java-r</code> directory:</p>
+
+<pre><code>git clone https://github.com/shelajev/graalvm-demos
+cd graalvm-demos/polyglot-javascript-java-r
 </code></pre>
 
-          </div>
-        </div>
+<p>Build the benchmark. You can manually execute <code>npm install</code>, but there’s also a <code>build.sh</code> script included for your convenience.</p>
 
-        <div class="row row--space align-items-center">
-          <div class="col-sm-6 order-2 order-sm-0">
-            
-            <pre><code class="language-shell">$ javac HelloWorld.java
-$ time java HelloWorld
-user 0.070s
-$ native-image HelloWorld
-$ time ./helloworld
-user 0.005s
+<p>Execute:</p>
+<pre><code>./build.sh
 </code></pre>
 
-          </div>
-          <div class="col-sm-5 offset-sm-1">
-            <h4 class="title-article">Native</h4>
-            <p class="text-md">
-              Native images compiled with GraalVM ahead-of-time improve the
-              startup time and reduce the memory footprint of JVM-based applications.
-            </p>
+<p>Now you are all set to run the polyglot JavaScript, Java, R application.</p>
 
-            <a href='/docs/reference-manual/native/' class="link-main">Find out more</a>
-          </div>
-        </div>
+<p>Export the GraalVM home directory as the <code>$GRAALVM_HOME</code> and add <code>$GRAALVM_HOME/bin</code>
+to the path, using a command-line shell for Linux:</p>
+<pre><code>export GRAALVM_HOME=/Users/${current_user}/path/to/graalvm
+</code></pre>
+<p>and for Mac OS:</p>
+<pre><code>export GRAALVM_HOME=/Users/${current_user}/path/to/graalvm/Contents/Home
+</code></pre>
+<p>Note that your paths are likely to be different depending on the download location.</p>
 
-        <div class="row align-items-center">
-          <div class="col-sm-5">
-            <h4 class="title-article">Embeddable</h4>
-            <p class="text-md">
-              GraalVM can be embedded in both managed and native applications.
-              There are existing integrations into OpenJDK, Node.js, Oracle Database, and MySQL.
-            </p>
+<h3 id="running-the-application">Running the application</h3>
 
-            <a href='/docs/graalvm-as-a-platform/embed/' class="link-main">Find out more</a>
-          </div>
+<p>To run the application, you need to execute the <code>server.js</code> file.
+You can run it with the following command (or run the <code>run.sh</code> script):</p>
 
-          <div class="col-sm-6 offset-sm-1">
-            
-            <pre><code class="language-java">import org.graalvm.polyglot.*;
-public class HelloPolyglot {
-  public static void main(String[] args) {
-    System.out.println("Hello Java!");
-    Context context = Context.create();
-    context.eval("js",
-      "print('Hello JavaScript!');");
-  }
-}
+<pre><code>$GRAALVM_HOME/bin/node --jvm --polyglot server.js
 </code></pre>
 
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<p>If you would like to run the benchmark on a different instance of Node,
+you can run it with whatever <code>node</code> you have. However, presumably, the polyglot
+capability will not be supported.</p>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm">
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">Get started with GraalVM</h2>
+<p>Open <a href="localhost:3000">localhost:3000</a> and enjoy the output of the polyglot app.
+Play with the source code and restart the application to see what else
+you can do with the mix of JavaScript, Java, and R.</p>
 
-        <div class="row d-flex">
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Java Developer</h5>
-              <p>
-                Are you working on a Java application? Do you want a faster runtime? Enhance your code with JavaScript!
-              </p>
-              <a href="/docs/reference-manual/languages/jvm/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<h3 id="debugging-polyglot-applications">Debugging polyglot applications</h3>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Node.js Developer</h5>
-              <p>
-                Are you a JavaScript developer building Node.js apps? Run JavaScript in the database, use existing Java libraries, monitor and profile your code easily!
-              </p>
-              <a href="/docs/reference-manual/languages/js/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<p>GraalVM also supports debugging of polyglot applications and provides a built-in
+implementation of <a href="/docs/reference-manual/tools/chrome-inspector/">Chrome DevTools Protocol</a>. Add the <code>--inspect</code>
+parameter to the command line, open the URL the application prints at the startup
+in Chrome browser and start debugging, set breakpoints, evaluate expressions
+of this app in JavaScript and R code alike.</p>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Ruby, R, or Python Developer</h5>
-              <p>
-                Would you like to troubleshoot your Ruby, R or Python app with Chrome Debugger? It is possible with GraalVM!
-              </p>
-              <a href="/docs/reference-manual/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
+<h3 id="a-note-about-the-application">A note about the application</h3>
 
-          <div class="col-sm-6">
-            <div class="card card--hovered">
-              <h5 class="card__title">Tool or Language Implementor</h5>
-              <p>
-                Are you developing Web application for multiple platforms or would you like to extend the GraalVM ecosystem with your own language?
-              </p>
-              <a href="/docs/graalvm-as-a-platform/" class="link-main">GET STARTED</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<p>This sample application for brevity contains large-ish snippets of code
+inside the strings. This is not the best approach for structuring polyglot apps,
+but it is the easiest to show in a single file.</p>
 
-<section class="content-section content-section--top-0">
-  <div class="container-fluid container-fluid--custom-sm carousel-wrapp">
-
-    <div class="row">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
-        <h2 class="title-section text-center">
-          <span>LEARN MORE ABOUT GRAALVM</span>
-          Universal VM for a Polyglot World
-        </h2>
-
-        <div class="video-carousel vlog">
-
-
-        <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">Turning JVM into a Polyglot VM with Graal</h5>
-                <p>
-                  This presentation shows the techniques used to execute languages such as
-                  Ruby with high performance in GraalVM. It demonstrates an example
-                  of mixing JavaScript and Ruby within one program and how GraalVM
-                  can execute the result with zero overheads when crossing language boundaries...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Chris_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Chris Seaton</h6>
-                      <p class="author__position">Research Manager, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
               </div>
-  
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="oWX2tpIO4Yc" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">One VM to Rule Them All</h5>
-                <p>
-                  GraalVM enables seamless language interoperability while also
-                  providing world-class performance for each individual language.
-                  A demo will show how JavaScript, Java, Ruby, R, and C can work
-                  together in a single web application running in one VM!
-                  Use the right language for a task at hand...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Thomas_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Thomas Wuerthinger</h6>
-                      <p class="author__position">Senior Research Director, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="mMmOntDWSgw" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-        <div>
-          <div class="row">
-            <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-              <h5 class="vlog__title">Polyglot Native: Java, Scala, Kotlin, and JVM Languages</h5>
-              <p>
-                This video presents Polyglot Native: an ahead-of-time compiler
-                for Java bytecode combined with a low-footprint VM.
-                With Polyglot Native, programs written in Kotlin, Scala,
-                and other JVM-based languages have minimal startup
-                time as they are compiled to native executables.
-                Footprint of compiled programs is minimized by using
-                a chunked heap and reducing necessary program metadata...
-              </p>
-              <div class="vlog__author">
-                <div class="author">
-                  <div class="authot__avatar">
-                    <img src="/resources/img/Wimmer_avatar.png" alt="">
-                  </div>
-                  <div class="author__info">
-                    <h6 class="author__name">Christian Wimmer</h6>
-                    <p class="author__position">Consulting Researcher and Project Lead, Oracle Labs</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-sm-6">
-              <div class="vlog__video">
-                <img src="/resources/img/video-preview@2x.jpg" alt="">
-                    <a href="#" data-video="5BMHIeMXTqA" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div>
-            <div class="row">
-              <div class="col-sm-6 mb-sm-3 mb-3 mb-md-0 mb-lg-0">
-                <h5 class="vlog__title">GraalVM in the Oracle Database</h5>
-                <p>
-                  Oracle Database 12c Multilingual Engine (MLE) enables developers
-                  to work efficiently with DB-resident data in modern programming
-                  languages and development environments of their choice.
-                  The Oracle Database Multilingual Engine enables execution of
-                  JavaScript code via GraalVM. This video gives a demonstration
-                  of how Node.js modules can be used in the context of database
-                  queries and stored procedures...
-                </p>
-                <div class="vlog__author">
-                  <div class="author">
-                    <div class="authot__avatar">
-                      <img src="/resources/img/Matthias_avatar.png" alt="">
-                    </div>
-                    <div class="author__info">
-                      <h6 class="author__name">Matthias Brantner</h6>
-                      <p class="author__position">Consulting Researcher, Oracle Labs</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="vlog__video">
-                  <img src="/resources/img/video-preview@2x.jpg" alt="">
-                  <a href="#" data-video="k0UidtZFWvk" class="btn btn-primary btn-primary--filled js-popup">watch video</a>
-                </div>
+    
+              <div role="button" class="menu-btn menu-btn--sidebar js-show-sidebar" title="sweet hamburger">
+                <div class="hamburger"><div class="inner"></div></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-</section>
+</article>
 
-<div id="video-view" class="modal-window">
-  <div class="modal-window__content">
-    <button type="button" title="Close" id="js-close" class="modal-window__close"><img src="/resources/img/btn-close.svg" alt=""></button>
-    <div class="modal-window__video">
-      <div id="player"></div>
-    </div>
-  </div>
 </div>
 
       </main>
