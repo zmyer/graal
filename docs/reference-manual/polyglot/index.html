@@ -961,7 +961,6 @@ $ node --polyglot --jvm polyglot.js
   </code></pre></figure>
 
   
-
   
 
   <script>
@@ -1029,7 +1028,6 @@ $ node --polyglot --jvm polyglot.js
   </code></pre></figure>
 
   
-
   
 
   <script>
@@ -1097,7 +1095,6 @@ $ node --polyglot --jvm polyglot.js
   </code></pre></figure>
 
   
-
   
 
   <script>
@@ -1164,7 +1161,6 @@ $ node --polyglot --jvm polyglot.js
   </code></pre></figure>
 
   
-
   
 
   <script>
@@ -1231,7 +1227,6 @@ $ node --polyglot --jvm polyglot.js
   </code></pre></figure>
 
   
-
   
 
   <script>
@@ -1525,7 +1520,7 @@ $ node --polyglot --jvm polyglot.js
 
   
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="c1"># BEGIN-SNIPPET</span>
-<span class="n">array</span> <span class="o">=</span> <span class="no">Java</span><span class="p">.</span><span class="nf">type</span><span class="p">(</span><span class="s1">'int[]'</span><span class="p">)(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">array</span> <span class="o">=</span> <span class="no">Java</span><span class="p">.</span><span class="nf">type</span><span class="p">(</span><span class="s1">'int[]'</span><span class="p">).</span><span class="nf">new</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="c1"># END-SNIPPET</span>
@@ -1592,7 +1587,7 @@ $ node --polyglot --jvm polyglot.js
   
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="c1"># BEGIN-SNIPPET</span>
 <span class="n">cpart</span> <span class="o">=</span> <span class="no">Polyglot</span><span class="p">.</span><span class="nf">eval_file</span><span class="p">(</span><span class="s1">'llvm'</span><span class="p">,</span> <span class="s1">'polyglot.bc'</span><span class="p">)</span>
-<span class="c1"># will be fixed soon.</span>
+<span class="c1"># support coming soon</span>
 <span class="c1"># cpart.main()</span>
 <span class="c1"># END-SNIPPET</span>
 
@@ -2456,23 +2451,396 @@ $ java Polyglot
 
 <p><em>Note:</em> This requires clang to be installed.</p>
 
-<p>Create a file <code>test.c</code>:</p>
+<p>Create a file <code>polyglot.c</code>:</p>
 
-<pre><code class="language-c">#include &lt;stdio.h&gt;
+<div class="tabs-below">
+
+<div class="tab-content">
+  
+  <div id="c_to_js" class="tab-pane fade in active">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  c
+  polyglot_ref/c_to_js.c
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-c" data-lang="c"> 
+  <span class="c1">// BEGIN-SNIPPET
+</span><span class="cp">#include &lt;stdio.h&gt;
 #include &lt;polyglot.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="n">polyglot_eval</span><span class="p">(</span><span class="s">"js"</span><span class="p">,</span> <span class="s">"[1,2,42,4]"</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">polyglot_as_i32</span><span class="p">(</span><span class="n">polyglot_get_array_element</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">element</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">element</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// END-SNIPPET
+</span>  </code></pre></figure>
 
-int main() {
-    void *array = polyglot_eval("js", "[1,2,42,4]");
-    int element = polyglot_as_i32(polyglot_get_array_element(array, 2));
-    printf("%d\n", element);
-    return 0;
-}
-</code></pre>
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
+  
+  <div id="c_to_R" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  c
+  polyglot_ref/c_to_R.c
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-c" data-lang="c"> 
+  <span class="c1">// BEGIN-SNIPPET
+</span><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;polyglot.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="n">polyglot_eval</span><span class="p">(</span><span class="s">"R"</span><span class="p">,</span> <span class="s">"c(1,2,42,4)"</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">polyglot_as_i32</span><span class="p">(</span><span class="n">polyglot_get_array_element</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">element</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">element</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// END-SNIPPET
+</span>  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
+  
+  <div id="c_to_ruby" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  c
+  polyglot_ref/c_to_ruby.c
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-c" data-lang="c"> 
+  <span class="c1">// BEGIN-SNIPPET
+</span><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;polyglot.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="n">polyglot_eval</span><span class="p">(</span><span class="s">"ruby"</span><span class="p">,</span> <span class="s">"[1,2,42,4]"</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">polyglot_as_i32</span><span class="p">(</span><span class="n">polyglot_get_array_element</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">element</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">element</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// END-SNIPPET
+</span>  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
+  
+  <div id="c_to_python" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  c
+  polyglot_ref/c_to_python.c
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-c" data-lang="c"> 
+  <span class="c1">// BEGIN-SNIPPET
+</span><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;polyglot.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="n">polyglot_eval</span><span class="p">(</span><span class="s">"python"</span><span class="p">,</span> <span class="s">"[1,2,42,4]"</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">polyglot_as_i32</span><span class="p">(</span><span class="n">polyglot_get_array_element</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">element</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">element</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">// END-SNIPPET
+</span>  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
+  
+  <div id="c_to_java" class="tab-pane fade">
+    
+<div class="snippet-container">
+  <div>
+    <span href="" class="copy-button" onclick="copySnippet(this);">
+      <img src="/resources/img/copy.svg" title="Copy" />
+    </span>
+  </div>
+
+  <!--
+  c
+  polyglot_ref/c_to_java.c
+  -->
+
+  
+
+  
+<figure class="highlight"><pre><code class="language-c" data-lang="c"> 
+  <span class="c1">// BEGIN-SNIPPET
+</span>
+<span class="c1">// support coming soon
+</span>
+<span class="c1">// END-SNIPPET
+</span>  </code></pre></figure>
+
+
+  
+
+  <script>
+  var beginPattern = "BEGIN-SNIPPET";
+  var endPattern = "END-SNIPPET";
+  var parent = document.currentScript.parentElement;
+  var dropMode = true;
+  function cleanWhitespace(element) {
+    textNodes = element.contents().filter(
+      function() { return (this.nodeType == 3 && /\s+\n\s+\n\s+/.test(this.nodeValue)); }
+    ).replaceWith("\n\n");
+    return element;
+  }
+  $(parent).find("figure > pre > code > span").each(function() {
+    var span = $(this);
+    if (dropMode) {
+      this.parentElement.removeChild(this);
+      if (span.text().includes(beginPattern)) {
+        dropMode = false;
+      }
+    } else {
+      if (span.text().includes(endPattern)) {
+        dropMode = true;
+      }
+      if (dropMode) {
+        this.parentElement.removeChild(this);
+      }
+    }
+  });
+  $(parent).find("figure > pre > code").each(function() {
+    $(this).html($(this).html().trim());
+    cleanWhitespace($(this));
+  });
+  </script>
+
+</div>
+
+  </div>
+  
+</div>
+
+<ul class="nav nav-tabs">
+  
+  <li class="active"><a data-toggle="tab" href="#c_to_js">JS</a></li>
+  
+  
+  <li><a data-toggle="tab" href="#c_to_R">R</a></li>
+  
+  
+  <li><a data-toggle="tab" href="#c_to_ruby">Ruby</a></li>
+  
+  
+  <li><a data-toggle="tab" href="#c_to_python">Python</a></li>
+  
+  
+  <li><a data-toggle="tab" href="#c_to_java">Java</a></li>
+  
+  
+    <div style="width:100%; text-align:right">
+    <li>Target Language</li>
+    </div>
+  
+</ul>
+
+</div>
 
 <p>Run:</p>
 
-<pre><code>$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm test.c
-$ lli --polyglot test.bc
+<pre><code>$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm polyglot.c
+$ lli --polyglot --jvm polyglot.bc
 42
 </code></pre>
 
