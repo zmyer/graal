@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/docs/reference-manual/languages/llvm/">
+  <link rel="canonical" href="https://www.graalvm.org/docs/reference-manual/languages/llvm/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -598,6 +598,7 @@ int main() {
 <pre><code class="language-shell">$ clang -c -O1 -emit-llvm hello-curses.c
 $ lli --lib /usr/lib/libncursesw.so hello-curses.bc
 </code></pre>
+<p>For Mac OS users, <code>ncurses</code> library path is <code>/usr/lib/libncurses.dylib</code>.</p>
 
 <h2 id="running-c">Running C++</h2>
 <p>For running C++ code, LLI requires the <code>libc++</code> standard library from the LLVM
@@ -618,7 +619,11 @@ Hello, C++ World!
 </code></pre>
 
 <h2 id="running-rust">Running Rust</h2>
-<p>LLI doesn’t load the Rust standard libraries automatically. To run Rust code,
+<p>LLI doesn’t load the Rust standard libraries automatically.
+To install Rust, run the following in your terminal, then follow the onscreen instructions:</p>
+<pre><code class="language-shell">curl https://sh.rustup.rs -sSf | sh
+</code></pre>
+<p>To run Rust code,
 the required Rust libraries have to be specified manually.</p>
 
 <pre><code>fn main() {
@@ -757,17 +762,17 @@ performed on the bitcode (compiled with at least <code>-O1</code>, or explicitly
 
 <h2 id="lli-command-options">LLI Command Options</h2>
 
-<p><code>-L &lt;path&gt;</code>/<code>--llvm.libraryPath=&lt;path&gt;</code>: A list of paths where GraalVM will
-search for library dependencies. Paths are delemited by <code>:</code>.</p>
+<p><code>-L &lt;path&gt;</code>/<code>--llvm.libraryPath=&lt;path&gt;</code>: a list of paths where GraalVM will
+search for library dependencies. Paths are delimited by <code>:</code>.</p>
 
-<p><code>--lib &lt;libs&gt;</code>/<code>--llvm.libraries=&lt;libs&gt;</code>: List of libraries to load. The list
+<p><code>--lib &lt;libs&gt;</code>/<code>--llvm.libraries=&lt;libs&gt;</code>: a list of libraries to load. The list
 can contain precompiled native libraries (<code>*.so</code>/<code>*.dylib</code>) and bitcode
 libraries (<code>*.bc</code>). Files with a relative path are looked up relative to
 <code>llvm.libraryPath</code>. Entries are delimited by <code>:</code>.</p>
 
-<p><code>--version</code>: print the version and exit</p>
+<p><code>--version</code> prints the version and exit.</p>
 
-<p><code>--show-version</code>: print the version and continue</p>
+<p><code>--version:graalvm</code> prints GraalVM version information and exit.</p>
 
 <h3 id="expert-and-diagnostic-options">Expert and Diagnostic Options</h3>
 

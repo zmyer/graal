@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/resources/styles/extra.css">
 
-  <link rel="canonical" href="http://localhost:4001/docs/reference-manual/aot-compilation/">
+  <link rel="canonical" href="https://www.graalvm.org/docs/reference-manual/aot-compilation/">
   <link rel="alternate" type="application/rss+xml" title="GraalVM" href="/feed.xml">
   <script src="/resources/lib/jquery/jquery-3.2.1.min.js"></script>
   <script src="/resources/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -545,13 +545,17 @@ $(document).ready(function(){
 
 <p><code>native-image --help</code> shows all available command line options</p>
 
+<p>For a more comprehensive list of options please check the <a href="https://github.com/oracle/graal/blob/master/substratevm/OPTIONS.md">documentation on Github</a>.</p>
+
 <h3 id="limitations-of-aot-compilation">Limitations of AOT Compilation</h3>
 
 <p>To achieve such aggressive ahead-of-time optimizations, we run an aggressive static analysis that requires a closed-world assumption.
 We need to know all classes and all bytecodes that are reachable at run time.
 Therefore, it is not possible to load new classes that have not been available during ahead-of-time-compilation.</p>
 
-<h3 id="operational-information-for-substratevm">Operational information for SubstrateVM</h3>
+<p>For a more detailed description of which features of Java are not supported by the native images or supported partially please refer to the <a href="https://github.com/oracle/graal/blob/master/substratevm/LIMITATIONS.md">documentation on the GitHub</a>. And if you’re interested in learning about the support for Java reflection, there’s a special document for <a href="https://github.com/oracle/graal/blob/master/substratevm/REFLECTION.md">Java reflection support</a>.</p>
+
+<h3 id="operational-information-for-native-images">Operational information for native images</h3>
 
 <p><em>When does it make sense to run native images instead of the JVM?</em></p>
 <ul>
