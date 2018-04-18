@@ -1,5 +1,5 @@
 
-## Graal.js Options
+## GraalVM JavaScript Options
 
 On the command line, `--js.<property>=<value>` sets options that tune language features and extensions.
 The following options are currently supported:

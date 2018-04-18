@@ -9,7 +9,7 @@
 
   <title>
     
-      Reference Manual for Graal.Python
+      Reference Manual for Python
     
   </title>
   <meta
@@ -534,20 +534,20 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h2 id="graalpython">Graal.Python</h2>
+                <h2 id="python">Python</h2>
 
-<p>GraalVM provides an early-stage experimental implementation of Python called
-<em>Graal.Python</em>. A primary goal is to support SciPy and its constituent
+<p>GraalVM provides an early-stage experimental implementation of Python.
+A primary goal is to support SciPy and its constituent
 libraries. At this point, the Python implementation is made available for 
 experimentation and curious end-users.</p>
 
-<h2 id="installing-graalpython">Installing Graal.Python</h2>
+<h2 id="installing-python">Installing Python</h2>
 
-<p>GraalPython can be installed to a GraalVM build with the gu command. See graalvm/bin/gu –help for more information.</p>
+<p>Python can be installed to a GraalVM build with the gu command. See graalvm/bin/gu –help for more information.</p>
 
 <h2 id="running-python">Running Python</h2>
 
-<p>Graal.Python targets Python 3.7 compatibility at the moment. While support for
+<p>Our implementation of Python targets Python 3.7 compatibility at the moment. While support for
 the Python language is still limited, you can run simple Python scripts or commands
 with the <code>graalpython</code> binary:</p>
 
@@ -556,8 +556,8 @@ with the <code>graalpython</code> binary:</p>
 
 <p>If no program file or command is given, you are dropped into a simple REPL.</p>
 
-<p>Graal.Python supports some of the same options as Python 3 and some additional
-options to control the underlying Graal.Python and the GraalVM tools and
+<p>GraalVM supports some of the same options as Python 3 and some additional
+options to control the underlying Python implementation and the GraalVM tools and
 execution engine. These can be viewed using the following command:</p>
 
 <pre><code class="language-shell">$ graalpython --help --help:tools --help:languages
@@ -566,8 +566,8 @@ execution engine. These can be viewed using the following command:</p>
 <h2 id="interoperability">Interoperability</h2>
 
 <p>GraalVM supports several other programming languages, including JavaScript, R,
-Ruby, and LLVM. Graal.Python provides an API to interact with other languages
-available on the GraalVM. In fact, Graal.Python uses this API internally to
+Ruby, and LLVM. GraalVM provides a Python API to interact with other languages
+available on the GraalVM. In fact, GraalVM uses this API internally to
 execute Python C extensions using the LLVM implementation in GraalVM.</p>
 
 <p>To run the following script, pass the <code>--jvm --polyglot</code> options to
@@ -597,7 +597,7 @@ print("Here is what we found: '%s'" % md[1])
 <pre><code class="language-shell">$ graalpython --jvm --polyglot polyglot_example.py
 </code></pre>
 
-<p>This example matches Python strings using the Graal.js regular expression object
+<p>This example matches Python strings using the JavaScript regular expression object
 and Python reads the captured group from the JavaScript result and prints: <code>Here
 is what we found: 'This string was matched by Graal.js'</code>.</p>
 
@@ -655,9 +655,9 @@ for more information about interoperability with other programming languages.</p
 
 <h2 id="tooling">Tooling</h2>
 
-<p>Although Graal.Python is far from complete and cannot run the standard Python
-debugger <code>pdb</code>, yet, the tools that GraalVM provides work on Graal.Python. To
-debug applications in Chrome browser, for example, you can run a script like so:</p>
+<p>Although GraalVM’s Python implementation is far from complete and cannot run the standard Python
+debugger <code>pdb</code>. But the tools that GraalVM itself provides do work.
+To debug applications in Chrome browser, for example, you can run a script like so:</p>
 
 <pre><code class="language-shell">$ graalpython --jvm --inspect [script-to-debug.py]
 Debugger listening on port 9229.
@@ -667,11 +667,11 @@ Please note: This Python implementation is in the very early stages, and can run
 </code></pre>
 
 <p>The <code>graalpython --jvm --help:tools</code> command will give you more information
-about tools currently supported on Graal.Python.</p>
+about tools currently supported on Python.</p>
 
 <h2 id="native-images-and-jvm-runtime">Native Images and JVM runtime</h2>
 
-<p>By default, Graal.Python runs from an ahead-of-time compiled binary, yielding
+<p>By default, GraalVM runs Python from an ahead-of-time compiled binary, yielding
 faster startup time and lower footprint. However, the ahead-of-time compiled
 binary only includes the Python and LLVM interpreters. To interoperate with
 other languages, we had to supply the <code>--jvm</code> argument above. This instructs the
@@ -682,21 +682,21 @@ longer startup time.</p>
 
 <p><em>Is GraalVM compatible with the Python language?</em></p>
 
-<p>Graal.Python is in the early stages of development. A primary goal is to support
+<p>GraalVM’s implementation of Python is in the early stages of development. A primary goal is to support
 SciPy and its constituent libraries, but we have a long way to go there. At this
 point, the Python implementation is made available for experimentation and
-curious end-users. Graal.Python currently aims to be compatible with Python 3.7,
+curious end-users. GraalVM currently aims to be compatible with Python 3.7,
 but it is a long way from there, and it is very likely that any Python program
 that requires any imports at all will hit something unsupported.</p>
 
 <p><em>Is there any progress in GraalVM and Python packages compatibility?</em></p>
 
-<p>It is too early to claim that there are any Python packages that Graal.Python is
+<p>It is too early to claim that there are any Python packages that GraalVM is
 compatible with.</p>
 
 <h2 id="python-command-options">Python Command Options</h2>
 
-<p>Graal.Python is run using <code>graalpython [option] ... (-c cmd | file) [arg] ...</code>
+<p>Python is run using <code>graalpython [option] ... (-c cmd | file) [arg] ...</code>
 and supports some of the same options as the standard Python interpreter:</p>
 <ul>
   <li><code>-c cmd</code>: program passed in as string (terminates option list)</li>
@@ -708,24 +708,24 @@ stdin does not appear to be a terminal; also PYTHONINSPECT=x</li>
   <li><code>arg ...</code>: Arguments passed to program in sys.argv[1:]</li>
 </ul>
 
-<p>Here are some Graal.Python specific options:</p>
+<p>Here are some GraalVM-specific options:</p>
 <ul>
   <li><code>--python.PythonInspectFlag</code>: This is equivalent to Python’s <code>-i</code> option
 (see above).</li>
   <li><code>-CC</code>: Run <code>clang</code> and then <code>opt</code> with the arguments required to build a
-Graal.Python and Sulong compatible LLVM bitcode file.</li>
+GraalVM and Sulong compatible LLVM bitcode file.</li>
   <li><code>-LD</code>: Run <code>llvm-link</code> with the appropriate options to bind multiple LLVM
-bitcode files into one that can be used on Graal.Python with Sulong.</li>
+bitcode files into one that can be used on GraalVM with Sulong.</li>
 </ul>
 
 <p>The following options are mostly useful for developers of the language or to
 provide bug reports:</p>
 <ul>
-  <li><code>--python.CoreHome=&lt;String&gt;</code>: The path to the core library of Graal.Python
+  <li><code>--python.CoreHome=&lt;String&gt;</code>: The path to the core library of Python
 that is written in Python. This usually resides in a folder
 <code>lib-graalpython</code> in the GraalVM distribution.</li>
   <li><code>--python.StdLibHome=&lt;String&gt;</code>: The path to the standard library that
-Graal.Python will use. Usually this is in a under <code>lib-python/3</code> in the
+Python will use. Usually this is in a under <code>lib-python/3</code> in the
 GraalVM distribution, but any Python 3 standard libray location may work.</li>
   <li><code>--python.WithJavaStacktrace</code>: Prints a Java-level stack trace besides the
 normal Python stack when errors occur</li>
@@ -737,7 +737,7 @@ allow sharing parts of the core library across multiple Python contexts,
 which will improve startup time of subsequent contexts.</li>
 </ul>
 
-<p>There are a few other debugging options used by the developers of Graal.Python,
+<p>There are a few other debugging options used by the developers of GraalVM,
 but these change frequently and may not do anything at any given point in time,
 so any observed effects of them should not be relied upon.</p>
 

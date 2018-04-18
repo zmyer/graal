@@ -580,9 +580,9 @@ which uses Java/JavaScript polyglot capabilities.</p>
 <pre><code>$GRAALVM_HOME/bin/javac -cp $GRAALVM_HOME/jre/lib/boot/graal-sdk.jar ExtListDir.java
 </code></pre>
 
-<p>Building the native image command is similar to the one above, but, since we want to use JavaScript, we need to inform the <code>native-image</code> utility about it passing the <code>--Language:js</code> option.
+<p>Building the native image command is similar to the one above, but, since we want to use JavaScript, we need to inform the <code>native-image</code> utility about it passing the <code>--language:js</code> option.
 Note that it takes a bit more time because it needs to include the JavaScript support.</p>
-<pre><code>$GRAALVM_HOME/bin/native-image --Language:js ExtListDir
+<pre><code>$GRAALVM_HOME/bin/native-image --language:js ExtListDir
 </code></pre>
 
 <p>The execution is the same as in the previous example:</p>

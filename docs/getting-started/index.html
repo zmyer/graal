@@ -529,14 +529,14 @@ Hello World!
 
 <h2 id="running-javascript">Running JavaScript</h2>
 
-<p>Graal.js can execute plain JavaScript code, both in the REPL mode and executing the files.</p>
+<p>GraalVM can execute plain JavaScript code, both in the REPL mode and executing the files.</p>
 
 <pre><code class="language-shell">$ js
 &gt; 1 + 2
 3
 </code></pre>
 
-<p>GraalVM also support running Node.js applications. More than 45.000 npm modules are tested and are fully compatible with Graal.js, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
+<p>GraalVM also support running Node.js applications. More than 45.000 npm modules are tested and are fully compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
 To install a Node.js module, use the <code>npm</code> executable in <code>/bin</code> folder of the
 GraalVM package. The <code>npm</code> command is equivalent to the default Node.js
 command and supports all Node.js APIs.</p>
@@ -624,12 +624,12 @@ follows:</p>
 
 </div>
 
-<p>3. Execute it on Graal.js using the <code>node</code> command as follows:</p>
+<p>3. Execute it on GraalVM using the <code>node</code> command as follows:</p>
 
 <pre><code>node app.js
 </code></pre>
 
-<p>More information on compatibility with the Node.js and configuring Graal.js read the <a href="/docs/reference-manual/languages/js/">reference manual on Graal.js</a>.</p>
+<p>More information on compatibility with the Node.js and configuring GraalVM read the <a href="/docs/reference-manual/languages/js/">reference manual on JavaScript in GraalVM</a>.</p>
 
 <h2 id="running-the-llvm-interpreter">Running the LLVM interpreter</h2>
 
@@ -728,7 +728,7 @@ R version 3.4.0 (FastR)
 &gt;&gt;&gt; exit()
 </code></pre>
 
-<p>More examples and information on Graal Python implementation can be found in the <a href="/docs/reference-manual/languages/python/">reference manual for Python</a>.</p>
+<p>More examples and information on Graal’s implementation of Python can be found in the <a href="/docs/reference-manual/languages/python/">reference manual for Python</a>.</p>
 
 <h2 id="combine-languages">Combine Languages</h2>
 
@@ -736,7 +736,7 @@ R version 3.4.0 (FastR)
 to interoperate with other programming languages through the Graal SDK.</p>
 
 <p>For example, running <code>js --jvm --polyglot example.js</code> executes <code>example.js</code> in a polyglot
-context. If the program calls any code in other supported languages, Graal.js executes that code in
+context. If the program calls any code in other supported languages, GraalVM executes that code in
 the same runtime as the <code>example.js</code> application. For more information on polyglot applications see the <a href="/docs/reference-manual/polyglot/">polyglot documentation</a>.</p>
 
 <h2 id="native-images">Native Images</h2>
@@ -766,7 +766,7 @@ Hello, World!
 </code></pre>
 <h4 id="polyglot-capabilities-of-native-images">Polyglot Capabilities of Native Images</h4>
 <p>The <code>native-image</code> tool also makes it easy to use polyglot capabilities.
-Take this example of a JSON pretty-printer using the Graal.js implementation of
+Take this example of a JSON pretty-printer using the GraalVM implementation of
 JavaScript:</p>
 <pre><code>// PrettyPrintJSON.java
 import java.io.*;
@@ -788,7 +788,7 @@ public class PrettyPrintJSON {
 </code></pre>
 
 <p>Again, let us build a class file, followed by the native image. This time, we
-have to provide the <code>--language:js</code> argument to make sure Graal.js is available as a
+have to provide the <code>--language:js</code> argument to make sure JavaScript is available as a
 language for the image.</p>
 <pre><code>$ javac PrettyPrintJSON.java
 $ native-image --language:js PrettyPrintJSON

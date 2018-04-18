@@ -469,7 +469,7 @@ $(document).ready(function(){
 Alternatively you can have a look at the reference documentation in <a href="http://www.graalvm.org/sdk/javadoc/">JavaDoc</a>:</p>
 <ul>
   <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/package-summary.html">Polyglot Package</a> allows to configure and run polyglot applications.</li>
-  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/package-summary.html">Proxy Package</a> allows to mimic Graal language objects using proxies.</li>
+  <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/proxy/package-summary.html">Proxy Package</a> allows to mimic Graal language objects using proxies.</li>
   <li>The <a href="http://www.graalvm.org/sdk/javadoc/org/graalvm/polyglot/io/package-summary.html">IO Package</a> allows to customize the file system access of languages.</li>
 </ul>
 
@@ -482,22 +482,21 @@ For that purpose we have developed <em>Truffle</em> a language and tool developm
 
 <h4 id="implement-your-own-language">Implement your own Language</h4>
 
-<p>The Truffle framework allows to run programming languages efficiently on GraalVM. 
+<p>The Truffle framework allows to run programming languages efficiently on GraalVM.
 It simplifies language implementation by automatically deriving high-performance code from interpreters.
 Find details about the approach in this <a href="http://chrisseaton.com/rubytruffle/pldi17-truffle/pldi17-truffle.pdf">research paper</a>.</p>
 
-<p>Implementing your own language using GraalVM will not only give you high performance. 
+<p>Implementing your own language using GraalVM will not only give you high performance.
 More importantly, it allows your language to connect with the rich tooling provided by the GraalVM ecosystem.</p>
 
 <p>To get started please see our <a href="/docs/graalvm-as-a-platform/implement-language/">Language Implementation</a> section.</p>
 
 <h4 id="implement-your-own-tools">Implement your own Tools</h4>
 
-<p>GraalVM provides a framework for creating language-agnostic tools like debuggers, profilers, or other instrumentations. 
+<p>GraalVM provides a framework for creating language-agnostic tools like debuggers, profilers, or other instrumentations.
 In general, GraalVM provides a standardized way to express and run program code enabling cross-language research and the development of tools that are developed once and then can be applied to any language.</p>
 
 <p>To get started please see our <a href="/docs/graalvm-as-a-platform/implement-instrument/">Instrument Implementation</a> section.</p>
-
 
               </div>
     

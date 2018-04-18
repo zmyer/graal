@@ -8,11 +8,11 @@ The format is: `--<languageID>.<property>=<value>`.
 For example the `R` launcher also supports the `--js.atomics=true` JavaScript option.
 
 Allowed values for the `languageID` are:
-- `js` options for Graal.js.
-- `python` options for Graal.Python
-- `r` options for FastR
-- `ruby` options for TruffleRuby.
-- `llvm` options for Sulong.
+- `js` options for JavaScript.
+- `python` options for Python.
+- `r` options for R.
+- `ruby` options for Ruby.
+- `llvm` options for LLVM.
 
 Use `--help:languages` to find out which options are available.
 

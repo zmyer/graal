@@ -1,14 +1,14 @@
-## Graal.js Operations Manual
+## GraalVM JavaScript Operations Manual
 
-_What's the difference between running Graal.js from the native image vs. on the JVM?_
+_What's the difference between running GraalVM's JavaScript from the native image vs. on the JVM?_
 
-In essence, Graal.js is a plain Java application.
+In essence, the JavaScript engine of GraalVM is a plain Java application.
 Running it on any JVM (JDK 8 or higher) is possible; for best performance, it should be the GraalVM or a compatible JVMCI-enabled JDK using the Graal compiler.
-This mode gives Graal.js full access to Java at runtime, but also requires the JVM to first (just-in-time) compile Graal.js when executed, just like any other Java application.
+This mode gives the JavaScript engine full access to Java at runtime, but also requires the JVM to first (just-in-time) compile the JavaScript engine when executed, just like any other Java application.
 
-Running from a native image means that Graal.js, including all its dependencies from, e.g., the JDK, are pre-compiled into a native binary.
-This will tremendously speed up the startup of any JavaScript application, as Graal.js can immediately start to compile JavaScript code, without itself requiring to be compiled first.
-This mode, however, will only give Graal.js access to Java classes known at the time of image creation.
+Running from a native image means that the JavaScript engine, including all its dependencies from, e.g., the JDK, are pre-compiled into a native binary.
+This will tremendously speed up the startup of any JavaScript application, as GraalVM can immediately start to compile JavaScript code, without itself requiring to be compiled first.
+This mode, however, will only give GraalVM access to Java classes known at the time of image creation.
 Most significantly, this means that the JavaScript-to-Java interoperability features are not available in this mode, as they would require dynamic class loading and execution of arbitrary Java code at runtime.
 
 _How to achieve the best peak performance?_

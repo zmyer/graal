@@ -537,6 +537,8 @@ $(document).ready(function(){
                 <h3 id="ahead-of-time-compilation">Ahead-of-time Compilation</h3>
 <p>GraalVM allows you to compile your programs ahead of time into a native executable. The resulting program does not run on the Java HotSpot VM, but uses necessary components like memory management, thread scheduling from a different implementation of a virtual machine, called Substrate VM. Substrate VM is written in Java and compiled into the native executable. The resulting program has faster startup time and lower runtime memory overhead compared to a Java VM.</p>
 
+<p>For example you can take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead of time</a> samples.</p>
+
 <h3 id="list-of-command-line-options-for-graalvm-native-executables">List of command line options for GraalVM native executables</h3>
 
 <p>The <code>native-image</code> command line needs to provide the class path for all classes using the familiar option from the <code>java</code> launcher: <code>-cp</code> is followed by a list of directories or .jar files, separated by <code>:</code>. The name of the class containing the <code>main</code> method is the last argument; or you can use <code>-jar</code> and provide a .jar file that specifies the main method in its manifest.</p>
