@@ -94,6 +94,9 @@
 <loc>https://www.graalvm.org/docs/examples/native-list-dir/</loc>
 </url>
 <url>
+<loc>https://www.graalvm.org/docs/reference-manual/native_heapdump/</loc>
+</url>
+<url>
 <loc>https://www.graalvm.org/docs/examples/polyglot-javascript-java-r/</loc>
 </url>
 <url>
@@ -110,6 +113,6 @@
 </url>
 <url>
 <loc>https://www.graalvm.org/uploads/graalvm-language-level-virtualization-oracle-tech-papers.pdf</loc>
-<lastmod>2018-04-17T10:04:09+03:00</lastmod>
+<lastmod>2018-04-19T14:07:54+03:00</lastmod>
 </url>
 </urlset>

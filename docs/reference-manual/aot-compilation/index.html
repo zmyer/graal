@@ -9,7 +9,7 @@
 
   <title>
     
-      Native images
+      Native Images
     
   </title>
   <meta
@@ -457,7 +457,7 @@ $(document).ready(function(){
           
             
             <a href="/docs/reference-manual/aot-compilation/">
-              Native images
+              Native Images
             </a>
           </li>
 
@@ -534,18 +534,163 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h3 id="ahead-of-time-compilation">Ahead-of-time Compilation</h3>
-<p>GraalVM allows you to compile your programs ahead of time into a native executable. The resulting program does not run on the Java HotSpot VM, but uses necessary components like memory management, thread scheduling from a different implementation of a virtual machine, called Substrate VM. Substrate VM is written in Java and compiled into the native executable. The resulting program has faster startup time and lower runtime memory overhead compared to a Java VM.</p>
+                <h2 id="ahead-of-time-compilation">Ahead-of-time Compilation</h2>
 
-<p>For example you can take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead of time</a> samples.</p>
+<p>GraalVM allows you to compile your programs ahead-of-time into a native executable. The resulting program does not run on the Java HotSpot VM, but uses necessary components like memory management, thread scheduling from a different implementation of a virtual machine, called Substrate VM. Substrate VM is written in Java and compiled into the native executable. The resulting program has faster startup time and lower runtime memory overhead compared to a Java VM.</p>
 
-<h3 id="list-of-command-line-options-for-graalvm-native-executables">List of command line options for GraalVM native executables</h3>
+<p>For example you can take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead-of-time</a> samples.</p>
+
+<h2 id="image-generation-options">Image Generation Options</h2>
 
 <p>The <code>native-image</code> command line needs to provide the class path for all classes using the familiar option from the <code>java</code> launcher: <code>-cp</code> is followed by a list of directories or .jar files, separated by <code>:</code>. The name of the class containing the <code>main</code> method is the last argument; or you can use <code>-jar</code> and provide a .jar file that specifies the main method in its manifest.</p>
 
-<p><code>native-image --help</code> shows all available command line options</p>
+<p>Go over the <code>native-image</code> command line options that may be useful:</p>
+
+<ul>
+  <li>
+    <p><code>native-image [options] class</code> builds an executable file for a class in the current working directory. Invoking it executes the native-compiled code of that class.</p>
+  </li>
+  <li>
+    <p><code>native-image [options] -jar jarfile</code> builds an image for a jar file.</p>
+  </li>
+</ul>
+
+<p>You may provide additional options to native-image building:</p>
+
+<ul>
+  <li>
+    <p><code>-cp</code> and <code>--class-path &lt;class search path of directories and zip/jar files&gt;</code>
+help to search for class files through separated list of directories, JAR archives, and ZIP archives;</p>
+  </li>
+  <li>
+    <p><code>--shared</code>  builds shared library;</p>
+  </li>
+  <li>
+    <p><code>-D&lt;name&gt;=&lt;value&gt;</code>  sets a system propertys</p>
+  </li>
+  <li>
+    <p><code>-J&lt;flag&gt; passes &lt;flag&gt;</code> directly to the JVM running the image generator;</p>
+  </li>
+  <li>
+    <p><code>-g</code> enables debug info generation;</p>
+  </li>
+  <li>
+    <p><code>-O&lt;level&gt;</code> 0 - no optimizations, 1 - basic optimizations (default);</p>
+  </li>
+  <li>
+    <p><code>-ea</code>  enables assertions in the generated image;</p>
+  </li>
+  <li>
+    <p><code>--verbose</code> enables verbose output;</p>
+  </li>
+  <li>
+    <p><code>--version</code> prints product version and exits;</p>
+  </li>
+  <li>
+    <p><code>--help</code> prints the help message;</p>
+  </li>
+  <li>
+    <p><code>--help-extra</code> prints the help message on non-standard options;</p>
+  </li>
+  <li>
+    <p><code>--report-unsupported-elements-at-runtime</code> reports usage of unsupported methods
+and fields at run time when they are accessed the first time, instead of as an error during image building.</p>
+  </li>
+</ul>
+
+<h3 id="macro-options">Macro Options</h3>
+
+<p>Macro-options are mainly helpful for polyglot capabilities of native images:</p>
+
+<ul>
+  <li>
+    <p><code>--language:python</code> to make sure Python is available as a language for the image;</p>
+  </li>
+  <li>
+    <p><code>--language:llvm</code> to make sure LLVM bitcode is available for the image;</p>
+  </li>
+  <li>
+    <p><code>--language:js</code> to make sure JavaScript is available as a language for the image;</p>
+  </li>
+  <li>
+    <p><code>--language:ruby</code> to make sure Ruby is available as a language for the image;</p>
+  </li>
+  <li>
+    <p><code>--tool:chromeinspector</code>  adds truffle debugging support to a truffle-language image;</p>
+  </li>
+  <li>
+    <p><code>--tool:profiler</code> adds truffle profiling support to a truffle-language image.</p>
+  </li>
+</ul>
+
+<h3 id="non-standard-options">Non-standard Options</h3>
+
+<p>Get acquainted with the non-standard native-image building options, that are subject to change without notice:</p>
+
+<ul>
+  <li>
+    <p><code>--no-server</code> tells to not use image-build server;</p>
+  </li>
+  <li>
+    <p><code>--server-list</code> lists current image-build servers;</p>
+  </li>
+  <li>
+    <p><code>--server-list-details</code> lists current image-build servers with more details;</p>
+  </li>
+  <li>
+    <p><code>--server-cleanup</code> removes stale image-build servers entries;</p>
+  </li>
+  <li>
+    <p><code>--server-shutdown</code> shutdowns image-build servers under current session ID;</p>
+  </li>
+  <li>
+    <p><code>--server-shutdown-all</code> shutdown all image-build servers;</p>
+  </li>
+  <li>
+    <p><code>--server-session=&lt;custom-session-name&gt;</code> uses custom session name instead
+   of system provided session ID of the calling process;</p>
+  </li>
+  <li>
+    <p><code>--debug-attach[=&lt;port&gt;]</code> attaches to debugger during image building (default  port is 8000);</p>
+  </li>
+  <li>
+    <p><code>--dry-run</code> outputs the command line that would be used for image building;</p>
+  </li>
+  <li>
+    <p><code>--expert-options</code> lists image build options for experts;</p>
+  </li>
+  <li>
+    <p><code>--expert-options-all</code>  lists all image build options for experts (to be used at your own risk);</p>
+  </li>
+  <li>
+    <p><code>--configurations-path &lt;search path of option-configuration directories&gt;</code> a separated list of directories to be treated as option-configuration directories.</p>
+  </li>
+</ul>
+
+<p>If the environment variable <code>NATIVE_IMAGE_CONFIG_FILE</code> is set to a Java properties file,
+native-image will use the defaults defined in there on each invocation.</p>
+
+<p>Here is an example of configuration file (saved as <code>~/.native-image/default.properties</code>) :</p>
+
+<pre><code class="language-shell">NativeImageArgs = --no-server \
+                  --configurations-path /home/user/custom-image-configs
+</code></pre>
+
+<p>If the user has this configuration file and export <code>NATIVE_IMAGE_CONFIG_FILE=$HOME/.native-image/default.properties</code> in <code>~/.bash_profile</code>,
+every time the native-image gets used, it will implicitly use the arguments
+specified as <code>NativeImageArgs</code>, plus the arguments specified on command line.</p>
 
 <p>For a more comprehensive list of options please check the <a href="https://github.com/oracle/graal/blob/master/substratevm/OPTIONS.md">documentation on Github</a>.</p>
+
+<h2 id="generating-heap-dumps">Generating Heap Dumps</h2>
+
+<p>GraalVM also supports monitoring and generating heap dumps of the native image processes using the
+<a href="/docs/reference-manual/tools/#monitoring-agent">Monitoring Agent</a> tool.
+This functionality is available in the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Enterprise edition of GraalVM</a>.
+It is <strong>not</strong> available in the Community edition of GraalVM.</p>
+
+<p>To find out more about generating heap dumps of the native image processes,
+refer to the <a href="/docs/reference-manual/native_heapdump/">step-by-step documentation</a>.</p>
 
 <h3 id="limitations-of-aot-compilation">Limitations of AOT Compilation</h3>
 
