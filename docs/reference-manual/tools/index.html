@@ -538,24 +538,615 @@ $(document).ready(function(){
 <p>GraalVM provides a set of tools for developers, integrators, and IT
 administrators to debug and monitor GraalVM and deployed applications.</p>
 
-<h3 id="component-updater">Component Updater</h3>
+<h2 id="component-updater">Component Updater</h2>
 <p>GraalVM allows to install additional components (languages). Use the
 <a href="/docs/reference-manual/graal-updater/">Graal updater</a> utility to manage the installation.</p>
 
-<h3 id="debugger">Debugger</h3>
-<p>GraalVM implements the <a href="/docs/reference-manual/tools/chrome-inspector/">Chrome Inspector</a> protocol to debug Graal guest languages.</p>
+<h2 id="debugger">Debugger</h2>
+<p>GraalVM supports debugging of guest language applications and provides a
+built-in implementation of
+<a href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a>.
+This allows you to attach compatible debuggers such as
+<a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome Developer Tools</a>
+to GraalVM.</p>
 
-<h3 id="profiler">Profiler</h3>
-<p>GraalVM provides <a href="/docs/reference-manual/tools/profiling/">Profiling</a> command line tools that
-let you optimize your code through analysis of CPU and memory usage.</p>
+<p>To debug guest language applications, pass the <code>--inspect</code> option to the
+command-line launcher, as in the following
+example with a node.js hello world program:</p>
 
-<h3 id="monitoring-agent">Monitoring Agent</h3>
-<p>GraalVM gives you a dedicated <a href="/docs/reference-manual/tools/monitoring/">Agent application</a> that
-monitors the performance of running applications.</p>
+<pre><code>var http = require('http');
 
-<h3 id="heap-viewer">Heap Viewer</h3>
-<p>GraalVM comes with <a href="/docs/reference-manual/tools/heap-viewer/">Graal VisualVM</a> which includes
-special heap analysis features for the supported guest languages.</p>
+var server = http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.end("Hello World!\n");
+});
+
+server.listen(8000);
+
+console.log("Server running at http://localhost:8000/");
+</code></pre>
+
+<ol>
+  <li>Save this program as <code>HelloWorld.js</code> and then run:</li>
+</ol>
+
+<pre><code>$ node --inspect --jvm HelloWorld.js
+Debugger listening on port 9229.
+To start debugging, open the following URL in Chrome:
+    chrome-devtools://devtools/bundled/inspector.html?experiments=true&amp;v8only=true&amp;ws=127.0.1.1:9229/76fcb6dd-35267eb09c3
+Server running at http://localhost:8000/
+</code></pre>
+
+<ol>
+  <li>
+    <p>Navigate to <code>http://localhost:8000/</code> in your browser to launch the node application.</p>
+  </li>
+  <li>
+    <p>Open the <code>chrome-devtools:...</code> link in a separate Chrome browser tab.</p>
+  </li>
+  <li>
+    <p>Navigate to the <code>HelloWorld.js</code> file and submit a breakpoint at line 4.</p>
+  </li>
+  <li>
+    <p>Refresh the node.js app and you can see the breakpoint hit.</p>
+  </li>
+</ol>
+
+<p>You can inspect stack, variables, evaluate variables and selected expressions
+in a tooltip, and so on. By hovering a mouse over the <code>response</code> variable, for
+instance, you can inspect its properties as can be seen in the screenshot below:</p>
+
+<p><img src="/docs/img/ChromeInspector.png" alt="" title="Chrome DevTools debugging node in GraalVM" /></p>
+
+<p>Consult the
+<a href="https://developers.google.com/web/tools/chrome-devtools/javascript/reference">JavaScript Debugging Reference</a>
+for details on Chrome DevTools debugging features.</p>
+
+<p>This debugging process applies to all guest languages that GraalVM supports.
+Other languages such as R and Ruby can be debugged as easily as JavaScript,
+including stepping through language boundaries during guest language
+<a href="/docs/reference-manual/polyglot/">interoperability</a>.</p>
+
+<h3 id="inspect-options">Inspect Options</h3>
+
+<h3 id="node-launcher">Node Launcher</h3>
+<p>The node.js implementation that GraalVM provides accepts the same options as
+<a href="https://nodejs.org/">node.js built on V8 JavaScript engine</a>, such as:</p>
+
+<pre><code>--inspect[=&lt;port number&gt;]
+</code></pre>
+
+<p>Enables the inspector agent and listens on port 9229 by default. To listen on a
+different port, specify the optional port number.</p>
+
+<pre><code>--inspect-brk[=&lt;port number&gt;]
+</code></pre>
+
+<p>Enables the inspector agent and suspends on the first line of the application
+code. Listens on port 9229 by default, to listen on a different port, specify
+the optional port number. This applies to <code>node</code> launcher only.</p>
+
+<h3 id="other-language-launchers">Other Language Launchers</h3>
+
+<p>Other guest language launchers such as <code>js</code>, <code>python</code>, <code>Rscript</code> and <code>ruby</code>
+accept the <code>--inspect[=&lt;port number&gt;]</code> option, but suspend on the first line of
+the application code by default.</p>
+
+<pre><code>--inspect.Suspend=(true|false)
+</code></pre>
+
+<p>Disables the initial suspension if you specify <code>--inspect.Suspend=false</code>.</p>
+
+<h3 id="additional-common-inspect-options">Additional Common Inspect Options</h3>
+<p>All launchers accept also following additional options:</p>
+
+<pre><code>--inspect.Path=&lt;path&gt;
+</code></pre>
+
+<p>allows to specify a fixed path that generates a predictable connection URL. By
+default, the path is randomly generated.</p>
+
+<pre><code>--inspect.Remote=(true|false)
+</code></pre>
+
+<p>when true, the local host address is used instead of the loopback address. That
+allows remote connection of the inspector client. By default, the loopback
+address is used.</p>
+
+<pre><code>--inspect.WaitAttached=(true|false)
+</code></pre>
+
+<p>when true, no guest language source code is executed until the inspector client
+is attached. Unlike <code>--inspect.Suspend=true</code>, the execution is resumed right
+after the client is attached. That assures that no execution is missed by the
+inspector client. It is <code>false</code> by default.</p>
+
+<h3 id="programmatic-launch-of-inspector-backend">Programmatic Launch of Inspector Backend</h3>
+
+<p>Embedders can provide the appropriate inspector options to the <code>Engine/Context</code>
+to launch the inspector backend. Following code snippet provides an example of
+a possible launch:</p>
+
+<pre><code>String port = "4242";
+String path = "session-identifier";
+String remoteConnect = "true";
+Context context = Context.newBuilder("js")
+            .option("inspect", port)
+            .option("inspect.Path", path)
+            .option("inspect.Remote", remoteConnect)
+            .build();
+String hostAdress = "localhost";
+String url = String.format(
+            "chrome-devtools://devtools/bundled/inspector.html?ws=%s:%s/%s",
+            hostAdress, port, path);
+// Chrome Inspector client can be attached by opening the above url in Chrome
+</code></pre>
+
+<h2 id="profiler">Profiler</h2>
+<p>GraalVM provides <strong>Profiling command line tools</strong> that let you optimize your code
+through analysis of CPU and memory usage.</p>
+
+<p>Most applications spend 80 percent of their runtime in 20 percent of the code.
+For this reason, to optimize the code, it is essential to know where the
+application spends its time. GraalVM provides simple command line tools for
+runtime and memory profiling to help you analyze and optimize your code.</p>
+
+<p>In this section, we use an example application to demonstrate the profiling
+capabilities that GraalVM offers. This example application uses a basic prime
+number calculator based on the ancient <a href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes">Sieve of Eratosthenes</a>
+algorithm.</p>
+
+<ol>
+  <li>
+    <p>Copy the following code into a new file named <code>primes.js</code>:</p>
+
+    <pre><code class="language-javascript"> class AcceptFilter {
+     accept(n) {
+         return true
+     }
+ }
+
+ class DivisibleByFilter {
+     constructor(number, next) {
+         this.number = number;
+         this.next = next;
+     }
+
+     accept(n) {
+         var filter = this;
+         while (filter != null) {
+             if (n % filter.number === 0) {
+                 return false;
+             }
+             filter = filter.next;
+         }
+         return true;
+     }
+ }
+
+ class Primes {
+     constructor() {
+         this.number = 2;
+         this.filter = new AcceptFilter();
+     }
+
+     next() {
+         while (!this.filter.accept(this.number)) {
+             this.number++;
+         }
+         this.filter = new DivisibleByFilter(this.number, this.filter);
+         return this.number;
+     }
+ }
+
+ var primes = new Primes();
+ var primesArray = [];
+ for (let i = 0; i &lt; 5000; i++) {
+     primesArray.push(primes.next());
+ }
+ console.log(`Computed ${primesArray.length} prime numbers. ` +
+             `The last 5 are ${primesArray.slice(-5)}.`);
+</code></pre>
+  </li>
+  <li>
+    <p>Run <code>js primes.js</code>.</p>
+
+    <p>The example application should print output as follows:</p>
+    <pre><code> $&gt; js primes.js
+ Computed 5000 prime numbers. The last 5 are 48563,48571,48589,48593,48611.
+
+</code></pre>
+
+    <p>This code takes a moment to compute so let’s see where all the time is spent.</p>
+  </li>
+  <li>
+    <p>Run <code>js primes.js --cpusampler</code> to enable CPU sampling.</p>
+
+    <p>The CPU sampler tool should print output for the example application as
+ follows:</p>
+
+    <pre><code> $ ./js primes.js --cpusampler
+ Computed 5000 prime numbers. The last 5 are 48563,48571,48589,48593,48611.
+ ---------------------------------------------------------------------------------------------------
+ Sampling Histogram. Recorded 1184 samples with period 1ms
+   Self Time: Time spent on the top of the stack.
+   Total Time: Time the location spent on the stack.
+   Opt %: Percent of time spent in compiled and therfore non-interpreted code.
+ ---------------------------------------------------------------------------------------------------
+  Name        |      Total Time     |  Opt % ||       Self Time     |  Opt % | Location
+ ---------------------------------------------------------------------------------------------------
+  next        |       1216ms  98.5% |  87.9% ||       1063ms  85.9% |  99.0% | primes.js~31-37:564-770
+  accept      |        159ms  11.2% |  22.7% ||        155ms  12.5% |  14.8% | primes.js~13-22:202-439
+  :program    |       1233ms 100.0% |   0.0% ||         18ms   1.5% |   0.0% | primes.js~1-47:0-1024
+  constructor |          1ms   0.1% |   0.0% ||          1ms   0.1% |   0.0% | primes.js~7-23:72-442
+ ---------------------------------------------------------------------------------------------------
+
+</code></pre>
+    <p>The sampler prints an execution time histogram for each JavaScript function.
+ By default, CPU sampling takes a sample every single millisecond. From the
+ result we can see that roughly 96 percent of the time is spent
+ in the <code>DivisibleByFilter.accept</code> function.</p>
+
+    <pre><code class="language-javascript"> accept(n) {
+     var filter = this;
+     while (filter != null) {
+         if (n % filter.number === 0) {
+             return false;
+         }
+         filter = filter.next;
+     }
+     return true;
+ }
+
+</code></pre>
+
+    <p>Let’s find out more about this function by filtering the samples and
+ include statements in the profile in addition to methods.</p>
+  </li>
+  <li>
+    <p>Run <code>js primes.js --cpusampler --cpusampler.Mode=statements --cpusampler.FilterRootName=*accept</code>
+to collect statement samples for all functions that end with <code>accept</code>.</p>
+
+    <pre><code> $ js primes.js --cpusampler --cpusampler.Mode=statements --cpusampler.FilterRootName=*accept
+ Computed 5000 prime numbers. The last 5 are 48563,48571,48589,48593,48611.
+ ----------------------------------------------------------------------------------------------------
+ Sampling Histogram. Recorded 1567 samples with period 1ms
+   Self Time: Time spent on the top of the stack.
+   Total Time: Time the location spent on the stack.
+   Opt %: Percent of time spent in compiled and therfore non-interpreted code.
+ ----------------------------------------------------------------------------------------------------
+  Name         |      Total Time     |  Opt % ||       Self Time     |  Opt % | Location
+ ----------------------------------------------------------------------------------------------------
+  accept~16-18 |        436ms  27.8% |  94.3% ||        435ms  27.8% |  94.5% | primes.js~16-18:275-348
+  accept~15    |        432ms  27.6% |  97.0% ||        432ms  27.6% |  97.0% | primes.js~15:245-258
+  accept~19    |        355ms  22.7% |  95.5% ||        355ms  22.7% |  95.5% | primes.js~19:362-381
+  accept~17    |          1ms   0.1% |   0.0% ||          1ms   0.1% |   0.0% | primes.js~17:322-334
+ ----------------------------------------------------------------------------------------------------
+
+</code></pre>
+    <p>Roughly 30 percent of the time is spent in this if condition:</p>
+    <pre><code class="language-javascript"> if (n % filter.number === 0) {
+     return false;
+ }
+
+</code></pre>
+    <p>The if condition contains an expensive modulo operation, which might
+ explain the runtime of the statement.</p>
+
+    <p>Now let’s use the CPU tracer tool to collect execution counts of each
+ statement.</p>
+  </li>
+  <li>
+    <p>Run <code>js primes.js --cputracer --cputracer.TraceStatements --cputracer.FilterRootName=*accept</code>
+to collect execution counts for all statements in methods ending with <code>accept</code>.</p>
+
+    <pre><code> $ js primes.js --cputracer --cputracer.TraceStatements --cputracer.FilterRootName=*accept
+ Computed 5000 prime numbers. The last 5 are 48563,48571,48589,48593,48611.
+ -----------------------------------------------------------------------------------------
+ Tracing Histogram. Counted a total of 351278226 element executions.
+   Total Count: Number of times the element was executed and percentage of total executions.
+   Interpreted Count: Number of times the element was interpreted and percentage of total executions of this element.
+   Compiled Count: Number of times the compiled element was executed and percentage of total executions of this element.
+ -----------------------------------------------------------------------------------------
+  Name     |          Total Count |    Interpreted Count |       Compiled Count | Location
+ -----------------------------------------------------------------------------------------
+  accept   |     117058669  33.3% |         63575   0.1% |     116995094  99.9% | primes.js~15:245-258
+  accept   |     117053670  33.3% |         63422   0.1% |     116990248  99.9% | primes.js~16-18:275-348
+  accept   |     117005061  33.3% |         61718   0.1% |     116943343  99.9% | primes.js~19:362-381
+  accept   |         53608   0.0% |          1857   3.5% |         51751  96.5% | primes.js~14:215-227
+  accept   |         53608   0.0% |          1857   3.5% |         51751  96.5% | primes.js~13-22:191-419
+  accept   |         48609   0.0% |          1704   3.5% |         46905  96.5% | primes.js~17:322-334
+  accept   |          4999   0.0% |           153   3.1% |          4846  96.9% | primes.js~21:409-412
+  accept   |             1   0.0% |             1 100.0% |             0   0.0% | primes.js~2-4:25-61
+  accept   |             1   0.0% |             1 100.0% |             0   0.0% | primes.js~3:52-55
+ -----------------------------------------------------------------------------------------
+
+</code></pre>
+    <p>Now the output shows execution counters for each statement, instead of timing
+ information. Tracing histograms often provides insights into the behavior
+ of the algorithm that needs optimization.</p>
+
+    <p>Lastly, let’s look at the memory tracer tool, for which GraalVM  currently
+ provides experimental support, for capturing allocations.</p>
+  </li>
+  <li>
+    <p>Run <code>js primes.js --memtracer</code> to display source code locations and
+counts of reported allocations.</p>
+
+    <pre><code> $ js primes.js --memtracer
+ Computed 5000 prime numbers. The last 5 are 48563,48571,48589,48593,48611.
+ ------------------------------------------------------------
+  Location Histogram with Allocation Counts. Recorded a total of 5013 allocations.
+    Total Count: Number of allocations during the execution of this element.
+    Self Count: Number of allocations in this element alone (excluding sub calls).
+ ------------------------------------------------------------
+  Name        |      Self Count |     Total Count |  Location
+ ------------------------------------------------------------
+  next        |     5000  99.7% |     5000  99.7% | primes.js~31-37:537-737
+  :program    |       11   0.2% |     5013 100.0% | primes.js~1-46:0-966
+  Primes      |        1   0.0% |        1   0.0% | primes.js~25-38:454-739
+ ------------------------------------------------------------
+
+</code></pre>
+
+    <p>This output shows the number of allocations which were recorded per function.
+ For each prime number that was computed, the program allocates one object in
+ <code>next</code> and one in <code>constructor</code> of <code>DivisibleByFilter</code>. Allocations are recorded
+ independently whether they could get eliminated by the compiler. The Graal
+ compiler is particularly powerful in optimizing allocations and can push
+ allocations into infrequent branches to increase execution performance. The
+ Graal team plan to add information about memory optimizations to the
+ memory tracer in the future.</p>
+  </li>
+</ol>
+
+<h3 id="tool-reference">Tool Reference</h3>
+<p>Use the <code>--help:tools</code> option in all guest language launchers to display
+reference information for the CPU sampler, the CPU tracer, and the memory tracer.</p>
+
+<p>The current set of available options is as follows:</p>
+
+<h3 id="cpu-sampler-command-options">CPU Sampler Command Options</h3>
+
+<ul>
+  <li><code>--cpusampler</code>: enables the CPU sampler. Disabled by default.</li>
+  <li><code>--cpusampler.Delay=&lt;Long&gt;</code>: delays the sampling for many milliseconds (default: 0).</li>
+  <li><code>--cpusampler.FilterFile=&lt;Expression&gt;</code>: applies a wildcard filter for source
+file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
+  <li><code>--cpusampler.FilterLanguage=&lt;String&gt;</code>: profiles languages only with the
+matching mime-type. For example, <code>+</code>. The default is no filter.</li>
+  <li><code>--cpusampler.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for
+program roots. For example, <code>Math.&amp;lowast;</code>. The default is ∗.</li>
+  <li><code>--cpusampler.Mode=&lt;Mode&gt;</code>:  describes level of sampling detail. Please note that increased detail can lead to reduced accuracy.
+    <ul>
+      <li><code>exclude_inlined_roots</code> samples roots excluding inlined functions (enabled by default);</li>
+      <li><code>roots</code>samples roots including inlined functions;</li>
+      <li><code>statements</code> samples all statements.</li>
+    </ul>
+  </li>
+  <li><code>--cpusampler.Output=&lt;Output&gt;</code>: prints a ‘histogram’ or ‘calltree’ as output.
+The default is ‘histogram’.</li>
+  <li><code>--cpusampler.Period=&lt;Long&gt;</code>: specifies the period, in milliseconds, to
+sample the stack.</li>
+  <li><code>--cpusampler.SampleInternal</code>: captures internal elements. The default is
+false.</li>
+  <li><code>--cpusampler.StackLimit=&lt;Integer&gt;</code>: specifies the maximum number of stack
+elements.</li>
+</ul>
+
+<h3 id="cpu-tracer-command-options">CPU Tracer Command Options</h3>
+
+<ul>
+  <li><code>--cputracer</code>: enables the CPU tracer. Disabled by default.</li>
+  <li><code>--cputracer.FilterFile=&lt;Expression&gt;</code>: applies a wildcard filter for source
+file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
+  <li><code>--cputracer.FilterLanguage=&lt;String&gt;</code>: profiles languages only with the
+matching mime-type. For example, <code>+</code>. The default is no filter.</li>
+  <li><code>--cputracer.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for
+program roots. For example, <code>Math.&amp;lowast;</code>. The default is ∗.</li>
+  <li><code>--cputracer.TraceCalls</code>: captures calls when tracing. The default is false.</li>
+  <li><code>--cputracer.TraceInternal</code>: traces internal elements. The default is false.</li>
+  <li><code>--cputracer.TraceRoots=&lt;Boolean&gt;</code>: captures roots when tracing.  The default
+is true.</li>
+  <li><code>--cputracer.TraceStatements</code>: captures statements when tracing. The default
+is false.</li>
+</ul>
+
+<h3 id="memory-tracer-command-options">Memory Tracer Command Options</h3>
+
+<ul>
+  <li><code>--memtracer</code>: enables the memory tracer. Disabled by default.</li>
+  <li><code>--memtracer.FilterFile=&lt;Expression&gt;</code>: applies a wildcard filter for source file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
+  <li><code>--memtracer.FilterLanguage=&lt;String&gt;</code>: profiles languages only with the matching mime-type. For example, <code>+</code>. The default is no filter.</li>
+  <li><code>--memtracer.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for program roots. For example, <code>Math.&amp;lowast;</code>. The default is ∗.</li>
+  <li><code>--memtracer.Output=&lt;Format&gt;</code>: prints a ‘typehistogram’, ‘histogram’, or ‘calltree’ as output. The default is ‘histogram’.</li>
+  <li><code>--memtracer.StackLimit=&lt;Integer&gt;</code>: sets the maximum number of maximum stack elements.</li>
+  <li><code>--memtracer.TraceCalls</code>: captures calls when tracing. The default is false.</li>
+  <li><code>--memtracer.TraceInternal</code>: captures internal elements. The default is false.</li>
+  <li><code>--memtracer.TraceRoots=&lt;Boolean&gt;</code>: captures roots when tracing. The default is true.</li>
+  <li><code>--memtracer.TraceStatements</code>: captures statements when tracing. The default is false.</li>
+</ul>
+
+<h2 id="monitoring-agent">Monitoring Agent</h2>
+<p>GraalVM gives you a dedicated <strong>Agent application</strong> that comes with rich
+monitoring features to allow developers, integrators, and IT staff to monitor
+the performance of user programs and the health status of the virtual machine.</p>
+
+<p>The GraalVM monitoring component is called the Agent and can be easily enabled
+by providing command line option <code>--agent</code> to the executables.</p>
+
+<p><strong>Disclaimer</strong>: The Agent is currently an <strong>experimental</strong> feature
+provided by the <strong>GraalVM Enterprise Edition</strong> available for download
+from the <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">Oracle Technology Network</a>.</p>
+
+<h3 id="graalvm-instruments">GraalVM Instruments</h3>
+
+<p>The Agent uses instruments that implement the
+<a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/instrumentation/package-summary.html">Truffle Instrumentation API</a>.</p>
+
+<p>In future, additional instrumentation tools can be added either by
+the GraalVM development team or third party developers.</p>
+
+<h3 id="running-an-example-for-agent-monitoring">Running an Example for Agent Monitoring</h3>
+<p>Get familiar with using the GraalVM Agent with this Hello World example.</p>
+
+<ol>
+  <li>
+    <p>Save the following code snippet as <code>HellWorld.js</code>:</p>
+
+    <pre><code> var http = require('http');
+
+ var server = http.createServer(function (request, response) {
+   let host = request.headers.host;
+   let index = host.indexOf(':');
+   if (index &gt; 0) {
+     host = host.substring(0, index);
+   }
+   response.writeHead(200, {"Content-Type": "text/plain"});
+   response.end("Hello "+host+"!\n");
+ });
+
+ server.listen(8000);
+
+ console.log("Server running at http://localhost:8000/");
+</code></pre>
+  </li>
+  <li>
+    <p>Launch the Graal Enterprise Monitoring Agent Server <code>gemasrv</code> using this command:</p>
+
+    <pre><code> gemasrv
+ Agent http server is running in unsecure mode!
+ Use Java VM properties:
+     -Dkey.store.file.path to specify the path to the .jsk file.
+     -Dkey.store.file.password to specify the password used to unlock the keystore
+     -Dkey.store.key.recover.password to specify the password for recovering keys. If is not specified the key.store.file.password is used.
+ Agent http server started on port 8080, reachable at:
+ http://localhost:8080/info
+</code></pre>
+
+    <p>The program starts without SSL, with a warning about unsecure mode,
+ and the Monitoring Agent web application is available at <code>http://localhost:8080/</code>.</p>
+
+    <p>When you open this page, you can see there are no virtual machines attached yet.</p>
+
+    <p>Note: To run the server on a different port, use the <code>--port &lt;port_number&gt;</code> option.</p>
+  </li>
+  <li>
+    <p>Launch GraalVM <code>node</code> to monitor <code>HellWorld.js</code> using this command:</p>
+
+    <pre><code> node --agent HelloWorld.js
+ Server running at http://localhost:8000/
+</code></pre>
+
+    <p>The GraalVM starts and attaches itself to the Monitoring Agent Server running by default on the localhost:8080 port.
+ To attach the GraalVM to the server running on a different host:port, use the <code>--agent=&lt;[host:]port&gt;</code> option.</p>
+
+    <p>Now, when you open the Monitoring Agent’s page, you can see the virtual machine is running with some
+ system information displayed by default.</p>
+
+    <p>For script developers who are interested in more information about
+ <code>HelloWorld.js</code>, the following script is available in the <a href="http://www.graalvm.org/truffle/javadoc/index.html?com/oracle/truffle/api/vm/PolyglotEngine.html">Polyglot Engine</a> section.</p>
+  </li>
+  <li>
+    <p>In the Agent window, select <code>Polyglot Engine - 1</code> from the second drop-down
+box at the top. You should see the sources loaded in the Polyglot Engine
+and the available instruments as shown in the following image:</p>
+  </li>
+</ol>
+
+<p><img src="/docs/img/AgentOpened.png" alt="" /></p>
+
+<p>The Agent window shows loaded sources on the left where the <code>HelloWorld.js</code> source
+can be found under the <strong>FileSystem</strong> node . The area in the middle provides
+detailed information about sources or gathered data from instruments. The
+right-most column allows you to enable various loaded instruments and
+set their properties.</p>
+
+<p>Let’s take a look at CPU sampling with our script to see what takes
+the most time.</p>
+
+<ol>
+  <li>Enable <strong>Agent CPU Sampler</strong>.</li>
+  <li>In the settings section, select <strong>Start Sampling</strong>.</li>
+  <li>Reload the application at <code>http://localhost:8000/</code> so that the Agent can
+gather the data.</li>
+  <li>Return to the Agent window.</li>
+  <li>In the <strong>CPU Sampler</strong> section, select <strong>Stop Sampling</strong>.</li>
+</ol>
+
+<p>The Agent page refreshes and results should display as follows:</p>
+
+<p><img src="/docs/img/CPUSampler.png" alt=" " title="Agent and CPU Sampler data" /></p>
+
+<p>It is also possible to see detailed data in the source code. To do this, open
+the <code>HelloWorld.js</code> file in the Agent tab and the select <strong>Agent CPU Sampler</strong>
+from the drop-down box. Sources should display with data available as follows:</p>
+
+<p><img src="/docs/img/CPUSamplerDetail.png" alt="" /></p>
+
+<h3 id="jvm-mode-only-instruments">JVM Mode Only Instruments</h3>
+
+<p>Some monitoring instruments, such as the Specialization Instrument, are
+available in <code>--jvm</code> mode only for the GraalVM launchers.</p>
+
+<p>In this case, you should launch <code>HelloWorld.js</code> as follows:</p>
+
+<pre><code>node --jvm --agent HelloWorld.js
+</code></pre>
+
+<p>Then do the following:</p>
+<ol>
+  <li>Open Agent and enable <strong>Agent Specializations</strong> from the list of instruments.</li>
+  <li>Reload the <code>HelloWorld.js</code> application in your browser.</li>
+  <li>Return to the Agent window and open the <code>HelloWorld.js</code> script.</li>
+  <li>Select <strong>Agent Specializations</strong> from the drop-down box next to the
+<strong>filename</strong> tab.</li>
+</ol>
+
+<p>Data such as the following displays specializations of various JavaScript
+statements:</p>
+
+<p><img src="/docs/img/SpecializationInstrument.png" alt=" " title="Specialization Instrument" /></p>
+
+<h2 id="heap-viewer">Heap Viewer</h2>
+<p>GraalVM comes with <strong>Graal VisualVM</strong>, an enhanced version of the popular <a href="https://visualvm.github.io">VisualVM</a> tool which includes special heap analysis features for the supported guest languages. These languages and features are currently available:</p>
+
+<ul>
+  <li><strong>Java:</strong> Heap Summary, Objects View, Threads View, OQL Console</li>
+  <li><strong>JavaScript:</strong> Heap Summary, Objects View, Thread View</li>
+  <li><strong>Python:</strong> Heap Summary, Objects View</li>
+  <li><strong>Ruby:</strong> Heap Summary, Objects View, Threads View</li>
+  <li><strong>R:</strong> Heap Summary, Objects View</li>
+</ul>
+
+<h3 id="starting-graal-visualvm">Starting Graal VisualVM</h3>
+<p>To start Graal VisualVM execute <code>jvisualvm</code>. Immediately after startup the tool shows all locally running Java processes in the Applications area, including the VisualVM process itself.</p>
+
+<p><strong>NOTE:</strong> the native image processes are not displayed and cannot be analyzed using Graal VisualVM. If you can’t see your process in the Applications area, you should use the <code>--jvm</code> switch when starting the process to make sure it does not run in SVM.</p>
+
+<h3 id="getting-heap-dump">Getting Heap Dump</h3>
+<p>Let’s say you are trying to analyze a Ruby application. To get a heap dump, first start your application and let it run for a few seconds to warm up.</p>
+
+<p>Then right-click its process in VisualVM and invoke the Heap Dump action. A new heap viewer for the Ruby process opens.</p>
+
+<h3 id="analyzing-objects">Analyzing Objects</h3>
+<p>Initially the Summary view for the Java heap is displayed. To analyze the Ruby heap, click the leftmost (Summary) dropdown in heap viewer toolbar, choose the Ruby Heap scope and select the Objects view. Now the heap viewer displays all Ruby heap objects, aggregated by their type.</p>
+
+<p>Expand the Proc node in the results view to see a list of objects of this type. Each object displays its logical value as provided by the underlying implementation. Expand the objects to access their variables and references, where available.</p>
+
+<p><img src="/docs/img/HeapViewer_objects.png" alt="" title="Graal VisualVM Heap Viewer - analyzing objects" /></p>
+
+<p>Now enable the Preview, Variables and References details by clicking the buttons in toolbar and select the individual ProcType objects. Where available, the Preview view shows the corresponding source fragment, the Variables view shows variables of the object and References view shows objects referring to the selected object.</p>
+
+<p>Last, use the Presets dropdown in heap viewer toolbar to switch the view from All Objects to Dominators or GC Roots. To display the heap dominators, retained sizes must be computed first, which can take a few minutes for the server.rb example. Select the Objects aggregation in toolbar to view the individual dominators or GC roots.</p>
+
+<p><img src="/docs/img/HeapViewer_objects_dominators.png" alt="" title="Graal VisualVM Heap Viewer - analyzing objects" /></p>
+
+<h3 id="analyzing-threads">Analyzing Threads</h3>
+<p>Click the leftmost dropdown in heap viewer toolbar and select the Threads view for the Ruby heap. The heap viewer now displays the Ruby thread stack trace, including local objects. The stack trace can alternatively be displayed textually by clicking the HTML toolbar button.</p>
+
+<p><img src="/docs/img/HeapViewer_thread.png" alt="" title="Graal VisualVM Heap Viewer - analyzing thread" /></p>
+
 
               </div>
     

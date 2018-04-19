@@ -22,8 +22,6 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-autoprefixer (1.0.1)
       autoprefixer-rails (~> 6.3.6)
-    jekyll-feed (0.9.3)
-      jekyll (~> 3.3)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
     jekyll-sitemap (1.2.0)
@@ -61,7 +59,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll (= 3.4.3)
   jekyll-autoprefixer
-  jekyll-feed (~> 0.6)
   jekyll-sitemap
   json (= 2.0.2)
   minima (~> 2.0)

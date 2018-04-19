@@ -36,13 +36,13 @@ Node.js based on GraalVM is largely compatible with the original Node.js (based 
 This leads to a high number of npm-based modules being compatible with GraalVM (out of the 45k modules we test, 95% of them pass all tests).
 Several sources of differences have to be considered.
 
-**Setup**
+- **Setup**
 GraalVM mostly mimicks the original setup of Node, including the `node` executable, `npm`, and similar. However, not all command-line options are supported (or behave exactly identically), you need to (re-)compile native modules against our v8.h file, etc.
 
-**Internals**
+- **Internals**
 GraalVM is implemented on top of a JVM, and thus has a different internal architecture. This implies that some internal mechanisms behave differently and cannot exactly replicate V8 behavior. This will hardly ever affect user code, but might affect modules implemented natively, depending on V8 internals.
 
-**Performance**
+- **Performance**
 Due to GraalVM being implemented on top of a JVM, performance characteristics vary from the original native implementation. While GraalVM's peak performance can match V8 on many benchmarks, it will typically take longer to reach the peak (known as _warmup_). Be sure to give the Graal compiler some extra time when measuring (peak) performance.
 
 _How do we determine GraalVM's JavaScript compatibility?_

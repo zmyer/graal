@@ -742,11 +742,11 @@ puts js_obj[:msg]
 puts js_obj[:payload].join(' ')
 </code></pre>
 
-<p>We use the <code>--polyglot</code> option to say we want to run a polyglot program, and
+<p>We use the <code>--jvm --polyglot</code> option to say we want to run a polyglot program, and
 <code>-Xsingle_threaded</code> because JavaScript is only compatible with single threaded
 programs.</p>
 
-<pre><code class="language-shell">$ ruby --polyglot -Xsingle_threaded test.rb
+<pre><code class="language-shell">$ ruby --jvm --polyglot -Xsingle_threaded test.rb
 2018-04-11 15:25:08 -0700
 Hello World
 1 2 3 4 5 6 7 8 9 10
@@ -857,7 +857,7 @@ as best-effort. It may not work, or the title you try to set may be truncated.</
 
 <h3 id="features-with-very-low-performance">Features with very low performance</h3>
 
-<p><strong>Keyword arguments</strong></p>
+<p><em>Keyword arguments</em></p>
 
 <p>Keyword arguments don’t have <em>very</em> low performance, but they are not optimised
 as other language features are. You don’t need to avoid keyword arguments, but

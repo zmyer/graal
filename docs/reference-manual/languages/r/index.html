@@ -534,17 +534,18 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h2 id="fastr">FastR</h2>
+                <h3 id="r-language">R Language</h3>
 
-<p>FastR is an alternative R engine that is <a href="#fastr-compatibility">compatible with GNU R</a>, can run R code
+<p>GraalVM implementation of R is <a href="#fastr-compatibility">compatible with GNU R</a>, can run R code
 at <a href="#high-performance">unparalleled performance</a>, <a href="#graalvm-integration">integrates with the GraalVM</a>
 ecosystem and provides <a href="#fastr-additional-features">additional R level features</a>.</p>
 
-<h2 id="installing-fastr">Installing FastR</h2>
+<h2 id="installing">Installing</h2>
 
-<p>FastR can be installed to a GraalVM build with the gu command. See graalvm/bin/gu –help for more information.</p>
+<p>The R language can be installed to a GraalVM build with the <code>gu</code> command.
+See <code>graalvm/bin/gu --help</code> for more information.</p>
 
-<h2 id="running-fastr">Running FastR</h2>
+<h2 id="running-r-code">Running R Code</h2>
 
 <p>Run R code with the <code>R</code> and <code>Rscript</code> commands:</p>
 <pre><code class="language-shell">$ R [polyglot options] [R options] [filename]
@@ -564,12 +565,12 @@ Use <code>--help</code> to print the list of supported options. The most importa
 <p>Note: unlike other GraalVM languages, FastR does not ship yet with a
 <a href="/docs/reference-manual/aot-compilation">native image</a> of its runtime,
 therefore <code>--native</code> option, which is the default, will still start FastR on top of JVM,
-but for the sake of compatibility Java interoperability will not be available in such case.
+but for the sake of Java interoperability will not be available in such case.
 In future versions, FastR may ship with a native image image and <code>--native</code> will run it.</p>
 
-<h2 id="fastr-compatibility">FastR Compatibility</h2>
+<h2 id="r-compatibility">R Compatibility</h2>
 
-<p>FastR is based on GNU R, it reuses the base packages and parts of the R implementation.
+<p>GraalVM implementation of R is based on GNU R and reuses the base packages.
 It is currently based on R 3.4.0, and moves to new major versions of R as they become available
 and stable.
 The FastR project maintains an extensive set of unit tests for all aspects of the R language
@@ -580,7 +581,7 @@ As some packages rely on unspecified behavior or implementation details of GNU R
 is work in progress, and some packages might not install successfully or work as expected.</p>
 
 <p>Packages can be installed using the <code>install.packages</code> function or <code>R CMD INSTALL</code> shell command.
-By default, FastR uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1</sup></a> 
+By default, FastR uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1</sup></a>
 that is updated with every new release of FastR (once a month).
 This behavior can be overrideen by explicitly setting the <code>repos</code> argument of <code>install.packages</code> function.
 This functionality does not interfere with the <code>checkpoint</code> package. If you are behind a proxy server, make

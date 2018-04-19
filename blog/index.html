@@ -211,95 +211,9 @@
           <ul class="toc-bullets">
             
             
-              
-              
-                
-                <li class="toc-bullets-main">January 2018</li>
-              
-              <li>
-                <a href="/graal/polyglot/2018/01/04/graalvm-goes-native.html">
-                  GraalVM goes native
-                </a>
-              </li>
-            
           </ul>
         </div>
         <div class="col-sm-9">
-          
-            <a class="post-link" href="/graal/polyglot/2018/01/04/graalvm-goes-native.html">
-              GraalVM goes native
-            </a>
-            <span class="post-meta">
-              Jan 4, 2018
-            </span>
-            <div class="faded-line"></div>
-            <div class="authorBlock">
-  <p class="post-authorName">
-    <a href="https://github.com/grimmerm" target="blank">Matthias Grimmer</a><img src="https://avatars3.githubusercontent.com/u/9483985?s=400&amp;v=4" href="https://github.com/grimmerm" target="blank" />
-    </p>
-    </div>
-<div class="faded-line"></div>
-
-<h1 id="sulong-can-execute-llvm-based-languages-on-the-jvm">Sulong can execute LLVM-based languages on the JVM</h1>
-<p>TO DO:
-Needs revision of Roland Schatz or Christian Haeubl</p>
-
-<p>The GraalVM is a multi-language platform and can efficiently execute your Java, JavaScript, Node, Ruby, or R application.
-However, it misses low-level languages such as C/C++ or Fortran.
-To call functions written in such languages, the GraalVM has to resort to the Java Native Interface (JNI) or other native function interfaces.
-These native function interfaces add run-time overhead since data structures have to be converted or (un)marshalled when transferring data between Java and the target language.
-Also, language boundaries are compilation boundaries, so a compiler cannot, for example, apply function inlining across languages.
-With project Sulong, that is about to change!
-We are introducing Project Sulong, a system that enriches the GraalVM with a variety of new languages by executing LLVM IR.
-Sulong is an LLVM IR interpreter, which executes all languages that have an LLVM IR front end, including C/C++, Fortran, Ada, Rust, and Haskell.
-It enables us to efficiently implement the native interfaces of other GraalVM languages (e.g. Ruby or R) and to efficiently embed low-level code.
-For example, Sulong allows you to run Ruby applications with C extensions on the GraalVM.
-The future is safe! We are currently researching technology that will allows Sulong to guarantee memory safety when executing low-level languages like C/C++.
-C/C++ allows programmers to do untyped memory accesses, including pointer arithmetic, which can result in errors such as buffer overflows, dangling pointers, invalid deallocations, or null pointer accesses.
-With future version of Sulong, we want to guarantee memory safety for those parts of you application that are implemented in C/C++.</p>
-
-<p><strong><em>How does it work?</em></strong></p>
-
-<p>Sulong is an LLVM IR interpreter as part of the GraalVM.
-You can use LLVM front ends to compile source languages such as C/C++ or Fortran to LLVM IR and then execute it on the GraalVM.
-Sulong’s Truffle interpreter optimizes the IR based on the profile feedback that it observes at run time.
-Eventually, the IR is partially evaluated and compiled to machine code useing the dynamic compiler Graal.
-One concern for Sulong is seamless and efficient interoperability with native shared libraries such as the C standard library.
-Reusing existing code in low-level languages such as C/C++ is commonly done by linking user programs against a shared native library that is present as a machine code binary but not available as source code (e.g. the C standard library).
-Sulong ships with a native interface to call native functions of such a library.
-We align LLVM IR objects (structs, arrays, and vectors) using the same layout as in executables produced by static compilers.
-When Sulong calls a native function, this native function can directly operate on allocations provided by Sulong, since they match the platform’s Application Binary Interface.
-Thus, Sulong does not need to marshal or convert objects when calling shared library functions, and can call native functions with zero overhead when compared to native to native calls in executables.</p>
-
-<p><strong><em>Running C extensions on Sulong</em></strong></p>
-
-<p>Many modern VMs have an API that can integrate native code, for example the C extension API of Ruby.
-The APIs against which native code is written often simply provide direct access to the internal data structures of the standard language implementation.
-For example, Ruby C extensions are written against the API of the original Ruby implementation MRI.
-Developers of a C extension for Ruby get access to this API by including the ruby.h header file.
-The C extension code is then dynamically loaded and linked into the Ruby VM when the Ruby program starts to run.
-This API contains functions that allow C code to manipulate Ruby objects at a high level, but also includes routines that let you directly access pointers to internal data such as the character array in a string object.
-The API is simple, powerful, and reasonably efficient, but it only works well for the language implementations for which they were designed.
-As dynamic languages become more and more popular, they are going to be reimplemented using modern VM technologies such as dynamic compilation and advanced garbage collection, e.g., JRuby or TruffleRuby.
-Both engines outperform existing MRI by an order of magnitude.
-However, these implementations typically use significantly different internal data structures, which makes an implementation of the original APIs for C extensions hard.
-The GraalVM’s Ruby implementation uses Sulong to implement the C extension API.
-The native part of the Ruby application is hereby executed by Sulong.
-The C extension API offers a wide variety of functions that are used to access and manipulate Ruby object from within C.
-Sulong implements these functions using the GraalVM’s cross-language interoperability mechanism, which allows to directly access Ruby data and interface to the Ruby implementation.</p>
-
-<p><strong><em>The future is safe</em></strong></p>
-
-<p>We are currently researching an extension to Sulong that can guarantee memory safety.
-Our idea is to replace unmanaged memory allocations and replace them by managed Java allocations that represent C data structures.
-Since Java provides well-specified automatic bounds and type checks, the interpreter automatically checks and detects invalid accesses such as out-of-bounds accesses, use-after-free errors, and null pointer dereferences.
-All kind of data (primitives, pointers, functions, arrays, and structs) is implemented using Java objects, which allows us to ensure spatial as well as temporal memory safety.
-With this future extension of Sulong, an application will not compromise memory safety when using C/C++.</p>
-
-<p><strong><em>Summary</em></strong></p>
-
-<p>Do not hesitate and run your first C/C++ application on the GraalVM. Proceed to <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html" target="blank">Oracle Technology Network</a> page where you can download GraalVM including Sulong.</p>
-
           
       </div>
     </div>

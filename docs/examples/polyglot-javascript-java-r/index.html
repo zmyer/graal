@@ -524,6 +524,13 @@ to the path, using a command-line shell for Linux:</p>
 </code></pre>
 <p>Note that your paths are likely to be different depending on the download location.</p>
 
+<p>Note that this application contains R code, so you need to install the R language component to add R support to GraalVM, run the Graal updater command to do it:</p>
+
+<pre><code class="language-shell">gu -c install org.graalvm.r
+</code></pre>
+
+<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
+
 <h3 id="running-the-application">Running the application</h3>
 
 <p>To run the application, you need to execute the <code>server.js</code> file.
@@ -536,7 +543,7 @@ You can run it with the following command (or run the <code>run.sh</code> script
 you can run it with whatever <code>node</code> you have. However, presumably, the polyglot
 capability will not be supported.</p>
 
-<p>Open <a href="localhost:3000">localhost:3000</a> and enjoy the output of the polyglot app.
+<p>Open <a href="http://localhost:3000">localhost:3000</a> and enjoy the output of the polyglot app.
 Play with the source code and restart the application to see what else
 you can do with the mix of JavaScript, Java, and R.</p>
 

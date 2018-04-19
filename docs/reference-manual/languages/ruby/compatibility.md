@@ -99,7 +99,7 @@ as best-effort. It may not work, or the title you try to set may be truncated.
 
 ### Features with very low performance
 
-**Keyword arguments**
+*Keyword arguments*
 
 Keyword arguments don't have *very* low performance, but they are not optimised
 as other language features are. You don't need to avoid keyword arguments, but
@@ -254,4 +254,4 @@ limited so may be misleading.
 
 ### Compatibility with gems
 
-You can use the [compatibility checker]({{"/docs/reference-manual/compatibility/" | relative_url}}) to find whether the gems you're interested in are tested on GraalVM, whether the tests pass successfully and so on. Additionally, you can drop your `Gemfile.lock` file into that tool and it'll analyze all the gems you're using at once. Note that the processing is done on the client-side, so no information is uploaded to any servers. 
+You can use the [compatibility checker]({{"/docs/reference-manual/compatibility/" | relative_url}}) to find whether the gems you're interested in are tested on GraalVM, whether the tests pass successfully and so on. Additionally, you can drop your `Gemfile.lock` file into that tool and it'll analyze all the gems you're using at once. Note that the processing is done on the client-side, so no information is uploaded to any servers.

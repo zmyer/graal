@@ -538,12 +538,12 @@ $(document).ready(function(){
 
 <p>GraalVM provides an early-stage experimental implementation of Python.
 A primary goal is to support SciPy and its constituent
-libraries. At this point, the Python implementation is made available for 
+libraries. At this point, the Python implementation is made available for
 experimentation and curious end-users.</p>
 
 <h2 id="installing-python">Installing Python</h2>
 
-<p>Python can be installed to a GraalVM build with the gu command. See graalvm/bin/gu –help for more information.</p>
+<p>Python can be installed to a GraalVM build with the <code>gu</code> command. See <code>bin/gu --help</code> for more information.</p>
 
 <h2 id="running-python">Running Python</h2>
 
@@ -605,7 +605,7 @@ is what we found: 'This string was matched by Graal.js'</code>.</p>
 Python, and use R again to display the resulting data image, using both R and
 Python libraries in conjunction. To run it, first install the
 required R library:</p>
-<pre><code class="language-shell">$ bin/R -e 'install.packages("https://www.rforge.net/src/contrib/jpeg_0.1-8.tar.gz", repos=NULL)'
+<pre><code class="language-shell">$ R -e 'install.packages("https://www.rforge.net/src/contrib/jpeg_0.1-8.tar.gz", repos=NULL)'
 </code></pre>
 
 <p>This example also uses <a href="/docs/examples/image_magix.py">image_magix.py</a> and works

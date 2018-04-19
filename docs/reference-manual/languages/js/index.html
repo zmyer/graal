@@ -703,14 +703,20 @@ Individual tests can be executed with</p>
 This leads to a high number of npm-based modules being compatible with GraalVM (out of the 45k modules we test, 95% of them pass all tests).
 Several sources of differences have to be considered.</p>
 
-<p><strong>Setup</strong>
+<ul>
+  <li>
+    <p><strong>Setup</strong>
 GraalVM mostly mimicks the original setup of Node, including the <code>node</code> executable, <code>npm</code>, and similar. However, not all command-line options are supported (or behave exactly identically), you need to (re-)compile native modules against our v8.h file, etc.</p>
-
-<p><strong>Internals</strong>
+  </li>
+  <li>
+    <p><strong>Internals</strong>
 GraalVM is implemented on top of a JVM, and thus has a different internal architecture. This implies that some internal mechanisms behave differently and cannot exactly replicate V8 behavior. This will hardly ever affect user code, but might affect modules implemented natively, depending on V8 internals.</p>
-
-<p><strong>Performance</strong>
+  </li>
+  <li>
+    <p><strong>Performance</strong>
 Due to GraalVM being implemented on top of a JVM, performance characteristics vary from the original native implementation. While GraalVM’s peak performance can match V8 on many benchmarks, it will typically take longer to reach the peak (known as <em>warmup</em>). Be sure to give the Graal compiler some extra time when measuring (peak) performance.</p>
+  </li>
+</ul>
 
 <p><em>How do we determine GraalVM’s JavaScript compatibility?</em></p>
 
