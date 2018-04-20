@@ -850,9 +850,9 @@ the following code:</p>
 <p> In this code:</p>
 <ul>
   <li><code>import org.graalvm.polyglot.*</code> imports the base API for the Polyglot API.</li>
-  <li><code>import org.graalvm.polyglot.proxy*</code> imports the proxy classes of the Polyglot API, needed in later examples.</li>
+  <li><code>import org.graalvm.polyglot.proxy.*</code> imports the proxy classes of the Polyglot API, needed in later examples.</li>
   <li><code>Context</code> provides an execution environment for guest languages. 
-Please note that Ruby and R require to have the <code>allowAllAccess</code> flag to be set to <code>true</code>.</li>
+Please note that Ruby and R require the <code>allowAllAccess</code> flag to be set to <code>true</code>.</li>
   <li><code>eval</code> evaluates the specified snippet of guest language code.</li>
 </ul>
 
@@ -1211,7 +1211,7 @@ values.</p>
 
 <p> In this code:</p>
 <ul>
-  <li><code>Value</code> is a Java value that refers to a function.</li>
+  <li><code>Value function</code> is a Java value that refers to a function.</li>
   <li>The <code>eval</code> call parses the script and returns the Graal language function.</li>
   <li>The first assertion checks that the value returned by the code snippet can be
 executed.</li>
@@ -1221,7 +1221,7 @@ executed.</li>
 </ul>
 
 <h2 id="access-graal-languages-directly-from-java">Access Graal Languages Directly from Java</h2>
-<p>Polyglot applications, can readily access most language types and are not
+<p>Polyglot applications can readily access most language types and are not
 limited to functions. Host languages, such as Java, can directly access guest
 language code embedded in the polyglot application.</p>
 
@@ -1942,7 +1942,7 @@ supported.</p>
 <p> In this code:</p>
 <ul>
   <li>The Java class <code>MyClass</code> has four public fields <code>id</code>, <code>text</code>, <code>arr</code> and
-<code>ret42</code>. The fields are initialized with <code>int</code>, <code>String</code>, <code>int[]</code> and
+<code>ret42</code>. The fields are initialized with <code>42</code>, <code>"42"</code>, <code>new int[]{1, 42, 3}</code> and
 lambda <code>() -&gt; 42</code> that always returns an <code>int</code> value of <code>42</code>.</li>
   <li>The Java class <code>MyClass</code> is instantiated and exported with the name <code>javaObj</code>
 into the polyglot scope, which allows the host and guest languages to exchange
@@ -1962,7 +1962,7 @@ accessible using index <code>2</code>. In the JavaScript and Ruby languages, the
 array element is at index <code>1</code>. In all language examples, the Java array is read
 from using the same index <code>1</code>.</li>
   <li>The last line invokes the Java lambda that is contained in the field <code>ret42</code>
-and compares the result to the <code>42</code> number value.</li>
+and compares the result to the number value <code>42</code>.</li>
   <li>After the Graal language script executes, validation takes place to ensure
 that the script returns a <code>boolean</code> value of <code>true</code> as a result.</li>
 </ul>

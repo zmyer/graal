@@ -14,7 +14,7 @@ during dynamic compilation. Some optimizations are better when done
 ahead-of-time on the bitcode, while other optimizations are better left for the
 dynamic compilation of Graal, when profiling information is available.
 
-In principle, all optimizations levels should work, but for best results we
+In principle, all optimization levels should work, but for best results we
 suggest compiling the bitcode with optimization level `-O1`.
 
 Cross-language interoperability will only work when the bitcode is compiled

@@ -182,8 +182,8 @@ to collect execution counts for all statements in methods ending with `accept`.
     information. Tracing histograms often provides insights into the behavior
     of the algorithm that needs optimization.
 
-    Lastly, let's look at the memory tracer tool, for which GraalVM  currently
-    provides experimental support, for capturing allocations.
+    Lastly, let's look at the memory tracer tool for capturing allocations, for
+    which GraalVM currently provides experimental support.
 
 6. Run `js primes.js --memtracer` to display source code locations and
 counts of reported allocations.
@@ -208,10 +208,10 @@ counts of reported allocations.
     This output shows the number of allocations which were recorded per function.
     For each prime number that was computed, the program allocates one object in
     `next` and one in `constructor` of `DivisibleByFilter`. Allocations are recorded
-    independently whether they could get eliminated by the compiler. The Graal
+    independently of whether they could get eliminated by the compiler. The Graal
     compiler is particularly powerful in optimizing allocations and can push
     allocations into infrequent branches to increase execution performance. The
-    Graal team plan to add information about memory optimizations to the
+    Graal team plans to add information about memory optimizations to the
     memory tracer in the future.
 
 ### Tool Reference
@@ -223,13 +223,13 @@ The current set of available options is as follows:
 ### CPU Sampler Command Options
 
 - `--cpusampler`: enables the CPU sampler. Disabled by default.
-- `--cpusampler.Delay=<Long>`: delays the sampling for many milliseconds (default: 0).
+- `--cpusampler.Delay=<Long>`: delays the sampling for the given number of milliseconds (default: 0).
 - `--cpusampler.FilterFile=<Expression>`: applies a wildcard filter for source
 file paths. For example, `*program*.sl`. The default is &lowast;.
 - `--cpusampler.FilterLanguage=<String>`: profiles languages only with the
 matching mime-type. For example, `+`. The default is no filter.
 - `--cpusampler.FilterRootName=<Expression>`: applies a wildcard filter for
-program roots. For example, `Math.&lowast;`. The default is &lowast;.
+program roots. For example, `Math.*`. The default is &lowast;.
 - `--cpusampler.Mode=<Mode>`:  describes level of sampling detail. Please note that increased detail can lead to reduced accuracy.
     - `exclude_inlined_roots` samples roots excluding inlined functions (enabled by default);
     - `roots`samples roots including inlined functions;
@@ -251,7 +251,7 @@ file paths. For example, `*program*.sl`. The default is &lowast;.
 - `--cputracer.FilterLanguage=<String>`: profiles languages only with the
 matching mime-type. For example, `+`. The default is no filter.
 - `--cputracer.FilterRootName=<Expression>`: applies a wildcard filter for
-program roots. For example, `Math.&lowast;`. The default is &lowast;.
+program roots. For example, `Math.*`. The default is &lowast;.
 - `--cputracer.TraceCalls`: captures calls when tracing. The default is false.
 - `--cputracer.TraceInternal`: traces internal elements. The default is false.
 - `--cputracer.TraceRoots=<Boolean>`: captures roots when tracing.  The default
@@ -264,7 +264,7 @@ is false.
 - `--memtracer`: enables the memory tracer. Disabled by default.
 - `--memtracer.FilterFile=<Expression>`: applies a wildcard filter for source file paths. For example, `*program*.sl`. The default is &lowast;.
 - `--memtracer.FilterLanguage=<String>`: profiles languages only with the matching mime-type. For example, `+`. The default is no filter.
-- `--memtracer.FilterRootName=<Expression>`: applies a wildcard filter for program roots. For example, `Math.&lowast;`. The default is &lowast;.
+- `--memtracer.FilterRootName=<Expression>`: applies a wildcard filter for program roots. For example, `Math.*`. The default is &lowast;.
 - `--memtracer.Output=<Format>`: prints a 'typehistogram', 'histogram', or 'calltree' as output. The default is 'histogram'.
 - `--memtracer.StackLimit=<Integer>`: sets the maximum number of maximum stack elements.
 - `--memtracer.TraceCalls`: captures calls when tracing. The default is false.

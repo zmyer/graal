@@ -411,16 +411,16 @@ $(document).ready(function(){
 
 <p>GraalVM is an ecosystem and shared runtime offering performance advantages
 not only to JVM-based languages such as Java, Scala, Groovy, and
-Kotlin, but also to programming languages as JavaScript, Ruby, Python, and R.
-Additionally, it enables the execution of native code on the JVM via LLVM front-end.
-GraalVM 1.0 is based on the JDK 8.</p>
+Kotlin, but also to other programming languages such as JavaScript, Ruby, Python 3, and R.
+Additionally, it enables the execution of native code on the JVM via an LLVM front-end.
+GraalVM 1.0 is based on JDK 8.</p>
 
 <p><img src="/docs/img/graalvm_infrastructure.png" alt="GraalVM system diagram" /></p>
 
 <p>The preceding diagram illustrates the architecture of GraalVM as an open ecosystem.</p>
 
 <p>The virtualization layer represents programming languages, provided by GraalVM.
-The execution of guest programming languages, namely JavaScript, Ruby, R, Python
+The execution of guest programming languages, namely JavaScript, Ruby, R, Python 3
 and LLVM bitcode, in the same runtime as the host JVM-based application is now down-to-earth.
 The host language and guest languages can directly interoperate with each other
 and pass data back and forth in the same memory space.</p>
@@ -429,12 +429,12 @@ and pass data back and forth in the same memory space.</p>
 be embedded as part of OpenJDK or node.js platforms,
 or even embed inside databases such as MySQL or <a href="https://oracle.github.io/oracle-db-mle/">Oracle RDBMS</a>.</p>
 
-<p>GraalVM 1.0 release contains language interpreters for:</p>
+<p>The GraalVM 1.0 release contains language interpreters for:</p>
 <ul>
   <li>JVM-based languages like Java, Scala, Groovy, or Kotlin</li>
   <li>JavaScript (including node.js)</li>
   <li>languages compiling to LLVM bitcode like C, C++, or Rust</li>
-  <li>experimental versions of Ruby, R, and Python</li>
+  <li>experimental versions of Ruby, R, and Python 3</li>
 </ul>
 
 <p>GraalVM includes the following components:</p>
@@ -445,7 +445,7 @@ optimization.</li>
   <li><strong>Graal Polyglot APIs</strong>: APIs for combining programming
 languages in a shared runtime. These APIs allow you to match programming
 languages to your needs and gives you better performance using fewer resources.</li>
-  <li><strong>Graal SDK</strong>
+  <li><strong>Graal SDK</strong>:
 A set of APIs useful for embedding Graal languages and configuring native images.</li>
   <li><strong>Oracle HotSpot Java Virtual Machine (JVM)</strong>: A runtime environment for JVM-based
 languages and supported guest programming languages.</li>

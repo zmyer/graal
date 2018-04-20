@@ -90,7 +90,7 @@ development tools.
 
 `-X` is an undocumented synonym for `-C` and we (and other alternative
 implementations of Ruby) have repurposed it for extended options. We warn if
-your `-X` options looks like it was actually intended to be as in MRI.
+your `-X` option looks like it was actually intended to be as in MRI.
 
 *Setting the process title doesn't always work*
 
@@ -217,7 +217,7 @@ Calling Ruby code from Java is supported by the
 
 ##### Java extensions
 
-Use Java extensions written for JRuby is not supported. We could apply the same
+Using Java extensions written for JRuby is not supported. We could apply the same
 techniques as we have developed to run C extensions to this problem, but it's
 not clear if this will ever be a priority.
 

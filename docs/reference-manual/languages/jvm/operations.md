@@ -60,8 +60,8 @@ property.
 
 The default value is `Diagnose` and causes failing compilations to be retried
 with extra diagnostics enabled. Just before the VM exits, all diagnostic output
-captured during retried compilations is written to a .zip file and prints
-output to the console such as:
+captured during retried compilations is written to a .zip file and output such
+as the following is printed to the console:
 ```
 Graal diagnostic output saved in /Users/demo/dumps/1499768882600/graal_diagnostics_64565.zip
 ```

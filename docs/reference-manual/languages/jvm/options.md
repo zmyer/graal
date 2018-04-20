@@ -31,7 +31,7 @@ In addition to the JVMCI `-XX` options, `graal.*` system properties
 can be used to configure Graal. A selection of interesting ones is shown below.
 To see the complete list, use the `-XX:+JVMCIPrintProperties` option.
 
-* `ShowConfiguration`: Prints various information about the compiler configuration is use.
+* `ShowConfiguration`: Prints various information about the compiler configuration in use.
 This option is best used as follows: `java -XX:EagerJVMCI -Dgraal.ShowConfiguration=info -version`.
 Since Graal is only initialized upon the first top tier JIT compilation
 request, without `-XX:+EagerJVMCI` Graal may not be initialized at all
@@ -47,12 +47,12 @@ compiler errors without the extra diagnostics, set this option value to `Print`.
 To exit the VM on a compiler error, set this option value to `ExitVM`.
 * `-Dgraal.CompilationBailoutAction=Print`: This option is similar to
 `graal.CompilationFailureAction` except that it applies to compilations that
-are aborted due input that the compiler decides not to compile. For example,
+are aborted due to input that the compiler decides not to compile. For example,
 bytecode that contains unbalanced monitors. The default value for this option
 is `Silent`.
 * `-Dgraal.CompileGraalWithC1Only=false`: Specifies that Graal should compile itself.
 By default, Graal is compiled by C1.
-* `-Dgraal.GraalCompileOnly=<pattern>`: Restricts compilation by Graal only methods
+* `-Dgraal.GraalCompileOnly=<pattern>`: Restricts compilation by Graal only to methods
 matching `<pattern>`. The pattern format is the same as that for the `graal.MethodFilter`
 option whose complete help description can be seen with `-XX:+JVMCIPrintProperties`.
 * `-Dgraal.TraceInlining=true`: Shows the inlining decision tree for each method compiled.

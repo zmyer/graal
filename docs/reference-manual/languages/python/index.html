@@ -534,9 +534,9 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h2 id="python">Python</h2>
+                <h2 id="python-3">Python 3</h2>
 
-<p>GraalVM provides an early-stage experimental implementation of Python.
+<p>GraalVM provides an early-stage experimental implementation of Python 3.
 A primary goal is to support SciPy and its constituent
 libraries. At this point, the Python implementation is made available for
 experimentation and curious end-users.</p>
@@ -611,7 +611,7 @@ required R library:</p>
 <p>This example also uses <a href="/docs/examples/image_magix.py">image_magix.py</a> and works
 on a JPEG image input. (You can try with <a href="/resources/img/python_demo_picture.jpg">this
 image</a>, for example). These files have
-to be in the same folder the below script is located in and executed from.</p>
+to be in the same folder the script below is located in and executed from.</p>
 
 <pre><code class="language-python">import polyglot
 import sys
@@ -656,8 +656,8 @@ for more information about interoperability with other programming languages.</p
 <h2 id="tooling">Tooling</h2>
 
 <p>Although GraalVM’s Python implementation is far from complete and cannot run the standard Python
-debugger <code>pdb</code>. But the tools that GraalVM itself provides do work.
-To debug applications in Chrome browser, for example, you can run a script like so:</p>
+debugger <code>pdb</code>, the tools that GraalVM itself provides do work.
+To debug applications in the Chrome browser, for example, you can run a script like so:</p>
 
 <pre><code class="language-shell">$ graalpython --jvm --inspect [script-to-debug.py]
 Debugger listening on port 9229.

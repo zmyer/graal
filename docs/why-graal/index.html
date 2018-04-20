@@ -424,11 +424,11 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <p>GraalVM offers a comprehensive ecosystem supporting a large set of languages (Java and other JVM-based languages, JavaScript, Ruby, Python, R, C/C++ and other LLVM-based languages) and run them in five different deployment scenarios (OpenJDK, Node.js, MySQL, Oracle Database, or standalone). This page provides an overview of different scenarios how GraalVM can make a difference for your  applications.</p>
+                <p>GraalVM offers a comprehensive ecosystem supporting a large set of languages (Java and other JVM-based languages, JavaScript, Ruby, Python 3, R, and C/C++ and other LLVM-based languages) and run them in different deployment scenarios (OpenJDK, Node.js, MySQL, Oracle Database, or standalone). This page provides an overview of different scenarios in which GraalVM can make a difference for your  applications.</p>
 
 <h2 id="for-java-programs">For Java Programs</h2>
 
-<p>For existing Java applications, GraalVM can provide benefits by running them faster, providing extensibility via scripting languages, or create ahead-of-time compiled native images.</p>
+<p>For existing Java applications, GraalVM can provide benefits by running them faster, providing extensibility via scripting languages, or creating ahead-of-time compiled native images.</p>
 
 <h3 id="run-java-faster">Run Java Faster</h3>
 
@@ -436,15 +436,15 @@ $(document).ready(function(){
 
 <p>The compiler of GraalVM provides performance advantages for highly abstracted programs due to its ability to remove costly object allocations in many scenarios. You can find details in this <a href="http://www.ssw.uni-linz.ac.at/Research/Papers/Stadler14/Stadler2014-CGO-PEA.pdf">research paper</a> and try <a href="/docs/examples/java-performance-examples">an example</a>. Better inlining and more aggressive speculative optimizations can lead to additional benefits for complex long-running applications, see a <a href="/docs/examples/java-simple-stream-benchmark/">Stream API example</a>.</p>
 
-<p>Whether and how much of a difference GraalVM makes in terms of performance depends of course on the concrete workload. We are interested to receive any kind of benchmarking results that can help us make GraalVM even faster.</p>
+<p>Whether and how much of a difference GraalVM makes in terms of performance depends of course on the concrete workload. We are interested in receiving any kind of benchmarking results that can help us make GraalVM even faster.</p>
 
 <h3 id="make-your-application-extensible">Make Your Application Extensible</h3>
 
-<p>GraalVM enables running JavaScript, R, or Ruby in the context of Java applications. It offers the ability to expose Java data structures to those languages and offers secure sandboxing mechanisms (e.g., time boxing or memory boxing). The integration is language-agnostic, i.e., an integration for JavaScript can at the later point be also used to execute any other GraalVM-based language. Proxy mechanisms allow to mock up dynamic objects from Java data structures and expose them to the embedded script. Find <a href="/docs/graalvm-as-a-platform/embed/">a description</a> on how to make your JVM-based application extensible with GraalVM.</p>
+<p>GraalVM enables running JavaScript, R, Python 3, or Ruby in the context of Java applications. It offers the ability to expose Java data structures to those languages and offers secure sandboxing mechanisms (e.g., time boxing or memory boxing). The integration is language-agnostic, i.e., an integration for JavaScript can at the later point be also used to execute any other GraalVM-based language. Proxy mechanisms allow mocking up dynamic objects from Java data structures and expose them to the embedded scripts. Take a look at <a href="/docs/graalvm-as-a-platform/embed/">the description</a> on how to make your JVM-based application extensible with GraalVM.</p>
 
 <h3 id="create-a-native-image">Create a Native Image</h3>
 
-<p>Running your application inside a Java VM comes with start up and footprint costs. GraalVM has a feature to create native images for existing JVM-based applications. The image generation process runs a static analysis to find any code reachable from the main Java method and then performs a full ahead-of-time (AOT) compilation. The resulting native binary contains the whole program in machine code form for immediate execution. It can be linked with other native programs and can optionally include the GraalVM compiler for complementary just-in-time (JIT) compilation support to run any GraalVM-based language with high performance. For additional performance, native images can be built with profile guided optimizations gathered in a previous run of the application. Find an example on <a href="/docs/examples/native-list-dir/">how to build native images</a>.</p>
+<p>Running your application inside a Java VM comes with startup and footprint costs. GraalVM has a feature to create native images for existing JVM-based applications. The image generation process employs static analysis to find any code reachable from the main Java method and then performs full ahead-of-time (AOT) compilation. The resulting native binary contains the whole program in machine code form for immediate execution. It can be linked with other native programs and can optionally include the GraalVM compiler for complementary just-in-time (JIT) compilation support to run any GraalVM-based language with high performance. For additional performance, native images can be built with profile guided optimizations gathered in a previous run of the application. See an example of how to build native images <a href="/docs/examples/native-list-dir/">here</a>.</p>
 
 <h2 id="for-nodejs-programs">For Node.js Programs</h2>
 
@@ -452,29 +452,29 @@ $(document).ready(function(){
 
 <h3 id="reuse-libraries-from-java-r-or-python">Reuse Libraries from Java, R, or Python</h3>
 
-<p>GraalVM enables the use of existing Java libraries or Java frameworks (like Spark or Flink) directly from Node.js. Also, one can use for example R or Python for data science or plotting directly from your JavaScript application. Find an example for such a <a href="/docs/examples/polyglot-javascript-java-r/">polyglot application</a>.</p>
+<p>GraalVM enables the use of existing Java libraries or Java frameworks (like Spark or Flink) directly from Node.js. Also, one can use for example R or Python for data science or plotting directly from a JavaScript application. Find an example of a polyglot application <a href="/docs/examples/polyglot-javascript-java-r/">here</a>.</p>
 
 <h3 id="run-with-large-heaps">Run with Large Heaps</h3>
 
-<p>The V8 JavaScript engine included in the standard Node.js distribution is tuned for browser configurations and designed to work effectively in small heap scenarios. We enable running Node.js with the heap management of the JVM, opening the ability for large heap configurations and suitable garbage collection settings. The maximum configurable heap size is 32 Gb with compressed 32-bit pointers and even terabytes of heap size is supported in the 64-bit pointer configuration.</p>
+<p>The V8 JavaScript engine included in the standard Node.js distribution is tuned for browser configurations and designed to work effectively in small heap scenarios. We enable running Node.js with the heap management of the JVM, opening the ability for large heap configurations and suitable garbage collection settings. The maximum configurable heap size is 32 Gb with compressed 32-bit pointers, and terabytes of heap are supported in the 64-bit pointer configuration.</p>
 
 <h3 id="define-data-structues-in-cc">Define Data Structues in C/C++</h3>
 
-<p>GraalVM allows efficient combination of native code (e.g., written in C/C++) and JavaScript. Native data structures can be directly accessed and the compiler can inline across any boundary. This can be beneficial in a scenario where efficient data structures are managed and allocated in C while other parts of the application are written in Node.js. Find <a href="/docs/reference-manual/languages/llvm/#interoperability">an example</a> for such a scenario.</p>
+<p>GraalVM allows efficient combination of native code (e.g., written in C/C++) and JavaScript. Native data structures can be directly accessed and the compiler can inline across any boundary. This can be beneficial in a scenario where efficient data structures are managed and allocated in C while other parts of the application are written in Node.js. Find an example of such scenario in the <a href="/docs/reference-manual/languages/llvm/#interoperability">reference manual</a>.</p>
 
-<h2 id="for-ruby-r-or-python">For Ruby, R, or Python</h2>
+<h2 id="for-ruby-r-or-python-3">For Ruby, R, or Python 3</h2>
 
-<p>Support for Ruby, R, or Python is still experimental in GraalVM. We are actively working on stability and support for all modules for those languages. At this point in time, we can run simpler applications of Ruby and R, but we do not have the same full compatibility we provide for Java and Node.js applications. Our Python implementation was just recently started and can only run small examples.</p>
+<p>Support for Ruby, R, or Python 3 is still experimental in GraalVM. We are actively working on stability and support for all modules for those languages. At this point in time, we can run simpler applications of Ruby and R, but we do not have the same full compatibility we provide for Java and Node.js applications. Our Python implementation was just recently started and can only run small examples.</p>
 
-<p>Apart from the standard GraalVM benefits such as language interoperability (e.g., use Java or JavaScript from those applications), GraalVM can achieve high speed ups of 10x or more for those languages. We are ready to assist with making existing Ruby and R applications work with GraalVM, but we cannot guarantee out-of-the-box compatibility for these languages yet.</p>
+<p>Apart from the standard GraalVM benefits such as language interoperability (e.g., use Java or JavaScript from those applications), GraalVM can achieve high speedups of 10x or more for those languages. We are happy to assist with making existing Ruby and R applications work with GraalVM, but we cannot guarantee out-of-the-box compatibility for these languages yet.</p>
 
 <h2 id="for-oracle-database--mysql">For Oracle Database &amp; MySQL</h2>
 
-<p>GraalVM is designed for embeddability and can be executed in databases. We  provide experimental versions of the Oracle Database and MySQL and expect GraalVM to be integrated in more artifacts in the future.</p>
+<p>GraalVM is designed for embeddability and can be executed in databases. We  provide experimental integrations for the Oracle Database and MySQL and expect GraalVM to be integrated in more artifacts in the future.</p>
 
 <h3 id="running-in-oracle-database">Running in Oracle Database</h3>
 
-<p>Our prototype of <a href="https://oracle.github.io/oracle-db-mle/">Oracle Database Multilingual Engine (MLE) is available</a>. It can currently run JavaScript and uses browserify to execute Node.js modules.</p>
+<p>Our prototype of the Oracle Database Multilingual Engine (MLE) is available <a href="https://oracle.github.io/oracle-db-mle/">here</a>. It can currently run JavaScript and uses browserify to execute Node.js modules.</p>
 
 <h3 id="running-in-mysql">Running in MySQL</h3>
 
@@ -482,23 +482,23 @@ $(document).ready(function(){
 
 <h2 id="for-your-platform">For Your Platform</h2>
 
-<p>We encourage the development of GraalVM embeddings similar to our own integrations in the Oracle Database, MySQL, OpenJDK, or Node.js. Together with research collaboration partners, we already explored ideas of embedding in Spark or Flink. Find <a href="/docs/graalvm-as-a-platform/embed/">here</a> a description on how to embed GraalVM in your existing JVM-based application or native aplication.</p>
+<p>We encourage the development of GraalVM embeddings similar to our own integrations in the Oracle Database, MySQL, OpenJDK, or Node.js. Together with research collaboration partners, we already explored ideas of embedding in Spark or Flink. Find a description on how to embed GraalVM in your existing JVM-based application or native aplication <a href="/docs/graalvm-as-a-platform/embed/">here</a>.</p>
 
 <h2 id="for-your-languages-and-tools">For Your Languages and Tools</h2>
 
-<p>GraalVM is an open ecosystem and we invite third party system to participate via connecting their own programming languages, tools, or platform.</p>
+<p>GraalVM is an open ecosystem and we invite third party systems to participate via connecting their own programming languages, tools, or platforms.</p>
 
 <h3 id="implement-your-own-language">Implement Your Own Language</h3>
 
-<p>The Truffle language development framework allows to run programming languages efficiently on GraalVM. It simplifies language implementation by automatically deriving high-performance code from interpreters. Find details about the approach in this <a href="http://chrisseaton.com/rubytruffle/pldi17-truffle/pldi17-truffle.pdf">research paper</a>.</p>
+<p>The Truffle language development framework allows running programming languages efficiently on GraalVM. It simplifies language implementation by automatically deriving high-performance code from interpreters. Find details about the approach in this <a href="http://chrisseaton.com/rubytruffle/pldi17-truffle/pldi17-truffle.pdf">research paper</a>.</p>
 
 <p>Implementing your own language using GraalVM will not only give you high performance. More importantly, it allows your language to connect with the rich tooling provided by the GraalVM ecosystem. Also, it enables your language to run in the context of any GraalVM embedding.</p>
 
-<p>We developed a demonstration language SimpleLanguage to show the use of GraalVM’s language implementation framework. Find out <a href="/docs/graalvm-as-a-platform/implement-language/">how to get started</a> implementing a language.</p>
+<p>We developed a demonstration language called “SimpleLanguage” to show the use of GraalVM’s language implementation framework. Find out how to <a href="/docs/graalvm-as-a-platform/implement-language/">get started</a> implementing a language.</p>
 
 <h3 id="create-language-agnostic-tools">Create Language-agnostic Tools</h3>
 
-<p>GraalVM provides a framework for creating language-agnostic tools like debuggers, profilers, or other instrumentations. In general, GraalVM provides a standardized way to express and run program code enabling cross-language research and the development of tools that are developed once and then can be applied to any language.</p>
+<p>GraalVM provides a framework for creating language-agnostic tools like debuggers, profilers, or other instrumentations. GraalVM provides a standardized way to express and run program code enabling cross-language research and the development of tools that are developed once and then can be applied to any language.</p>
 
               </div>
     

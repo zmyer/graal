@@ -3,7 +3,7 @@ monitoring features to allow developers, integrators, and IT staff to monitor
 the performance of user programs and the health status of the virtual machine.
 
 The GraalVM monitoring component is called the Agent and can be easily enabled
-by providing command line option `--agent` to the executables.
+by providing the command line option `--agent` to the executables.
 
 __Disclaimer__: The Agent is currently an __experimental__ feature
 provided by the __GraalVM Enterprise Edition__ available for download
@@ -69,7 +69,7 @@ Get familiar with using the GraalVM Agent with this Hello World example.
     ```
 
     The GraalVM starts and attaches itself to the Monitoring Agent Server running by default on the localhost:8080 port.
-    To attach the GraalVM to the server running on a different host:port, use the `--agent=<[host:]port>` option.
+    To attach the GraalVM to a server running on a different host:port, use the `--agent=<[host:]port>` option.
 
     Now, when you open the Monitoring Agent's page, you can see the virtual machine is running with some
     system information displayed by default.

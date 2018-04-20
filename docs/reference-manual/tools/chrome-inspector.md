@@ -1,6 +1,6 @@
 GraalVM supports debugging of guest language applications and provides a
 built-in implementation of
-[Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
+the [Chrome DevTools Protocol](https://chromedevtools.github.io/devtools-protocol/).
 This allows you to attach compatible debuggers such as
 [Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools/)
 to GraalVM.
@@ -40,7 +40,7 @@ Server running at http://localhost:8000/
 
 5. Refresh the node.js app and you can see the breakpoint hit.
 
-You can inspect stack, variables, evaluate variables and selected expressions
+You can inspect the stack, variables, evaluate variables and selected expressions
 in a tooltip, and so on. By hovering a mouse over the `response` variable, for
 instance, you can inspect its properties as can be seen in the screenshot below:
 
@@ -59,7 +59,7 @@ including stepping through language boundaries during guest language
 
 ### Node Launcher
 The node.js implementation that GraalVM provides accepts the same options as
-[node.js built on V8 JavaScript engine](https://nodejs.org/), such as:
+[node.js built on the V8 JavaScript engine](https://nodejs.org/), such as:
 
 ```
 --inspect[=<port number>]
@@ -74,7 +74,7 @@ different port, specify the optional port number.
 
 Enables the inspector agent and suspends on the first line of the application
 code. Listens on port 9229 by default, to listen on a different port, specify
-the optional port number. This applies to `node` launcher only.
+the optional port number. This applies to the `node` launcher only.
 
 ### Other Language Launchers
 
@@ -118,7 +118,7 @@ inspector client. It is `false` by default.
 ### Programmatic Launch of Inspector Backend
 
 Embedders can provide the appropriate inspector options to the `Engine/Context`
-to launch the inspector backend. Following code snippet provides an example of
+to launch the inspector backend. The following code snippet provides an example of
 a possible launch:
 
 ```

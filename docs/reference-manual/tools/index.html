@@ -539,13 +539,13 @@ $(document).ready(function(){
 administrators to debug and monitor GraalVM and deployed applications.</p>
 
 <h2 id="component-updater">Component Updater</h2>
-<p>GraalVM allows to install additional components (languages). Use the
+<p>GraalVM allows you to install additional components (languages). Use the
 <a href="/docs/reference-manual/graal-updater/">Graal updater</a> utility to manage the installation.</p>
 
 <h2 id="debugger">Debugger</h2>
 <p>GraalVM supports debugging of guest language applications and provides a
 built-in implementation of
-<a href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a>.
+the <a href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol</a>.
 This allows you to attach compatible debuggers such as
 <a href="https://developers.google.com/web/tools/chrome-devtools/">Chrome Developer Tools</a>
 to GraalVM.</p>
@@ -592,7 +592,7 @@ Server running at http://localhost:8000/
   </li>
 </ol>
 
-<p>You can inspect stack, variables, evaluate variables and selected expressions
+<p>You can inspect the stack, variables, evaluate variables and selected expressions
 in a tooltip, and so on. By hovering a mouse over the <code>response</code> variable, for
 instance, you can inspect its properties as can be seen in the screenshot below:</p>
 
@@ -611,7 +611,7 @@ including stepping through language boundaries during guest language
 
 <h3 id="node-launcher">Node Launcher</h3>
 <p>The node.js implementation that GraalVM provides accepts the same options as
-<a href="https://nodejs.org/">node.js built on V8 JavaScript engine</a>, such as:</p>
+<a href="https://nodejs.org/">node.js built on the V8 JavaScript engine</a>, such as:</p>
 
 <pre><code>--inspect[=&lt;port number&gt;]
 </code></pre>
@@ -624,7 +624,7 @@ different port, specify the optional port number.</p>
 
 <p>Enables the inspector agent and suspends on the first line of the application
 code. Listens on port 9229 by default, to listen on a different port, specify
-the optional port number. This applies to <code>node</code> launcher only.</p>
+the optional port number. This applies to the <code>node</code> launcher only.</p>
 
 <h3 id="other-language-launchers">Other Language Launchers</h3>
 
@@ -664,7 +664,7 @@ inspector client. It is <code>false</code> by default.</p>
 <h3 id="programmatic-launch-of-inspector-backend">Programmatic Launch of Inspector Backend</h3>
 
 <p>Embedders can provide the appropriate inspector options to the <code>Engine/Context</code>
-to launch the inspector backend. Following code snippet provides an example of
+to launch the inspector backend. The following code snippet provides an example of
 a possible launch:</p>
 
 <pre><code>String port = "4242";
@@ -866,8 +866,8 @@ to collect execution counts for all statements in methods ending with <code>acce
  information. Tracing histograms often provides insights into the behavior
  of the algorithm that needs optimization.</p>
 
-    <p>Lastly, let’s look at the memory tracer tool, for which GraalVM  currently
- provides experimental support, for capturing allocations.</p>
+    <p>Lastly, let’s look at the memory tracer tool for capturing allocations, for
+ which GraalVM currently provides experimental support.</p>
   </li>
   <li>
     <p>Run <code>js primes.js --memtracer</code> to display source code locations and
@@ -892,10 +892,10 @@ counts of reported allocations.</p>
     <p>This output shows the number of allocations which were recorded per function.
  For each prime number that was computed, the program allocates one object in
  <code>next</code> and one in <code>constructor</code> of <code>DivisibleByFilter</code>. Allocations are recorded
- independently whether they could get eliminated by the compiler. The Graal
+ independently of whether they could get eliminated by the compiler. The Graal
  compiler is particularly powerful in optimizing allocations and can push
  allocations into infrequent branches to increase execution performance. The
- Graal team plan to add information about memory optimizations to the
+ Graal team plans to add information about memory optimizations to the
  memory tracer in the future.</p>
   </li>
 </ol>
@@ -910,13 +910,13 @@ reference information for the CPU sampler, the CPU tracer, and the memory tracer
 
 <ul>
   <li><code>--cpusampler</code>: enables the CPU sampler. Disabled by default.</li>
-  <li><code>--cpusampler.Delay=&lt;Long&gt;</code>: delays the sampling for many milliseconds (default: 0).</li>
+  <li><code>--cpusampler.Delay=&lt;Long&gt;</code>: delays the sampling for the given number of milliseconds (default: 0).</li>
   <li><code>--cpusampler.FilterFile=&lt;Expression&gt;</code>: applies a wildcard filter for source
 file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
   <li><code>--cpusampler.FilterLanguage=&lt;String&gt;</code>: profiles languages only with the
 matching mime-type. For example, <code>+</code>. The default is no filter.</li>
   <li><code>--cpusampler.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for
-program roots. For example, <code>Math.&amp;lowast;</code>. The default is ∗.</li>
+program roots. For example, <code>Math.*</code>. The default is ∗.</li>
   <li><code>--cpusampler.Mode=&lt;Mode&gt;</code>:  describes level of sampling detail. Please note that increased detail can lead to reduced accuracy.
     <ul>
       <li><code>exclude_inlined_roots</code> samples roots excluding inlined functions (enabled by default);</li>
@@ -943,7 +943,7 @@ file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
   <li><code>--cputracer.FilterLanguage=&lt;String&gt;</code>: profiles languages only with the
 matching mime-type. For example, <code>+</code>. The default is no filter.</li>
   <li><code>--cputracer.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for
-program roots. For example, <code>Math.&amp;lowast;</code>. The default is ∗.</li>
+program roots. For example, <code>Math.*</code>. The default is ∗.</li>
   <li><code>--cputracer.TraceCalls</code>: captures calls when tracing. The default is false.</li>
   <li><code>--cputracer.TraceInternal</code>: traces internal elements. The default is false.</li>
   <li><code>--cputracer.TraceRoots=&lt;Boolean&gt;</code>: captures roots when tracing.  The default
@@ -958,7 +958,7 @@ is false.</li>
   <li><code>--memtracer</code>: enables the memory tracer. Disabled by default.</li>
   <li><code>--memtracer.FilterFile=&lt;Expression&gt;</code>: applies a wildcard filter for source file paths. For example, <code>*program*.sl</code>. The default is ∗.</li>
   <li><code>--memtracer.FilterLanguage=&lt;String&gt;</code>: profiles languages only with the matching mime-type. For example, <code>+</code>. The default is no filter.</li>
-  <li><code>--memtracer.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for program roots. For example, <code>Math.&amp;lowast;</code>. The default is ∗.</li>
+  <li><code>--memtracer.FilterRootName=&lt;Expression&gt;</code>: applies a wildcard filter for program roots. For example, <code>Math.*</code>. The default is ∗.</li>
   <li><code>--memtracer.Output=&lt;Format&gt;</code>: prints a ‘typehistogram’, ‘histogram’, or ‘calltree’ as output. The default is ‘histogram’.</li>
   <li><code>--memtracer.StackLimit=&lt;Integer&gt;</code>: sets the maximum number of maximum stack elements.</li>
   <li><code>--memtracer.TraceCalls</code>: captures calls when tracing. The default is false.</li>
@@ -973,7 +973,7 @@ monitoring features to allow developers, integrators, and IT staff to monitor
 the performance of user programs and the health status of the virtual machine.</p>
 
 <p>The GraalVM monitoring component is called the Agent and can be easily enabled
-by providing command line option <code>--agent</code> to the executables.</p>
+by providing the command line option <code>--agent</code> to the executables.</p>
 
 <p><strong>Disclaimer</strong>: The Agent is currently an <strong>experimental</strong> feature
 provided by the <strong>GraalVM Enterprise Edition</strong> available for download
@@ -1039,7 +1039,7 @@ the GraalVM development team or third party developers.</p>
 </code></pre>
 
     <p>The GraalVM starts and attaches itself to the Monitoring Agent Server running by default on the localhost:8080 port.
- To attach the GraalVM to the server running on a different host:port, use the <code>--agent=&lt;[host:]port&gt;</code> option.</p>
+ To attach the GraalVM to a server running on a different host:port, use the <code>--agent=&lt;[host:]port&gt;</code> option.</p>
 
     <p>Now, when you open the Monitoring Agent’s page, you can see the virtual machine is running with some
  system information displayed by default.</p>
@@ -1130,20 +1130,20 @@ statements:</p>
 <p>Then right-click its process in VisualVM and invoke the Heap Dump action. A new heap viewer for the Ruby process opens.</p>
 
 <h3 id="analyzing-objects">Analyzing Objects</h3>
-<p>Initially the Summary view for the Java heap is displayed. To analyze the Ruby heap, click the leftmost (Summary) dropdown in heap viewer toolbar, choose the Ruby Heap scope and select the Objects view. Now the heap viewer displays all Ruby heap objects, aggregated by their type.</p>
+<p>Initially the Summary view for the Java heap is displayed. To analyze the Ruby heap, click the leftmost (Summary) dropdown in the heap viewer toolbar, choose the Ruby Heap scope and select the Objects view. Now the heap viewer displays all Ruby heap objects, aggregated by their type.</p>
 
 <p>Expand the Proc node in the results view to see a list of objects of this type. Each object displays its logical value as provided by the underlying implementation. Expand the objects to access their variables and references, where available.</p>
 
 <p><img src="/docs/img/HeapViewer_objects.png" alt="" title="Graal VisualVM Heap Viewer - analyzing objects" /></p>
 
-<p>Now enable the Preview, Variables and References details by clicking the buttons in toolbar and select the individual ProcType objects. Where available, the Preview view shows the corresponding source fragment, the Variables view shows variables of the object and References view shows objects referring to the selected object.</p>
+<p>Now enable the Preview, Variables and References details by clicking the buttons in the toolbar and select the individual ProcType objects. Where available, the Preview view shows the corresponding source fragment, the Variables view shows variables of the object and References view shows objects referring to the selected object.</p>
 
-<p>Last, use the Presets dropdown in heap viewer toolbar to switch the view from All Objects to Dominators or GC Roots. To display the heap dominators, retained sizes must be computed first, which can take a few minutes for the server.rb example. Select the Objects aggregation in toolbar to view the individual dominators or GC roots.</p>
+<p>Last, use the Presets dropdown in the heap viewer toolbar to switch the view from All Objects to Dominators or GC Roots. To display the heap dominators, retained sizes must be computed first, which can take a few minutes for the server.rb example. Select the Objects aggregation in the toolbar to view the individual dominators or GC roots.</p>
 
 <p><img src="/docs/img/HeapViewer_objects_dominators.png" alt="" title="Graal VisualVM Heap Viewer - analyzing objects" /></p>
 
 <h3 id="analyzing-threads">Analyzing Threads</h3>
-<p>Click the leftmost dropdown in heap viewer toolbar and select the Threads view for the Ruby heap. The heap viewer now displays the Ruby thread stack trace, including local objects. The stack trace can alternatively be displayed textually by clicking the HTML toolbar button.</p>
+<p>Click the leftmost dropdown in the heap viewer toolbar and select the Threads view for the Ruby heap. The heap viewer now displays the Ruby thread stack trace, including local objects. The stack trace can alternatively be displayed textually by clicking the HTML toolbar button.</p>
 
 <p><img src="/docs/img/HeapViewer_thread.png" alt="" title="Graal VisualVM Heap Viewer - analyzing thread" /></p>
 

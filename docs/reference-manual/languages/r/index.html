@@ -562,11 +562,11 @@ Use <code>--help</code> to print the list of supported options. The most importa
   <li><code>--jvm.Djava.net.useSystemProxies=true</code> to pass any options to the JVM, this will be translated to <code>-Djava.net.useSystemProxies=true</code>.</li>
 </ul>
 
-<p>Note: unlike other GraalVM languages, FastR does not ship yet with a
-<a href="/docs/reference-manual/aot-compilation">native image</a> of its runtime,
-therefore <code>--native</code> option, which is the default, will still start FastR on top of JVM,
+<p>Note: unlike other GraalVM languages, FastR does not yet ship with a
+<a href="/docs/reference-manual/aot-compilation">native image</a> of its runtime.
+Therefore the <code>--native</code> option, which is the default, will still start FastR on top of JVM,
 but for the sake of Java interoperability will not be available in such case.
-In future versions, FastR may ship with a native image image and <code>--native</code> will run it.</p>
+In future versions, FastR may ship with a native image and <code>--native</code> will run it.</p>
 
 <h2 id="r-compatibility">R Compatibility</h2>
 
@@ -580,18 +580,18 @@ It can install and run unmodified complex R packages like <code>ggplot2</code>, 
 As some packages rely on unspecified behavior or implementation details of GNU R, support for packages
 is work in progress, and some packages might not install successfully or work as expected.</p>
 
-<p>Packages can be installed using the <code>install.packages</code> function or <code>R CMD INSTALL</code> shell command.
+<p>Packages can be installed using the <code>install.packages</code> function or the <code>R CMD INSTALL</code> shell command.
 By default, FastR uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1</sup></a>
 that is updated with every new release of FastR (once a month).
-This behavior can be overrideen by explicitly setting the <code>repos</code> argument of <code>install.packages</code> function.
+This behavior can be overrideen by explicitly setting the <code>repos</code> argument of the <code>install.packages</code> function.
 This functionality does not interfere with the <code>checkpoint</code> package. If you are behind a proxy server, make
 sure to configure the proxy using, e.g., <code>--jvm.Djava.net.useSystemProxies=true</code>.</p>
 
 <p>Known limitations of FastR compared to GNU R:</p>
 <ul>
-  <li>Only small parts of the low-level <code>graphics</code> package are functional. However, <code>grid</code> package is supported and
+  <li>Only small parts of the low-level <code>graphics</code> package are functional. However, the <code>grid</code> package is supported and
    FastR can install and run packages based on it like <code>ggplot2</code>.
-   Support for <code>graphics</code> package in FastR is planned for future releases.</li>
+   Support for the <code>graphics</code> package in FastR is planned for future releases.</li>
   <li>Encoding of character vectors. Related builtins (e.g., <code>Encoding</code>) are available,
    but do not execute any useful code. Character vectors are represented as Java Strings and
    therefore encoded in UTF-16 format. FastR will add support for encoding in future releases.</li>
@@ -635,7 +635,7 @@ system.time(mutual_R(x))
 #  1.321   0.010   1.279
 </code></pre>
 
-<p>Algorithms such as this one usually require C/C++ code to run efficiently<a href="#note-2"><sup>2</sup></a>:</p>
+<p>Algorithms such as this one usually require C/C++ code to run efficiently:<a href="#note-2"><sup>2</sup></a></p>
 <pre><code>if (!require('RcppArmadillo')) {
     install.packages('RcppArmadillo')
     library(RcppArmadillo)
@@ -678,7 +678,7 @@ a native image of FastR with improved startup.</p>
 
 <h3 id="interoperability">Interoperability</h3>
 
-<p>GraalVM supports several other programming languages, including JavaScript, Ruby, Python, and LLVM.
+<p>GraalVM supports several other programming languages, including JavaScript, Ruby, Python 3, and LLVM.
 While FastR is designed to run R code, it also provides an API for programming language interoperability
 that lets you execute code from any other language that GraalVM supports. Note that you must start FastR
 with <code>--polyglot</code> to have access to other GraalVM languages.</p>
@@ -723,7 +723,7 @@ Java types returned from <code>java.type</code>. Fields and methods of Java obje
 Additionally, you can use <code>awt(...)</code> to open an R drawing device
 directly on a Java Graphics surface, for more details see <a href="#java-based-graphics">Java Based Graphics</a>.</p>
 
-<p>The following example creates new Java <code>BufferedImage</code> object, plots random data to it using R’s <code>grid</code> package,
+<p>The following example creates a new Java <code>BufferedImage</code> object, plots random data to it using R’s <code>grid</code> package,
 and shows the image in a window using Java’s <code>AWT</code> framework. Note that you must start FastR with <code>--jvm</code> to have
 access to Java interoperability.</p>
 
@@ -802,8 +802,8 @@ clusterApply(cl0, seq_along(cl0), function(i) i)
 <br />
 <br /></p>
 
-<p><sup id="note-1">1</sup> More technically, FastR uses fixed MRAN URL from <code>$R_HOME/etc/DEFAULT_CRAN_MIRROR</code>, which is a snapshot of the
-CRAN repository as it was at given date visible from the URL string.</p>
+<p><sup id="note-1">1</sup> More technically, FastR uses a fixed MRAN URL from <code>$R_HOME/etc/DEFAULT_CRAN_MIRROR</code>, which is a snapshot of the
+CRAN repository as it was visible at a given date from the URL string.</p>
 
 <p><sup id="note-2">2</sup> When this example is run for the first time, it installs the <code>RcppArmadillo</code> package,
 which may take few minutes. Note that this example can be run in both FastR and GNU R.</p>

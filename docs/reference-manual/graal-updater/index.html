@@ -536,9 +536,9 @@ $(document).ready(function(){
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <h3 id="component-installation">Component installation</h3>
 
-<p>Some languages are not part of GraalVM core download package and must be downloaded and installed separately. To assist you with this installation, languages are pre-packaged as <strong>Components</strong>.
-GraalVM installation contains <strong>Graal Updater</strong> utility, <code>gu</code>,
-that can be used to manage components. Add the GraalVM <code>/bin</code> folder to your <code>PATH</code> environment variable in order to deploy <code>gu</code> installer tool.</p>
+<p>Some languages are not part of the GraalVM core download package and must be downloaded and installed separately. To assist you with this installation, languages are pre-packaged as <strong>Components</strong>.
+The GraalVM installation contains the <strong>Graal Updater</strong> utility, <code>gu</code>,
+that can be used to manage components. Add the GraalVM <code>/bin</code> folder to your <code>PATH</code> environment variable in order to deploy the <code>gu</code> installer tool.</p>
 
 <p>The Graal Updater also verifies whether the version of the component is
 appropriate for your GraalVM installation. Component packages are released for
@@ -552,14 +552,14 @@ Run <code>gu &lt;command&gt; -h</code> to get help specific for the particular c
 <p>Two modes of component installation are supported:</p>
 
 <p><strong>Manual installation</strong>:
-You download the component package yourself. The Graal Updater will install the pre-downloaded component package. These pre-built languages packages are at your disposal:</p>
+You download the component package yourself. The Graal Updater will install the pre-downloaded component package. These following pre-built language packages are at your disposal:</p>
 <ul>
-  <li><em>r-installable-linux-amd64.jar</em></li>
-  <li><em>r-installable-macos-amd64.jar</em></li>
-  <li><em>python-installable-linux-amd64.jar</em></li>
-  <li><em>ruby-installable-linux-amd64.jar</em></li>
-  <li><em>ruby-installable-macos-amd64.jar</em></li>
-  <li><em>python-installable-macos-amd64.jar</em></li>
+  <li>_r-installable-linux-amd64.jar</li>
+  <li>_r-installable-macos-amd64.jar</li>
+  <li>_python-installable-linux-amd64.jar</li>
+  <li>_python-installable-macos-amd64.jar</li>
+  <li>_ruby-installable-linux-amd64.jar</li>
+  <li>_ruby-installable-macos-amd64.jar</li>
 </ul>
 
 <p><strong>Installation from Catalog</strong>: There is a list of components maintained by Oracle,
@@ -568,12 +568,12 @@ The Graal Updater will download the component package for you.</p>
 
 <h3 id="manual-installation">Manual installation</h3>
 <p>With the already downloaded component package archive,  <code>component.jar</code>,
-the contained component can be installed as</p>
+the component can be installed as</p>
 <pre><code class="language-bash">gu install component.jar
 </code></pre>
 <h3 id="installation-from-catalog">Installation from Catalog</h3>
-<p>The Graal Updater first downloads list of components,
-then uses information in the list to download the actual component package for you and installs it.
+<p>The Graal Updater first downloads the list of components,
+then uses information in the list to download the actual component package for you and install it.
 To see which components are available, use</p>
 <pre><code class="language-bash">gu -c list
 </code></pre>
@@ -583,8 +583,8 @@ the component ID (for example <code>org.graalvm.ruby</code>) can be used as</p>
 </code></pre>
 <p>and that is all!</p>
 
-<p>If you want to see more verbose messages during installation, you may use <code>-v</code>
-switch to see download progress bar and verbose messages.</p>
+<p>If you want to see more verbose messages during installation, you may use the <code>-v</code>
+switch to see the download progress bar and verbose messages.</p>
 
 <h3 id="component-list">Component list</h3>
 <p>Installed components can be printed by</p>
@@ -596,15 +596,15 @@ switch to see download progress bar and verbose messages.</p>
 </code></pre>
 
 <h3 id="uninstallation">Uninstallation</h3>
-<p>Components may be uninstalled from GraalVM installation when you no longer need them.
+<p>Components may be uninstalled from the GraalVM installation when you no longer need them.
 To uninstall a specific component you need to know its ID (for example <code>org.graalvm.ruby</code>).
 The command to uninstall the component is:</p>
 <pre><code class="language-bash">gu uninstall org.graalvm.ruby
 </code></pre>
-<p>Uninstallation removes the files created during installation. If a file belongs to multiple components, it is removed when the last using component is removed.</p>
+<p>Uninstallation removes the files created during installation. If a file belongs to multiple components, it is removed when the last component using it is removed.</p>
 
 <h3 id="proxies">Proxies</h3>
-<p>If the <em>Graal Updater</em> needs to reach the component catalog, or download component package, it may need to pass through your HTTP proxy, if your network uses one. On <em>MacOS X</em>, the proxy settings is automatically obtained from the OS. On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your distribution and/or desktop environment documentation for the details.</p>
+<p>If the <em>Graal Updater</em> needs to reach the component catalog, or download a component package, it may need to pass through your HTTP proxy, if your network uses one. On <em>MacOS X</em>, the proxy settings are automatically obtained from the OS. On <em>Linux</em>, you must ensure that the <code>http_proxy</code> and <code>https_proxy</code> environment variables are set appropriately <strong>before</strong> you launch <code>gu</code>. Please refer to your distribution and/or desktop environment documentation for the details.</p>
 
 <h3 id="replacing-components-and-files">Replacing Components and Files</h3>
 <p>A component may be only installed once. The Graal Updater refuses to install a component if a component with the same ID is already installed. But the installed component may be <strong>replaced</strong>. Graal Updater first <em>uninstalls</em> the component and then installs the new package. To replace component, use <code>-r</code> option:</p>
@@ -613,7 +613,7 @@ gu -c -r install org.graalvm.ruby
 </code></pre>
 <p>The process is the same as if <code>gu uninstall</code> is run first and <code>gu install</code> next.</p>
 
-<p>The Graal Updater also refuses to overwrite existing files if the to-be-installed and existing versions differ. There are cases you may need to refresh file contents, if they were modified or damaged. Use <code>-o</code> option:</p>
+<p>The Graal Updater also refuses to overwrite existing files if the to-be-installed and existing versions differ. There are cases when you may need to refresh file contents, if they were modified or damaged. Use <code>-o</code> option:</p>
 <pre><code class="language-bash">gu -o install component.jar
 gu -c -o install org.graalvm.ruby
 </code></pre>

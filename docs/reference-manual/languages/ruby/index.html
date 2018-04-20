@@ -544,7 +544,7 @@ $(document).ready(function(){
   <li>Boot Ruby applications in less time</li>
   <li>Execute C extensions in a managed environment</li>
   <li>Provide new tooling such as debuggers and monitoring</li>
-  <li>Add fast and low-overhead interoperability with languages like JavaScript, Python and R</li>
+  <li>Add fast and low-overhead interoperability with languages like JavaScript, Python 3 and R</li>
   <li>All while maintaining very high compatibility with the standard implementation of Ruby</li>
 </ul>
 
@@ -719,7 +719,7 @@ suite and the Ruby Spec project.</p>
 <h2 id="interoperability">Interoperability</h2>
 
 <p>GraalVM supports several other programming languages, including JavaScript, R,
-Python, and LLVM. TruffleRuby lets you run code from these languages, and use
+Python 3, and LLVM. TruffleRuby lets you run code from these languages, and use
 objects and methods from one language in another.</p>
 
 <p>As an example, we can pass a JSON-encoded string into Graal.js, decode it into
@@ -848,7 +848,7 @@ development tools.</p>
 
 <p><code>-X</code> is an undocumented synonym for <code>-C</code> and we (and other alternative
 implementations of Ruby) have repurposed it for extended options. We warn if
-your <code>-X</code> options looks like it was actually intended to be as in MRI.</p>
+your <code>-X</code> option looks like it was actually intended to be as in MRI.</p>
 
 <p><em>Setting the process title doesn’t always work</em></p>
 
@@ -974,7 +974,7 @@ provide the same interface as JRuby does for this functionality.</p>
 
 <h5 id="java-extensions">Java extensions</h5>
 
-<p>Use Java extensions written for JRuby is not supported. We could apply the same
+<p>Using Java extensions written for JRuby is not supported. We could apply the same
 techniques as we have developed to run C extensions to this problem, but it’s
 not clear if this will ever be a priority.</p>
 
