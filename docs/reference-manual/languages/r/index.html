@@ -553,8 +553,7 @@ See <code>graalvm/bin/gu --help</code> for more information.</p>
 <pre><code class="language-shell">$ Rscript [polyglot options] [R options] [filename]
 </code></pre>
 
-<p>FastR uses the same <a href="/docs/reference-manual/polyglot/#polyglot-options">polyglot options</a> as other GraalVM languages and
-the same R options as <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line">GNU R</a>, e.g., <code>bin/R --vanilla</code>.
+<p>FastR uses the same <a href="/docs/reference-manual/polyglot/#polyglot-options">polyglot options</a> as other GraalVM languages and the same R options as <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html#Invoking-R-from-the-command-line">GNU R</a>, e.g., <code>bin/R --vanilla</code>.
 Use <code>--help</code> to print the list of supported options. The most important options include:</p>
 <ul>
   <li><code>--jvm</code> to enable Java interoperability</li>
@@ -563,7 +562,7 @@ Use <code>--help</code> to print the list of supported options. The most importa
 </ul>
 
 <p>Note: unlike other GraalVM languages, FastR does not yet ship with a
-<a href="/docs/reference-manual/aot-compilation">native image</a> of its runtime.
+<a href="/docs/reference-manual/aot-compilation/">native image</a> of its runtime.
 Therefore the <code>--native</code> option, which is the default, will still start FastR on top of JVM,
 but for the sake of Java interoperability will not be available in such case.
 In future versions, FastR may ship with a native image and <code>--native</code> will run it.</p>
@@ -647,9 +646,8 @@ system.time(mutual_cpp(x))
 #   user  system elapsed
 #  0.046   0.003   0.051
 </code></pre>
-<p>(Uses <a href="/docs/examples/r_mutual.cpp">r_mutual.cpp</a>.)</p>
-
-<p>However, after a few iterations, FastR runs the R code efficiently enough to
+<p>(Uses <a href="/docs/examples/r_mutual.cpp">r_mutual.cpp</a>.)
+However, after a few iterations, FastR runs the R code efficiently enough to
 make the performance advantage of C/C++ negligible:</p>
 <pre><code>system.time(mutual_R(x))
 #   user  system elapsed
@@ -666,9 +664,9 @@ a native image of FastR with improved startup.</p>
 <p>FastR’s integration with the GraalVM ecosystem includes:</p>
 <ul>
   <li>seamless interop with other GraalVM languages and with Java</li>
-  <li>debugging with <a href="/docs/reference-manual/tools/chrome-inspector">Chrome DevTools</a></li>
-  <li><a href="/docs/reference-manual/tools/profiling/">CPU and memory profiling</a></li>
-  <li><a href="/docs/reference-manual/tools/heap-viewer/">VisualVM integration</a></li>
+  <li>debugging with <a href="/docs/reference-manual/tools/#debugger">Chrome DevTools</a></li>
+  <li><a href="/docs/reference-manual/tools/#profiler">CPU and memory profiling</a></li>
+  <li><a href="/docs/reference-manual/tools/#heap-viewer">VisualVM integration</a></li>
 </ul>
 
 <p>To start debugging R code start FastR with <code>--inspect</code> option</p>

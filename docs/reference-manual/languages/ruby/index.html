@@ -568,8 +568,7 @@ See <code>graalvm/bin/gu --help</code> for more information.</p>
 and <code>ri</code>.</p>
 
 <p>TruffleRuby uses the
-<a href="#options">same options as the standard implementation of Ruby</a> with some
-additions.</p>
+<a href="/docs/reference-manual/languages/ruby/#options">same options as the standard implementation of Ruby</a> with some additions.</p>
 
 <h3 id="installing-a-ruby-gem">Installing a Ruby gem</h3>
 
@@ -596,8 +595,7 @@ language extensions implemented in native code. This approach is cumbersome and
 error-prone. TruffleRuby on the GraalVM is able to optimize Ruby code. More
 importantly, it can optimize idiomatic Ruby code.</p>
 
-<p>The following example is taken from the <a href="https://github.com/ruby/ruby/blob/trunk/benchmark/bm_erb_render.rb">MRI benchmark
-suite</a> to
+<p>The following example is taken from the <a href="https://github.com/ruby/ruby/blob/trunk/benchmark/bm_erb_render.rb">MRI benchmark suite</a> to
 catch performance regressions in their implementation. It has been slightly
 modified to work with the <code>benchmark-ips</code> benchmarking harness, rather than
 MRI’s custom build tool. It exercises the ERB template engine, which is part of
