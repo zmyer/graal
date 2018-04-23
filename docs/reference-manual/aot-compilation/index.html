@@ -538,7 +538,13 @@ $(document).ready(function(){
 
 <p>GraalVM allows you to compile your programs ahead-of-time into a native executable. The resulting program does not run on the Java HotSpot VM, but uses necessary components like memory management, thread scheduling from a different implementation of a virtual machine, called Substrate VM. Substrate VM is written in Java and compiled into the native executable. The resulting program has faster startup time and lower runtime memory overhead compared to a Java VM.</p>
 
+<p>Currently, native images work mainly for JVM-based languages, e.g., Java, Scala, Kotlin. The resulting image can, optionally, execute dynamic languages like Ruby, R, or Python, but it does not pre-compile their code itself.</p>
+
 <p>For example you can take a look at the <a href="/docs/examples/native-list-dir/">native image generation</a> or <a href="/docs/examples/java-kotlin-aot/">compiling a Java and Kotlin app ahead-of-time</a> samples.</p>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>To build a native image of your program use the <code>native-image</code> utility located in the <code>bin</code> directory of the GraalVM distribution. For compilation <code>native-image</code> depends on the local toolchain, so please make sure: <code>glibc-devel</code>, <code>zlib-devel</code> (header files for the C library and <code>zlib</code>) and <code>gcc</code> are available on your system.</p>
 
 <h2 id="image-generation-options">Image Generation Options</h2>
 
