@@ -567,6 +567,12 @@ Therefore the <code>--native</code> option, which is the default, will still sta
 but for the sake of Java interoperability will not be available in such case.
 In future versions, FastR may ship with a native image and <code>--native</code> will run it.</p>
 
+<h3 id="requirements">Requirements</h3>
+<p>FastR requires the OpenMP runtime library be installed on the target system.
+Moreover, to install R packages that contain C/C++ or Fortran code, compilers
+for those languages must be present on the target system. Note that all these
+requirements can be satisfied by, e.g., installing the GNU Compiler Collection (GCC).</p>
+
 <h2 id="r-compatibility">R Compatibility</h2>
 
 <p>GraalVM implementation of R is based on GNU R and reuses the base packages.
