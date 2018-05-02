@@ -668,6 +668,8 @@ of the two tools below. Specify the name of the module or package you’re inter
 
 <p><strong>Note</strong> that all the processing is done on the client-side in the browser, no information is sent to any servers.</p>
 
+<p>We run tests on the modules from their respective repositories: NPM for node modules, RubyGems for Ruby gems, etc. We try to download the module and run its tests. If the tests pass, the compatibility checker will report the amount of passed tests for the module, for example “100.00% tests pass”. If the tests are not using the testing framework we support running, you’ll see the “installs but not yet tested” message. Please use the compatibility checker as the initial tool to check the compatibility and assess it further yourself. In general, unless the tests clearly fail, there’s a good chance the module will run on GraalVM.</p>
+
 <div class="card card--form" id="simple-module-lookup">
     <p class="card__text">
         Quickly check if an NPM module, Ruby gem, or R <br /> package is compatible with GraalVM.
