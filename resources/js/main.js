@@ -97,7 +97,7 @@ function createTerminal(serverUrl, containerId, terminalId, uid) {
         var shell = this;
         $(terminalId).click(function() {
           console.log("Focused terminal.");
-          shell.focus(true);        
+          shell.focus(true);
         });
         shell.disable();
         shell.enable();
@@ -160,7 +160,7 @@ $(document).ready(function() {
     "profile": {"screenName": 'thomaswue'},
     "domId": 'tweets',
     "maxTweets": 10,
-    "enableLinks": true, 
+    "enableLinks": true,
     "showUser": false,
     "showTime": true,
     "showImages": false,
@@ -242,7 +242,7 @@ $(document).ready(function() {
     });
   }());
 
-  
+
   // mobile menu
   if ($('.js-show-menu').length) {
     $(".js-show-menu, .overlay").click(function(e) {
@@ -409,3 +409,21 @@ function onPlayerStateChange(event) {
 function stopVideo() {
   player.pauseVideo();
 }
+
+function clearResults() {
+  var clearBtn = document.getElementById('clear-btn');
+
+  if (clearBtn) {
+    clearBtn.addEventListener("click", function () {
+      document.getElementById('module-name').value = '';
+      document.getElementById('no-results').style.display = "none";
+
+      var resultsTable = document.querySelectorAll('.results-table .table');
+      resultsTable.forEach(function (value) {
+        value.style.display = "none";
+      });
+    });
+  }
+}
+
+clearResults();
