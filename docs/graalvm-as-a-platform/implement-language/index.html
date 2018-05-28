@@ -511,7 +511,7 @@ It aims to use most of the available Truffle features and documents their use ex
 <p>SimpleLanguage project has been tested with IntelliJ IDEA 2016.3.4. Open IntelliJ IDEA and, from the main menu bar, select  File -&gt; New -&gt; Project from existing Sources -&gt; Select <code>simplelanguage</code> folder -&gt; Check “Create module groups for multi-module Maven projects” -&gt; Finish.  All dependencies will be included automatically.</p>
 
 <h3 id="running">Running</h3>
-<p>To run a simple language source file, execute</p>
+<p>To run a SimpleLanguage source file, execute</p>
 <pre><code class="language-shell">$ ./sl language/tests/HelloWorld.sl
 </code></pre>
 <p>To see assembly code for Truffle compiled functions, run</p>
@@ -533,11 +533,54 @@ It aims to use most of the available Truffle features and documents their use ex
   </li>
 </ol>
 
-<h3 id="debugging">Debugging</h3>
+<h2 id="debugging">Debugging</h2>
 <p>To start debugging the SimpleLanguage implementation with a Java debugger, pass the <code>-debug</code> option to the command-line launcher of your program:</p>
 <pre><code class="language-shell">$ ./sl -debug language/tests/HelloWorld.sl
 </code></pre>
 <p>Then attach a Java remote debugger (like Eclipse) on port 8000.</p>
+
+<h2 id="simplelanguage-component-for-graalvm">SimpleLanguage Component for GraalVM</h2>
+
+<p>Truffle languages can be packaged as components which can be installed into
+GraalVM using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>.
+Running <code>mvn package</code> in the simplelanguage folder also builds a
+<code>sl-component.jar</code>.
+This file is the SimpleLanguages component for GraalVM and can be installed by
+running:</p>
+
+<pre><code class="language-shell">$ /path/to/graalvm/bin/gu install /path/to/sl-component.jar
+</code></pre>
+<h3 id="running-simplelanguage-with-the-newest-version-of-graal-compiler">Running SimpleLanguage with the Newest Version of Graal Compiler</h3>
+
+<p>In the outstanding case that you need to execute SimpleLanguage with the newest
+version of graal, please follow these instructions:</p>
+
+<ol>
+  <li>Clone the graal repository:
+    <pre><code class="language-shell">$ git clone https://github.com/oracle/graal.git
+</code></pre>
+  </li>
+  <li>Clone the mx repository:
+    <pre><code class="language-shell">$ git clone https://github.com/graalvm/mx.git
+</code></pre>
+  </li>
+  <li>Add mx to your path:
+    <pre><code class="language-shell">$ PATH=/path/to/mx:$PATH
+</code></pre>
+  </li>
+  <li>Navigate to the compiler folder in the graal repository:
+    <pre><code class="language-shell">$ cd /path/to/graal/compiler
+</code></pre>
+  </li>
+  <li>Build the graal compiler:
+    <pre><code class="language-shell">$ mx build
+</code></pre>
+  </li>
+  <li>Run SimpleLanguage using the mx command:
+    <pre><code class="language-shell">$ mx -v --jdk=jvmci vm -cp /path/to/sl-launcher-1.0-SNAPSHOT.jar:/path/to/simplelanguage-1.0-SNAPSHOT.jar com.oracle.truffle.sl.launcher.SLMain  /path/to/SlScript.sl
+</code></pre>
+  </li>
+</ol>
 
               </div>
     

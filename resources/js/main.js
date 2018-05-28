@@ -144,6 +144,7 @@ $(document).ready(function() {
   (function() {
     $('.video-carousel').slick({
       dots: true,
+      accessibility: true,
       responsive: [
         {
           breakpoint: 900,
@@ -274,10 +275,25 @@ $(document).ready(function() {
     allIds.addClass('title-faq');
     allIds.nextUntil("h3").hide();
 
+    allIds.attr('tabindex', "0");
+
     allIds.click(function () {
-      $(this).toggleClass("title-faq--opened");
-      $(this).nextUntil("h3").slideToggle();
+      // $(this).toggleClass("title-faq--opened");
+      // $(this).nextUntil("h3").slideToggle();
+      showHiddenContent($(this));
     });
+
+    allIds.keypress(function (e) {
+      var key = e.which;
+      if(key == 13) {
+        showHiddenContent($(this));
+      }
+    });
+
+    function showHiddenContent(element) {
+      element.toggleClass("title-faq--opened");
+      element.nextUntil("h3").slideToggle();
+    }
   }
 });
 
