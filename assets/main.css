@@ -7023,9 +7023,12 @@ input[type='submit'] {
     margin-bottom: 10px;
     margin-top: 0; }
   .card__form__group {
+    -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+  .card__form__group {
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
             flex-direction: column;
@@ -7035,24 +7038,33 @@ input[type='submit'] {
     max-width: 460px;
     width: 100%;
     margin: 0 auto; }
+    .input-wrapper {
+    position: relative;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+}
     @media (min-width: 576px) {
       .card__form__group {
         -webkit-flex-direction: row;
             -ms-flex-direction: row;
                 flex-direction: row; } }
+
+  .card__form__group #clear-btn {
+    margin-left: -20px; }
+
   .card__form__input {
-    padding: 6px 11px;
+    width: 96%;
+    padding: 6px 20px 6px 11px;
     height: 34px;
     border-radius: 2px;
     border: 1px solid #d8d8d8;
+    flex: 1;
     -webkit-flex: 1;
         -ms-flex: 1;
             flex: 1;
-    margin: 0 0 15px 0;
     color: rgba(68, 80, 95, 0.5); }
-    @media (min-width: 576px) {
-      .card__form__input {
-        margin: 0 15px 0 0; } }
+    @media (min-width: 576px) { }
   .card--hovered {
     transition: border .3s, box-shadow .3s; }
     .card--hovered:hover {
@@ -7060,6 +7072,14 @@ input[type='submit'] {
       box-shadow: 0 4px 10px rgba(210, 213, 223, 0.9); }
   .card--form {
     margin-bottom: 30px; }
+
+    .card--form .card__text {
+      color: #44505f;
+      font-size: 1.2em;
+      line-height: 32px;
+      margin-bottom: 20px;
+      text-align: center; }
+
     .card--form .card__text {
       color: #44505f;
       font-size: 1.2em;

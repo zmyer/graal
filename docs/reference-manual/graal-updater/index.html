@@ -553,37 +553,38 @@ Run <code>gu &lt;command&gt; -h</code> to get help specific for the particular c
 <p><strong>Manual installation</strong>:
 You download the component package yourself. The Graal Updater will install the pre-downloaded component package. These following pre-built language packages are at your disposal:</p>
 <ul>
-  <li>_r-installable-linux-amd64.jar</li>
-  <li>_r-installable-macos-amd64.jar</li>
-  <li>_python-installable-linux-amd64.jar</li>
-  <li>_python-installable-macos-amd64.jar</li>
-  <li>_ruby-installable-linux-amd64.jar</li>
+  <li><em>r-installable-linux-amd64.jar</em></li>
+  <li><em>r-installable-macos-amd64.jar</em></li>
+  <li><em>python-installable-linux-amd64.jar</em></li>
+  <li><em>python-installable-macos-amd64.jar</em></li>
+  <li><em>ruby-installable-linux-amd64.jar</em></li>
   <li><em>ruby-installable-macos-amd64.jar</em></li>
 </ul>
 
 <p><strong>Installation from Catalog</strong>: There is a list of components maintained by Oracle,
-from which you can install a component just by name.
-The Graal Updater will download the component package for you.</p>
+from which you can install a component just by name. 
+The Graal Updater will download the component package for you. This is the default mode of operation.</p>
 
-<h3 id="manual-installation">Manual installation</h3>
-<p>With the already downloaded component package archive,  <code>component.jar</code>,
-the component can be installed as</p>
-<pre><code class="language-bash">gu install component.jar
-</code></pre>
 <h3 id="installation-from-catalog">Installation from Catalog</h3>
 <p>The Graal Updater first downloads the list of components,
 then uses information in the list to download the actual component package for you and install it.
 To see which components are available, use</p>
-<pre><code class="language-bash">gu -c list
+<pre><code class="language-bash">gu list
 </code></pre>
 <p>to get a list of available components, their IDs, and descriptive names. Then,
 the component ID (for example <code>org.graalvm.ruby</code>) can be used as</p>
-<pre><code class="language-bash">gu -c install org.graalvm.ruby
+<pre><code class="language-bash">gu install org.graalvm.ruby
 </code></pre>
 <p>and that is all!</p>
 
 <p>If you want to see more verbose messages during installation, you may use the <code>-v</code>
 switch to see the download progress bar and verbose messages.</p>
+
+<h3 id="manual-installation">Manual installation</h3>
+<p>With the already downloaded component package archive,  <code>component.jar</code>,
+the component can be installed as</p>
+<pre><code class="language-bash">gu -F install component.jar
+</code></pre>
 
 <h3 id="component-list">Component list</h3>
 <p>Installed components can be printed by</p>
@@ -591,7 +592,7 @@ switch to see the download progress bar and verbose messages.</p>
 </code></pre>
 
 <p>The Graal Updater can list components in the component catalog (not necessarily installed on your machine):</p>
-<pre><code class="language-bash">gu -c list
+<pre><code class="language-bash">gu available
 </code></pre>
 
 <h3 id="uninstallation">Uninstallation</h3>
@@ -607,14 +608,14 @@ The command to uninstall the component is:</p>
 
 <h3 id="replacing-components-and-files">Replacing Components and Files</h3>
 <p>A component may be only installed once. The Graal Updater refuses to install a component if a component with the same ID is already installed. But the installed component may be <strong>replaced</strong>. Graal Updater first <em>uninstalls</em> the component and then installs the new package. To replace component, use <code>-r</code> option:</p>
-<pre><code class="language-bash">gu -r install component.zip
-gu -c -r install org.graalvm.ruby
+<pre><code class="language-bash">gu -F -r install component.zip
+gu -r install org.graalvm.ruby
 </code></pre>
 <p>The process is the same as if <code>gu uninstall</code> is run first and <code>gu install</code> next.</p>
 
 <p>The Graal Updater also refuses to overwrite existing files if the to-be-installed and existing versions differ. There are cases when you may need to refresh file contents, if they were modified or damaged. Use <code>-o</code> option:</p>
-<pre><code class="language-bash">gu -o install component.jar
-gu -c -o install org.graalvm.ruby
+<pre><code class="language-bash">gu -F -o install component.jar
+gu -o install org.graalvm.ruby
 </code></pre>
 
               </div>

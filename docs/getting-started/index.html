@@ -477,29 +477,30 @@ You can also specify GraalVM as the JRE or JDK installation in your Java IDE.</p
 The Ruby, Python and R executables become available only if you install the corresponding language engines.
 For example, running the following command will install Ruby support:</p>
 
-<pre><code class="language-shell">gu -c install org.graalvm.ruby
+<pre><code class="language-shell">gu install org.graalvm.ruby
 </code></pre>
 
-<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a></p>
+<p>For more information on using Graal updater please refer to <a href="/docs/reference-manual/graal-updater/">its documentation</a>.</p>
 
 <p>Once the <code>PATH</code> environment variable is set properly, it’s easy to check language versions with GraalVM launchers:</p>
 
 <pre><code>$ java -version
-java version "1.8.0_161"
-Java(TM) SE Runtime Environment (build 1.8.0_161-b12)
-GraalVM 1.0.0-rc1 (build 25.71-b01-internal-jvmci-0.42, mixed mode)
+
+java version "1.8.0_171"
+Java(TM) SE Runtime Environment (build 1.8.0_171-b11)
+GraalVM 1.0.0-rc2 (build 25.71-b01-internal-jvmci-0.43, mixed mode)
 
 $ node -v
-v8.9.4
+v8.11.1
 
 $ lli --version
-Graal llvm 6.0.0 (GraalVM 1.0.0)
+Graal llvm 6.0.0 (GraalVM 1.0.0-rc2)
 </code></pre>
 
 <p>If you have, e.g., the Ruby language component installed, you can check its version as well:</p>
 
 <pre><code class="language-shell">$ ruby -v
-truffleruby 1.0.0-rc1, like ruby 2.3.7 &lt;native build with Graal&gt; [x86_64-darwin]
+truffleruby 1.0.0-rc2, like ruby 2.4.4 &lt;native build with Graal&gt; [x86_64-darwin]
 </code></pre>
 
 <h3 id="running-applications">Running Applications</h3>
@@ -655,7 +656,7 @@ Hello from GraalVM!
 <h2 id="running-ruby">Running Ruby</h2>
 
 <p>The Ruby engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
-<pre><code class="language-shell">gu -c install org.graalvm.ruby
+<pre><code class="language-shell">gu install org.graalvm.ruby
 </code></pre>
 
 <p>This makes Ruby commands like <code>ruby</code>, <code>gem</code>, <code>irb</code>, <code>rake</code>, <code>rdoc</code> and <code>ri</code> available:</p>
@@ -684,7 +685,7 @@ $ bundle exec ...
 <h2 id="running-r">Running R</h2>
 
 <p>The R engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
-<pre><code class="language-shell">gu -c install org.graalvm.r
+<pre><code class="language-shell">gu install org.graalvm.r
 </code></pre>
 
 <p>When the R engine is installed, you can execute R scripts and use the R REPL with GraalVM:</p>
@@ -702,7 +703,7 @@ R version 3.4.0 (FastR)
 <h2 id="running-python-3">Running Python 3</h2>
 
 <p>The Python 3 engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
-<pre><code class="language-shell">gu -c install org.graalvm.python
+<pre><code class="language-shell">gu install org.graalvm.python
 </code></pre>
 
 <p>After the Python engine is installed, GraalVM can execute Python programs:</p>
@@ -718,7 +719,7 @@ R version 3.4.0 (FastR)
 
 <h2 id="combine-languages">Combine Languages</h2>
 
-<p>If enabled using the <code>--polyglot</code> flag, scripts executed on GraalVM can use interoperability features to call into other languages and exchange data with them.</p>
+<p>If enabled, using the <code>--polyglot</code> flag, scripts executed on GraalVM can use interoperability features to call into other languages and exchange data with them.</p>
 
 <p>For example, running <code>js --jvm --polyglot example.js</code> executes <code>example.js</code> in a polyglot context.
 If the program calls any code in other supported languages, GraalVM executes that code in
