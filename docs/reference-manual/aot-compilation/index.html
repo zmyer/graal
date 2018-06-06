@@ -143,7 +143,7 @@
   <nav class="menu">
     <div class="menu__logo">
       <a href="/">
-        <img src="/resources/img/logo-colored.svg" alt="">
+        <img src="/resources/img/logo-colored.svg" alt="graalvm_logo">
       </a>
     </div>
 
@@ -175,11 +175,11 @@
 
        
       <li class="menu__item">
-        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm">
+        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm" aria-label="twitter">
           <svg class="icon icon-social-network"><use xlink:href="#icon-social-network"></use></svg>
         </a>
 
-        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal">
+        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal" aria-label="github">
           <svg class="icon icon-github-sign"><use xlink:href="#icon-github-sign"></use></svg>
         </a>
       </li>
@@ -571,6 +571,9 @@ help to search for class files through separated list of directories, JAR archiv
     <p><code>--shared</code>  builds shared library;</p>
   </li>
   <li>
+    <p><code>--static</code>  builds statically linked executable (requires static libc and zlib)) (since 1.0.0-rc2)</p>
+  </li>
+  <li>
     <p><code>-D&lt;name&gt;=&lt;value&gt;</code>  sets a system propertys</p>
   </li>
   <li>
@@ -746,7 +749,7 @@ Therefore, it is not possible to load new classes that have not been available d
         <div class="row">
           <div class="col-md-3 col-sm-12">
             <a href="/" class="logo-footer">
-              <img src="/resources/img/logo.svg" alt="">
+              <img src="/resources/img/logo.svg" alt="graalvm_logo">
             </a>
           </div>
 

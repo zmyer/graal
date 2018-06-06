@@ -143,7 +143,7 @@
   <nav class="menu">
     <div class="menu__logo">
       <a href="/">
-        <img src="/resources/img/logo-colored.svg" alt="">
+        <img src="/resources/img/logo-colored.svg" alt="graalvm_logo">
       </a>
     </div>
 
@@ -175,11 +175,11 @@
 
        
       <li class="menu__item">
-        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm">
+        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm" aria-label="twitter">
           <svg class="icon icon-social-network"><use xlink:href="#icon-social-network"></use></svg>
         </a>
 
-        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal">
+        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal" aria-label="github">
           <svg class="icon icon-github-sign"><use xlink:href="#icon-github-sign"></use></svg>
         </a>
       </li>
@@ -580,7 +580,7 @@ $ ruby -r chunky_png -e "puts ChunkyPNG::Color.to_hex(ChunkyPNG::Color('mintcrea
 
 <p>The only supported version of Bundler at the moment is <code>1.16.x</code>.</p>
 
-<pre><code>$ gem install bundler -v 1.16.1
+<pre><code>$ gem install bundler -v 1.16.2
 $ bundle exec ...
 </code></pre>
 
@@ -833,7 +833,7 @@ so, but this isn’t always the case. For example <code>RubyVM</code> is not ava
 
 <h3 id="features-with-subtle-differences">Features with subtle differences</h3>
 
-<p><em>different range of <code>Fixnum</code></em></p>
+<p><em>Different range of <code>Fixnum</code></em></p>
 
 <p>The range of <code>Fixnum</code> is slightly larger than it is in MRI. This won’t be an
 issue when we support Ruby 2.4, as <code>Integer</code> is unified there.</p>
@@ -1252,7 +1252,7 @@ org.truffleruby.level=CONFIG
         <div class="row">
           <div class="col-md-3 col-sm-12">
             <a href="/" class="logo-footer">
-              <img src="/resources/img/logo.svg" alt="">
+              <img src="/resources/img/logo.svg" alt="graalvm_logo">
             </a>
           </div>
 

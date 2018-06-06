@@ -8,7 +8,7 @@
 
   <title>
     
-      Reference Manual for Polyglot Applications
+      Reference for Polyglot Applications
     
   </title>
   <meta
@@ -143,7 +143,7 @@
   <nav class="menu">
     <div class="menu__logo">
       <a href="/">
-        <img src="/resources/img/logo-colored.svg" alt="">
+        <img src="/resources/img/logo-colored.svg" alt="graalvm_logo">
       </a>
     </div>
 
@@ -175,11 +175,11 @@
 
        
       <li class="menu__item">
-        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm">
+        <a class="menu__link menu__link--iconed" href="https://twitter.com/graalvm" aria-label="twitter">
           <svg class="icon icon-social-network"><use xlink:href="#icon-social-network"></use></svg>
         </a>
 
-        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal">
+        <a class="menu__link menu__link--iconed" href="https://github.com/oracle/graal" aria-label="github">
           <svg class="icon icon-github-sign"><use xlink:href="#icon-github-sign"></use></svg>
         </a>
       </li>
@@ -554,11 +554,13 @@ Throughout this section you learn how to combine multiple languages using our po
 <h2 id="how-to-build-polyglot-applications">How to Build Polyglot Applications</h2>
 
 <p>The following examples are designed to get you started with a basic polyglot application.
-Select a section for your <em>Start Language</em> and then select a tab for <em>Target Language</em>.</p>
+Select a section for your <em>Start Language</em> and then select a tab for the <em>Target Language</em>.</p>
 
 <p>Ensure you set up GraalVM before you begin. See <a href="/docs/getting-started/">Get Started</a>.</p>
 
-<h4 id="start-language-javascript--nodejs">Start Language JavaScript / Node.js</h4>
+<p><strong>Requirement:</strong> to start an application with LLVM as a Target Language, make sure to precompile <em>polyglot.c</em> file provided below.</p>
+
+<h4 id="start-d--javascript--nodejs">Start d  JavaScript / Node.js</h4>
 
 <p>Create a file <code>polyglot.js</code>:</p>
 
@@ -1586,8 +1588,7 @@ $ node --polyglot --jvm polyglot.js
   
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">  <span class="c1"># BEGIN-SNIPPET</span>
 <span class="n">cpart</span> <span class="o">=</span> <span class="no">Polyglot</span><span class="p">.</span><span class="nf">eval_file</span><span class="p">(</span><span class="s1">'llvm'</span><span class="p">,</span> <span class="s1">'polyglot.bc'</span><span class="p">)</span>
-<span class="c1"># support coming soon</span>
-<span class="c1"># cpart.main()</span>
+<span class="n">cpart</span><span class="p">.</span><span class="nf">main</span><span class="p">()</span>
 <span class="c1"># END-SNIPPET</span>
 
   </code></pre></figure>
@@ -2763,11 +2764,20 @@ $ java Polyglot
   
 <figure class="highlight"><pre><code class="language-c" data-lang="c"> 
   <span class="c1">// BEGIN-SNIPPET
+</span><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;polyglot.h&gt;
 </span>
-<span class="c1">// support coming soon
-</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">arrayType</span> <span class="o">=</span> <span class="n">polyglot_java_type</span><span class="p">(</span><span class="s">"int[]"</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="n">polyglot_new_instance</span><span class="p">(</span><span class="n">arrayType</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="n">polyglot_set_array_element</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+    <span class="kt">int</span> <span class="n">element</span> <span class="o">=</span> <span class="n">polyglot_as_i32</span><span class="p">(</span><span class="n">polyglot_get_array_element</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">element</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">element</span><span class="p">;</span>
+<span class="p">}</span>
 <span class="c1">// END-SNIPPET
-</span>  </code></pre></figure>
+</span>
+  </code></pre></figure>
 
 
   
@@ -2845,7 +2855,7 @@ $ lli --polyglot --jvm polyglot.bc
 
 <h3 id="how-does-polyglot-work">How does Polyglot Work</h3>
 
-<p>In order to provide foreign polyglot values meaning in languages we have developed the so-called <em>polyglot interoperability protocol</em>.
+<p>In order to provide foreign polyglot values meaning in the languages we have developed the so-called <em>polyglot interoperability protocol</em>.
 This interoperability protocol consists of a set of standardized messages that every Graal language implements and uses for foreign polyglot values.
 The protocol allows GraalVM to support interoperability between any combination of languages without requiring them to know of each other.
 We plan to gradually improve the protocol to support more and more features over time.</p>
@@ -2860,7 +2870,7 @@ In <em>Proceedings of the 11th Dynamic Language Symposium (DLS)</em>.</li>
 
 <h3 id="running-polyglot-applications">Running Polyglot Applications</h3>
 
-<p>With polyglot applications it is often no longer possible to decide what the primary language of an application is.
+<p>With polyglot applications it is often impossible to decide what the primary language of an application is.
 Therefore, we have added an experimental new launcher called <code>polyglot</code> to GraalVM.
 This launcher runs code for any installed Graal language without requiring to select a primary language.
 The polyglot launcher does not require the <code>--polyglot</code> option, it is enabled by default.</p>
@@ -2872,16 +2882,16 @@ The polyglot launcher does not require the <code>--polyglot</code> option, it is
 
 <p>We have also included a basic experimental shell for multiple languages called the <em>Polyglot Shell</em>.
 It is useful to quickly test interactive Graal languages.
-This is how you can run it:</p>
+This is how you can start it:</p>
 
 <pre><code class="language-shell">$ polyglot --jvm --shell
 
-GraalVM MultiLanguage Shell 1.0.0
+GraalVM MultiLanguage Shell 1.0.0-rc2
 Copyright (c) 2013-2018, Oracle and/or its affiliates
-  JavaScript version 1.0.0
+  JavaScript version 1.0
   Python version 3.7.0
-  R version 3.3.2
-  Ruby version 2.3.7
+  R version 3.4.0
+  Ruby version 2.4.4
 Usage:
   Use Ctrl+L to switch language and Ctrl+D to exit.
   Enter -usage to get a list of available commands.
@@ -2956,7 +2966,7 @@ Options cannot be modified after the context was created.</p>
 
 <p>Every polyglot option can also be passed as a Java system property.
 Each available option translates to a system property with the <code>polyglot.</code> prefix.
-For example: <code>-Dpolyglot.js.strict=true</code> sets the default value for strict interpretation for all JavaScript code that runs in the JVM.
+For example: <code>-Dpolyglot.js.strict=true</code> sets the default value for a strict interpretation for all JavaScript code that runs in the JVM.
 Options that were set programmatically take precedence over Java system properties.
 For languages the following format can be used: <code>-Dpolyglot.&lt;languageID&gt;.&lt;property&gt;=&lt;value&gt;</code> and for tools it is: <code>-Dpolyglot.&lt;toolID&gt;.&lt;property&gt;=&lt;value&gt;</code>.</p>
 
@@ -3007,7 +3017,7 @@ $ java -Dpolyglot.js.shared-array-buffer=true SystemPropertiesTest
         <div class="row">
           <div class="col-md-3 col-sm-12">
             <a href="/" class="logo-footer">
-              <img src="/resources/img/logo.svg" alt="">
+              <img src="/resources/img/logo.svg" alt="graalvm_logo">
             </a>
           </div>
 

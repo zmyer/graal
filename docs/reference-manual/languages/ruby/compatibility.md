@@ -78,7 +78,7 @@ so, but this isn't always the case. For example `RubyVM` is not available.
 
 ### Features with subtle differences
 
-*different range of `Fixnum`*
+*Different range of `Fixnum`*
 
 The range of `Fixnum` is slightly larger than it is in MRI. This won't be an
 issue when we support Ruby 2.4, as `Integer` is unified there.

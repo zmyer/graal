@@ -65,7 +65,7 @@ Options cannot be modified after the context was created.
 
 Every polyglot option can also be passed as a Java system property.
 Each available option translates to a system property with the `polyglot.` prefix.
-For example: `-Dpolyglot.js.strict=true` sets the default value for strict interpretation for all JavaScript code that runs in the JVM.
+For example: `-Dpolyglot.js.strict=true` sets the default value for a strict interpretation for all JavaScript code that runs in the JVM.
 Options that were set programmatically take precedence over Java system properties.
 For languages the following format can be used: `-Dpolyglot.<languageID>.<property>=<value>` and for tools it is: `-Dpolyglot.<toolID>.<property>=<value>`.
 
