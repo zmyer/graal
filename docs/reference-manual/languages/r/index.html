@@ -573,6 +573,13 @@ Moreover, to install R packages that contain C/C++ or Fortran code, compilers
 for those languages must be present on the target system. Note that all these
 requirements can be satisfied by, e.g., installing the GNU Compiler Collection (GCC).</p>
 
+<p>The installation of R packages uses the configuration from <code>jre/languages/R/etc/Makeconf</code>.
+This includes, for example, the configuration of C compiler options.
+If you intend to install R packages, it is recommended to update this configuration
+to match your target system by running the <code>jre/languages/R/bin/configure_fastr</code> script.
+Note that this script requires the Autoconf tool be installed. This requirement may
+be removed in the future versions. Experienced users can also edit the <code>Makeconf</code> file manually.</p>
+
 <h2 id="graalvm-r-engine-compatibility">GraalVM R Engine Compatibility</h2>
 
 <p>GraalVM implementation of R is based on GNU R and reuses the base packages.
@@ -588,7 +595,7 @@ By default, R uses fixed snapshot of the CRAN repository<a href="#note-1"><sup>1
 that is updated with every new release of R (once a month).
 This behavior can be overridden by explicitly setting the <code>repos</code> argument of the <code>install.packages</code> function.
 This functionality does not interfere with the <code>checkpoint</code> package. If you are behind a proxy server, make
-sure to configure the proxy using, e.g., <code>--jvm.Djava.net.useSystemProxies=true</code>.</p>
+sure to configure the proxy either with environment variables or using the JVM options, e.g., <code>--jvm.Djava.net.useSystemProxies=true</code>.</p>
 
 <p>Known limitations of GraalVM implementation of R compared to GNU R:</p>
 <ul>
