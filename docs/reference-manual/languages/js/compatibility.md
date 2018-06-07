@@ -18,7 +18,6 @@ Even though this test set includes some draft features, GraalVM compliance is ar
 
 In our internal CI system, we test against test262, tests published by Nashorn and V8, Node unit tests, as well as GraalVM's own unit tests.
 
-
 From the graaljs code repository, you can execute the whole test262 test suite:
 ```
 mx test262 gate
@@ -29,6 +28,8 @@ Individual tests can be executed with
 ```
 mx test262 single=built-ins/Array/length.js
 ```
+
+For a reference of the JavaScript APIs that GraalVM supports, see [GRAAL.JS-API](https://github.com/graalvm/graaljs/blob/master/docs/GRAAL.JS-API.md).
 
 ### Is GraalVM compatible with the original node implementation?
 
