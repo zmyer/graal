@@ -533,9 +533,9 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h2 id="python-3">Python 3</h2>
+                <h2 id="running-python">Running Python</h2>
 
-<p>GraalVM provides an early-stage experimental implementation of Python 3.
+<p>GraalVM provides an early-stage experimental implementation of Python 3.7.
 A primary goal is to support SciPy and its constituent
 libraries. At this point, the Python implementation is made available for
 experimentation and curious end-users.</p>
@@ -544,7 +544,7 @@ experimentation and curious end-users.</p>
 
 <p>Python can be installed to a GraalVM build with the <code>gu</code> command. See <code>bin/gu --help</code> for more information.</p>
 
-<h2 id="running-python">Running Python</h2>
+<h2 id="running-python-1">Running Python</h2>
 
 <p>Our implementation of Python targets Python 3.7 compatibility at the moment. While support for
 the Python language is still limited, you can run simple Python scripts or commands
@@ -555,7 +555,7 @@ with the <code>graalpython</code> binary:</p>
 
 <p>If no program file or command is given, you are dropped into a simple REPL.</p>
 
-<p>GraalVM supports some of the same options as Python 3 and some additional
+<p>GraalVM supports some of the same options as Python 3.7 and some additional
 options to control the underlying Python implementation and the GraalVM tools and
 execution engine. These can be viewed using the following command:</p>
 
@@ -725,9 +725,9 @@ that is written in Python. This usually resides in a folder
 <code>lib-graalpython</code> in the GraalVM distribution.</li>
   <li><code>--python.StdLibHome=&lt;String&gt;</code>: The path to the standard library that
 Python will use. Usually this is in a under <code>lib-python/3</code> in the
-GraalVM distribution, but any Python 3 standard libray location may work.</li>
+GraalVM distribution, but any Python 3.7 standard library location may work.</li>
   <li><code>--python.WithJavaStacktrace</code>: Prints a Java-level stack trace besides the
-normal Python stack when errors occur</li>
+normal Python stack when errors occur.</li>
   <li><code>--python.LazyInit</code>: Load the core library after the Python context has
 been initialized. This only affects certain tools such as the Chrome
 debugger and lets these tools also see the code in the Python core library.</li>

@@ -644,7 +644,7 @@ follows:</p>
 </code></pre>
 
 <h2 id="interoperability">Interoperability</h2>
-<p>GraalVM supports several other programming languages, including Ruby, R, Python 3
+<p>GraalVM supports several other programming languages, including Ruby, R, Python
 and LLVM. While GraalVM is designed to run Node.js and JavaScript applications,
 it also provides an API for programming language interoperability that lets you
 execute code from any other language that GraalVM supports.</p>
@@ -671,8 +671,8 @@ for more information about interoperability with other programming languages.</p
 <h2 id="graalvm-javascript-compatibility">GraalVM JavaScript Compatibility</h2>
 
 <p>GraalVM is <a href="http://www.ecma-international.org/ecma-262/8.0/index.html">ECMAScript 2017</a> compliant and fully compatible with a diverse range of active Node.js (npm) modules.
-More than 45,000 npm packages are regularly tested and compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
-This release of GraalVM is based on Node.js version 8.9.4.</p>
+More than 50,000 npm packages are regularly tested and compatible with GraalVM, including modules like express, react, async, request, browserify, grunt, mocha, and underscore.
+This release of GraalVM is based on Node.js version 8.11.1.</p>
 
 <h3 id="is-graalvm-compatible-with-the-javascript-language">Is GraalVM compatible with the JavaScript language?</h3>
 
@@ -702,7 +702,7 @@ Individual tests can be executed with</p>
 <h3 id="is-graalvm-compatible-with-the-original-node-implementation">Is GraalVM compatible with the original node implementation?</h3>
 
 <p>Node.js based on GraalVM is largely compatible with the original Node.js (based on the V8 engine).
-This leads to a high number of npm-based modules being compatible with GraalVM (out of the 45k modules we test, 95% of them pass all tests).
+This leads to a high number of npm-based modules being compatible with GraalVM (out of the 50k modules we test, 95% of them pass all tests).
 Several sources of differences have to be considered.</p>
 
 <ul>
@@ -765,8 +765,9 @@ Use <code>--help:languages</code> to see the full list of available options.</li
 <p><code>--jvm</code> executes the application on the JVM instead of the native image.</p>
 
 <p><code>--jvm.&lt;option&gt;</code> passes JVM options to GraalVM (e.g. <code>--jvm.Xmx&lt;size&gt;</code>).
-List available JVM options with <code>--jvm.help</code>.
-System properties can be set as follows: <code>--jvm.D&lt;name&gt;=&lt;value&gt;</code>.
+List available JVM options with <code>--jvm.help</code>.</p>
+
+<p>System properties can be set as follows: <code>--jvm.D&lt;name&gt;=&lt;value&gt;</code>.
 For example, <code>--jvm.Dgraal.TraceTruffleCompilation=true</code> will print finished compilations.</p>
 
 <p>Likewise, <code>--native.&lt;option&gt;</code> passes VM options and system properties to the native image.
@@ -801,7 +802,7 @@ Most significantly, this means that the JavaScript-to-Java interoperability feat
 Here are a few tips and tricks you can follow to analyse and improve peak performance:</p>
 
 <ul>
-  <li>When measuring, ensure you have given Graal enough time to compile all hot methods before starting to measure peak performance. A useful command line option for that is <code>--jvm.Dgraal.TraceTruffleCompilation=true</code> - this outputs a message whenever a (JavaScript) method is compiled. As long as this still prints frequently, measurement should not yet start.</li>
+  <li>When measuring, ensure you have given Graal enough time to compile all hot methods before starting to measure peak performance. A useful command line option for that is <code>--jvm.Dgraal.TraceTruffleCompilation=true</code> – this outputs a message whenever a (JavaScript) method is compiled. As long as this still prints frequently, measurement should not yet start.</li>
   <li>Compare the performance between the native image and the JVM mode if possible. Depending on the characteristics of your application, one or the other might show better peak performance.</li>
   <li>The Polyglot API comes with several tools and options to inspect the performance of your application:
     <ul>

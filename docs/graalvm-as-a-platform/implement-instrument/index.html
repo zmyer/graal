@@ -475,7 +475,7 @@ Instruments can track very fine-grained VM-level runtime events to profile, insp
 
 <h2 id="instrumentation-event-listeners">Instrumentation Event Listeners</h2>
 
-<p>The Truffle instrumentation API is defined in the <code>com.oracle.truffle.api.instrumentation</code> package. Instrumentation agents can be developed by extending the <code>TruffleInstrument</code> class, and can be attached to a running GraalVM instance using in the <code>Instrumenter</code> class. Once attached to a running language runtime, instrumentation agents remain usable as long as the language runtime is not disposed. Instrumentation agents on GraalVM can monitor a variety of VM-level runtime events, including any of the following:</p>
+<p>The Truffle instrumentation application programming interface is defined in the <code>com.oracle.truffle.api.instrumentation</code> package. Instrumentation agents can be developed by extending the <code>TruffleInstrument</code> class, and can be attached to a running GraalVM instance using in the <code>Instrumenter</code> class. Once attached to a running language runtime, instrumentation agents remain usable as long as the language runtime is not disposed. Instrumentation agents on GraalVM can monitor a variety of VM-level runtime events, including any of the following:</p>
 
 <ol>
   <li><em>Source code-related events</em>: the agent can be notified every time a new <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/Source.html">Source</a> or <a href="http://www.graalvm.org/truffle/javadoc/com/oracle/truffle/api/source/SourceSection.html">SourceSection</a> element is loaded by the monitored language runtime.</li>

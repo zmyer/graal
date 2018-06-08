@@ -25,9 +25,9 @@ provide bug reports:
      `lib-graalpython` in the GraalVM distribution.
    * `--python.StdLibHome=<String>`: The path to the standard library that
      Python will use. Usually this is in a under `lib-python/3` in the
-     GraalVM distribution, but any Python 3 standard libray location may work.
+     GraalVM distribution, but any Python 3.7 standard library location may work.
    * `--python.WithJavaStacktrace`: Prints a Java-level stack trace besides the
-     normal Python stack when errors occur
+     normal Python stack when errors occur.
    * `--python.LazyInit`: Load the core library after the Python context has
      been initialized. This only affects certain tools such as the Chrome
      debugger and lets these tools also see the code in the Python core library.

@@ -16,7 +16,7 @@ _How to achieve the best peak performance?_
 Optimizing JVM-based applications is a science in itself.
 Here are a few tips and tricks you can follow to analyse and improve peak performance:
 
-* When measuring, ensure you have given Graal enough time to compile all hot methods before starting to measure peak performance. A useful command line option for that is `--jvm.Dgraal.TraceTruffleCompilation=true` - this outputs a message whenever a (JavaScript) method is compiled. As long as this still prints frequently, measurement should not yet start.
+* When measuring, ensure you have given Graal enough time to compile all hot methods before starting to measure peak performance. A useful command line option for that is `--jvm.Dgraal.TraceTruffleCompilation=true` -- this outputs a message whenever a (JavaScript) method is compiled. As long as this still prints frequently, measurement should not yet start.
 * Compare the performance between the native image and the JVM mode if possible. Depending on the characteristics of your application, one or the other might show better peak performance.
 * The Polyglot API comes with several tools and options to inspect the performance of your application:
     * `--cpusampler` and `--cputracer` will print a list of the hottest methods when the application is terminated. Use that list to figure out where most time is spent in your application. More details about the command line options for the polyglot commands can be found from the

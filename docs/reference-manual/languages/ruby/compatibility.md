@@ -159,9 +159,9 @@ Simple local variables of type `VALUE`, and locals arrays that are defined such
 as `VALUE array[n]` are an exception and are supported, provided their address
 is not taken and passed to a function that is not inlined.
 
-`void *rb_tr_handle_for_managed(VALUE managed)` and `VALUE
-rb_tr_managed_from_handle(void *native)` may help you work around this
-limitation. Use `void* rb_tr_handle_for_managed_leaking(VALUE managed)` if you
+`void *rb_tr_handle_for_managed(VALUE managed)` may help you work around this
+limitation, or `VALUE rb_tr_managed_from_handle(void *native)`.
+Use `void* rb_tr_handle_for_managed_leaking(VALUE managed)` if you
 don't yet know where to put a corresponding call to `void
 *rb_tr_release_handle(void *native)`. Use `VALUE
 rb_tr_managed_from_handle_or_null(void *native)` if the handle may be `NULL`.

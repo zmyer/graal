@@ -94,7 +94,10 @@ j  org.graalvm.compiler.core.LIRGenerationPhase.emitBlock(Lorg/graalvm/compiler/
 
 This example shows that the top frame was compiled (J) by the JVMCI compiler,
 which is the Graal compiler. The crash occurred at offset 0x141 in the machine
-code produced for `org.graalvm.compiler.core.gen.NodeLIRBuilder.matchComplexExpressions(Ljava/util/List;)V`.
+code produced for:
+```
+org.graalvm.compiler.core.gen.NodeLIRBuilder.matchComplexExpressions(Ljava/util/List;)V
+```
 
 The next two frames in the stack were executing in the interpreter (j). The
 location of the crash is also often indicated near the top of the file with
@@ -149,7 +152,8 @@ HotSpotCompilation-1221        Lorg/graalvm/compiler/hotspot/amd64/AMD64HotSpotL
 # Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
 ```
 Here we see that the crash happened in a different method than the first crash.
-As such, we expand the filter argument to be `-Dgraal.MethodFilter=NodeLIRBuilder.matchComplexExpressions,AMD64HotSpotLIRGenerator.getResult`
+As such, we expand the filter argument to be `-Dgraal.MethodFilter=
+NodeLIRBuilder.matchComplexExpressions,AMD64HotSpotLIRGenerator.getResult`
 and run again.
 
 When the VM crashes in this way, it does not execute the shutdown code that

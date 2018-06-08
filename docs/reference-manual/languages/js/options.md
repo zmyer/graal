@@ -23,6 +23,7 @@ See the [Polyglot Reference]({{ "/docs/reference-manual/polyglot/" | relative_ur
 
 `--jvm.<option>` passes JVM options to GraalVM (e.g. `--jvm.Xmx<size>`).
 List available JVM options with `--jvm.help`.
+
 System properties can be set as follows: `--jvm.D<name>=<value>`.
 For example, `--jvm.Dgraal.TraceTruffleCompilation=true` will print finished compilations.
 

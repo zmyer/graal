@@ -424,16 +424,16 @@ $(document).ready(function(){
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
                 <p>Get started with GraalVM and configure it to run programs written in Java (or other JVM-based languages), JavaScript
-and Node.js, Ruby, R, or Python 3. This page guides you through downloading and installing GraalVM and adding support for additional languages, and shows you how to run simple programs on GraalVM.</p>
+and Node.js, Ruby, R, or Python. This page guides you through downloading and installing GraalVM and adding support for additional languages, and shows you how to run simple programs on GraalVM.</p>
 
 <h2 id="download-graalvm">Download GraalVM</h2>
 
 <p>GraalVM is a standalone Java Development Kit  that you  can use for executing
 Java or JVM-based applications, as well as applications written in JavaScript,
-Python 3, Ruby, and R, with its polyglot language engines. The current release is
+Python, Ruby, and R, with its polyglot language engines. The current release is
 based on the OpenJDK 8 and contains JavaScript (including Node.js)
-as a pre-installed extension language. GraalVM implementations of the R, Ruby and Python 3
-scripting languages can be installed as additional components as needed.
+as a pre-installed extension language. GraalVM implementations of the R, Ruby and Python
+scripting languages can be installed as additional components per need.
 There are Community and Enterprise GraalVM editions available for download.
 Proceed to the <a href="/downloads/">Downloads</a> page and make your
 choice depending on your operating system and use case.</p>
@@ -700,13 +700,14 @@ R version 3.4.0 (FastR)
 
 <p>More examples and additional information on R support in GraalVM can be found in the <a href="/docs/reference-manual/languages/r/">reference manual for R</a>.</p>
 
-<h2 id="running-python-3">Running Python 3</h2>
+<h2 id="running-python">Running Python</h2>
 
-<p>The Python 3 engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
+<p>GraalVM implementation of Python 3.7 has recently been started.
+The Python engine is not installed by default, but it can easily be added using the <a href="/docs/reference-manual/graal-updater/">Graal updater</a>:</p>
 <pre><code class="language-shell">gu install org.graalvm.python
 </code></pre>
 
-<p>After the Python engine is installed, GraalVM can execute Python programs:</p>
+<p>Once the Python engine is installed, GraalVM can execute Python programs:</p>
 
 <pre><code class="language-shell">$ graalpython
 ...
