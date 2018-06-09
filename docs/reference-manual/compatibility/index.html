@@ -687,10 +687,22 @@ of the two tools below. Specify the name of the module or package you’re inter
 
 <div id="no-results" class="alert alert-danger text-center mb-4" style="display: none">
   <p class="mb-2">
-    Sorry, there is no compatibility results found for <span class="unknown-module"></span>.
+    Sorry, there are no compatibility results found for <span class="unknown-module"></span>.
   </p>
   <p class="text-sm text-thin">
     This doesn't mean <span class="unknown-module"></span> won't work with GraalVM. We just haven't had a chance to add it to our regular testing process.
+  </p>
+  <hr style="margin-bottom: 25px" />
+  <p class="text-sm text-thin text-left">
+    We currently test:
+  </p>
+    <ul class="text-left">
+      <li>Approx. 50,000 NPM modules with a mocha-based test suite.</li>
+      <li>The top 1,000 most popular Ruby gems.</li>
+      <li>The top 200 most popular R packages on CRAN.</li>
+    </ul>
+  <p style="margin-bottom: 0">
+    If there is an untested module you'd love to see tested by us, please <a href="/community/">let us know</a>.
   </p>
 </div>
 
