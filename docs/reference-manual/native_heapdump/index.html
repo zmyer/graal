@@ -406,7 +406,7 @@ $(document).ready(function(){
     
             <div class="col-sm-9">
               <div id="content-wrapper" class="docs-content docs-content--with-sidebar">
-                <h3 id="generating-heap-dumps">Generating Heap Dumps</h3>
+                <h3 id="generating-native-heap-dumps">Generating Native Heap Dumps</h3>
 <p>As described in chapter <a href="/docs/reference-manual/aot-compilation/">Creating Native Images</a> in GraalVM it is possible to create highly performing applications. It is also possible to monitor these apps using Agent and generate java heap dumps from within the native image application. This functionality is available at <a href="http://www.oracle.com/technetwork/oracle-labs/program-languages/downloads/index.html">GraalVM Enterprise - OTN download</a>. It is <strong>not</strong> available in GraalVM open source version available on GitHub.</p>
 
 <p>GraalVM native images do not implement JVMTI agent and it is not possible to trigger heap dump creation using tools like <em>Visual VM</em> or <em>jmap</em>. But it is possible to build native image for your application to handle signals and then get a heap dump when the app receives SIGUSR1 signal. Another possibility is to add a special method to your application which will generate the heap dump at certain point in the lifetime of your application. E.g. when certain conditions are met when running native image application then your application code triggers heap dump creation. We will show both possibilities in this chapter.</p>
