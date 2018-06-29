@@ -638,7 +638,7 @@ Hello Rust!
 
 <h2 id="interoperability">Interoperability</h2>
 <p>GraalVM supports several other programming languages, including JavaScript,
-Python 3, Ruby, and R. While LLI is designed to run LLVM bitcode, it also provides
+Python, Ruby, and R. While LLI is designed to run LLVM bitcode, it also provides
 an API for programming language interoperability that lets you execute code from
 any other language that GraalVM supports.</p>
 
@@ -683,7 +683,7 @@ void printPoint(struct Point *p) {
 }
 </code></pre>
 
-<p>Compile this with:</p>
+<p>Make sure <code>GRAALVM_HOME</code> resolves to the GraalVM installation directory, then compile <em>cpart.c</em> file with:</p>
 <pre><code class="language-shell">$ clang -g -O1 -c -emit-llvm -I$GRAALVM_HOME/jre/languages/llvm cpart.c
 </code></pre>
 
