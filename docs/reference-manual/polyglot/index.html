@@ -560,7 +560,7 @@ Select a section for your <em>Start Language</em> and then select a tab for the 
 
 <p><strong>Requirement:</strong> to start an application with LLVM as a Target Language, make sure to precompile polyglot.c file provided below.</p>
 
-<h4 id="start-d--javascript--nodejs">Start d  JavaScript / Node.js</h4>
+<h4 id="start-javascript--nodejs">Start JavaScript / Node.js</h4>
 
 <p>Create a file <code>polyglot.js</code>:</p>
 
@@ -2287,8 +2287,8 @@ $ node --polyglot --jvm polyglot.js
 
 <span class="kd">class</span> <span class="nc">Polyglot</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">Context</span> <span class="n">polyglot</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
-        <span class="n">Value</span> <span class="n">array</span> <span class="o">=</span> <span class="n">polyglot</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span> <span class="s">"[1,2,42,4]"</span><span class="o">);</span>
+        <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowIO</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
+        <span class="n">Value</span> <span class="n">array</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span> <span class="s">"[1,2,42,4]"</span><span class="o">);</span>
         <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="na">getArrayElement</span><span class="o">(</span><span class="mi">2</span><span class="o">).</span><span class="na">asInt</span><span class="o">();</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">result</span><span class="o">);</span>
     <span class="o">}</span>

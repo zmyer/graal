@@ -771,7 +771,7 @@ the following code:</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloPolyglot</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"Hello Java!"</span><span class="o">);</span>
-        <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+        <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowIO</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
         <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span> <span class="s">"print('Hello Python!')"</span><span class="o">);</span>
     <span class="o">}</span>
 <span class="o">}</span>
@@ -1135,7 +1135,7 @@ values.</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">function_python</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 <span class="c1">// BEGIN-SNIPPET</span>
-<span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+<span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowIO</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 <span class="n">Value</span> <span class="n">function</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span> <span class="s">"lambda x: x + 1"</span><span class="o">);</span>
 <span class="k">assert</span> <span class="n">function</span><span class="o">.</span><span class="na">canExecute</span><span class="o">();</span>
 <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="mi">41</span><span class="o">).</span><span class="na">asInt</span><span class="o">();</span>
@@ -1522,7 +1522,7 @@ how the Polyglot API can access numbers, strings, and arrays.</p>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">access_python_from_java</span> <span class="o">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
 <span class="c1">// BEGIN-SNIPPET</span>
-<span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+<span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="n">Context</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">allowIO</span><span class="o">(</span><span class="kc">true</span><span class="o">).</span><span class="na">build</span><span class="o">();</span>
 <span class="n">Value</span> <span class="n">result</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">eval</span><span class="o">(</span><span class="s">"python"</span><span class="o">,</span> <span class="s">"type('obj', (object,), {"</span> <span class="o">+</span>
                     <span class="s">"'id'  : 42, "</span>     <span class="o">+</span>
                     <span class="s">"'text': '42', "</span>   <span class="o">+</span>
