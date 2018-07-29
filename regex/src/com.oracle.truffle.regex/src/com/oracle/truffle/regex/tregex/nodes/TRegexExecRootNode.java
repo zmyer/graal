@@ -26,6 +26,7 @@ package com.oracle.truffle.regex.tregex.nodes;
 
 import com.oracle.truffle.api.CallTarget;
 import com.oracle.truffle.api.CompilerDirectives;
+import com.oracle.truffle.api.CompilerDirectives.CompilationFinal;
 import com.oracle.truffle.api.Truffle;
 import com.oracle.truffle.api.frame.VirtualFrame;
 import com.oracle.truffle.api.nodes.Node;
@@ -49,7 +50,7 @@ import com.oracle.truffle.regex.tregex.util.DebugUtil;
 
 import java.util.Arrays;
 
-public class TRegexExecRootNode extends RegexExecRootNode implements CompiledRegex {
+public class TRegexExecRootNode extends RegexExecRootNode implements CompiledRegex, RegexProfile.TracksRegexProfile {
 
     private static final DebugUtil.DebugLogger LOG_BAILOUT = new DebugUtil.DebugLogger("TRegex Bailout: ", DebugUtil.LOG_BAILOUT_MESSAGES);
 
@@ -58,6 +59,7 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
     private final CallTarget regexCallTarget;
     private final LazyCaptureGroupRegexSearchNode lazySearchNode;
     private EagerCaptureGroupRegexSearchNode eagerSearchNode;
+    private RegexProfile regexProfile;
     private final TRegexCompiler tRegexCompiler;
     private final boolean eagerCompilation;
 
@@ -72,7 +74,7 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
                     TRegexDFAExecutorNode backwardExecutor,
                     TRegexDFAExecutorNode captureGroupExecutor) {
         super(language, source);
-        lazySearchNode = new LazyCaptureGroupRegexSearchNode(language, source, preCalculatedResults, forwardExecutor, backwardExecutor, captureGroupExecutor);
+        lazySearchNode = new LazyCaptureGroupRegexSearchNode(language, source, preCalculatedResults, forwardExecutor, backwardExecutor, captureGroupExecutor, this);
         runRegexSearchNode = insert(lazySearchNode);
         regexCallTarget = Truffle.getRuntime().createCallTarget(new RegexRootNode(language, forwardExecutor.getProperties().getFrameDescriptor(), this));
         this.tRegexCompiler = tRegexCompiler;
@@ -92,7 +94,7 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
         final RegexResult result = runRegexSearchNode.run(frame, regex, input, fromIndex);
         assert !eagerCompilation || eagerAndLazySearchNodesProduceSameResult(frame, regex, input, fromIndex, result);
         if (CompilerDirectives.inInterpreter() && canSwitchToEagerSearch() && runRegexSearchNode == lazySearchNode) {
-            RegexProfile profile = regex.getRegexProfile();
+            RegexProfile profile = getRegexProfile();
             if (profile.atEvaluationTripPoint() && profile.shouldUseEagerMatching()) {
                 switchToEagerSearch(profile);
             }
@@ -102,6 +104,14 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
             }
         }
         return result;
+    }
+
+    @Override
+    public RegexProfile getRegexProfile() {
+        if (regexProfile == null) {
+            regexProfile = new RegexProfile();
+        }
+        return regexProfile;
     }
 
     private boolean canSwitchToEagerSearch() {
@@ -181,7 +191,7 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
     static final class LazyCaptureGroupRegexSearchNode extends RunRegexSearchNode {
 
         private final RegexSource source;
-        private final PreCalculatedResultFactory[] preCalculatedResults;
+        @CompilationFinal(dimensions = 1) private final PreCalculatedResultFactory[] preCalculatedResults;
 
         @Child private TRegexDFAExecutorNode forwardExecutorNode;
         private final TRegexDFAExecutorNode backwardExecutorNode;
@@ -195,7 +205,8 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
                         PreCalculatedResultFactory[] preCalculatedResults,
                         TRegexDFAExecutorNode forwardNode,
                         TRegexDFAExecutorNode backwardNode,
-                        TRegexDFAExecutorNode captureGroupExecutor) {
+                        TRegexDFAExecutorNode captureGroupExecutor,
+                        RegexProfile.TracksRegexProfile profiler) {
             this.forwardExecutorNode = forwardNode;
             this.source = source;
             this.preCalculatedResults = preCalculatedResults;
@@ -212,7 +223,7 @@ public class TRegexExecRootNode extends RegexExecRootNode implements CompiledReg
                 captureGroupCallTarget = null;
             } else {
                 captureGroupCallTarget = Truffle.getRuntime().createCallTarget(new RegexRootNode(language, captureGroupExecutor.getProperties().getFrameDescriptor(),
-                                new TRegexLazyCaptureGroupsRootNode(language, source, captureGroupExecutor)));
+                                new TRegexLazyCaptureGroupsRootNode(language, source, captureGroupExecutor, profiler)));
             }
         }
 

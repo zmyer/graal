@@ -34,6 +34,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicLong;
 
+import com.oracle.truffle.api.TruffleLogger;
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Engine;
 
@@ -493,11 +494,11 @@ public final class CPUSampler implements Closeable {
             f = DEFAULT_FILTER;
         }
         this.stackOverflowed = false;
-        this.shadowStack = new ShadowStack(stackLimit);
+        this.shadowStack = new ShadowStack(stackLimit, f, env.getInstrumenter(), TruffleLogger.getLogger(CPUSamplerInstrument.ID));
         this.stacksBinding = this.shadowStack.install(env.getInstrumenter(), combine(f, mode), mode == Mode.EXCLUDE_INLINED_ROOTS);
 
         this.samplerTask = new SamplingTimerTask();
-        this.samplerThread.schedule(samplerTask, 0, period);
+        this.samplerThread.schedule(samplerTask, delay, period);
 
     }
 
@@ -542,14 +543,8 @@ public final class CPUSampler implements Closeable {
 
     private class SamplingTimerTask extends TimerTask {
 
-        int runcount = 0;
-
         @Override
         public void run() {
-            runcount++;
-            if (runcount < delay / period) {
-                return;
-            }
             if (delaySamplingUntilNonInternalLangInit && !nonInternalLanguageContextInitialized) {
                 return;
             }
